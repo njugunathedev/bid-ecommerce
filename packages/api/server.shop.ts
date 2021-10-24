@@ -1,6 +1,8 @@
 import 'reflect-metadata';
 import express from 'express';
-import { ApolloServer } from 'apollo-server-express';
+import { ApolloServer, AuthenticationError } from 'apollo-server-express';
+import { ApolloServerPluginUsageReporting } from 'apollo-server-core';
+
 import { buildSchema } from 'type-graphql';
 import { UserResolver } from './shop/services/user/user.resolver';
 import { ProductResolver } from './shop/services/product/product.resolver';
@@ -21,12 +23,26 @@ const main = async () => {
       CouponResolver,
       CategoryResolver,
     ],
+    
   });
   const apolloServer = new ApolloServer({
     schema,
     introspection: true,
     playground: true,
     tracing: true,
+    plugins: [
+      ApolloServerPluginUsageReporting({
+        rewriteError(err) {
+          // Return `null` to avoid reporting `AuthenticationError`s
+          if (err instanceof AuthenticationError) {
+            return null;
+          }
+          
+          // All other errors will be reported.
+          return err;
+        }
+      }),
+    ],
   });
   apolloServer.applyMiddleware({ app, path });
 

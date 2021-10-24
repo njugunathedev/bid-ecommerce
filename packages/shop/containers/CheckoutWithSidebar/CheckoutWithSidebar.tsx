@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import Router from 'next/router';
 import { RouteComponentProps } from '@reach/router'
+
 import Link from 'next/link';
 import Button from 'components/Button/Button';
 import RadioCard from 'components/RadioCard/RadioCard';
@@ -10,7 +11,7 @@ import Loader from 'components/Loader/Loader';
 import UpdateAddress from './Update/UpdateAddress';
 import UpdateContact from './Update/UpdateContact';
 import StripePaymentForm from '../Payment/StripePaymentForm';
-import { ADD_ORDER } from 'graphql/mutation/order';
+import { ADD_ORDER, GET_ORDERS } from 'graphql/mutation/order';
 import { DELETE_ADDRESS } from 'graphql/mutation/address';
 import { DELETE_CARD } from 'graphql/mutation/card';
 import { DELETE_CONTACT } from 'graphql/mutation/contact';
@@ -64,6 +65,12 @@ import { FormattedMessage } from 'react-intl';
 import { useCart } from 'contexts/cart/use-cart';
 import { APPLY_COUPON } from 'graphql/mutation/coupon';
 import { useLocale } from 'contexts/language/language.provider';
+
+//gql
+
+
+
+
 
 // The type of props Checkout Form receives
 interface MyFormProps {
@@ -127,56 +134,70 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
     headerState?.desktopHeight > 0 ? headerState.desktopHeight + 30 : 76 + 30;
   const [addOrder] = useMutation(ADD_ORDER, {
     update(cache, { data: { addOrder } }) {
-      const { order } = cache.readQuery({
-        query: ADD_ORDER,
+      const { orders } = cache.readQuery({
+        query: GET_ORDERS,
       });
 
       cache.writeQuery({
-        query: ADD_ORDER,
+        query: GET_ORDERS,
         data: {
-          order: {
-            __typename: order.__typename,
-            items: [addOrder, ...order.items],
+          products: {
+            __typename: orders.__typename,
+            items: [addOrder, ...orders.items],
             hasMore: true,
-            totalCount: order.items.length + 1,
+            totalCount: orders.items.length + 1,
           },
         },
       });
     },
   });
-  
+
   const handleSubmit = async () => {
     setLoading(true);
     if (isValid) {
       const newOrder = {
         //order id unix timestamp string
-        id: new Date().getTime().toString(),
-        userId: state.userId,
-        amount: calculateSubTotalPrice(),
-        date: new Date().toISOString(),
-        deliveryAddress: address.name,
-        subtotal: calculateSubTotalPrice(),
-        discount: calculateDiscount(),
+        id: Number(new Date().getTime().toString()),
+        userId: 1,
+        amount: Number(calculateSubTotalPrice()),
+        date: new Date().getTime().toString(),
+        deliveryAddress: "address.name",
+        subtotal: Number(calculateSubTotalPrice()),
+        discount: Number(calculateDiscount()),
         deliveryFee: 0,
+        status: 1,
         deliveryTime: schedules[0].title,
         products: items.map(item => ({
-          productId: item.id,
-          title: item.name,
+          id: item.id,
+          title: "item.name",
           image: item.image,
-          weight: item.weight,
+          weight: "item.weight",
+          category: "coming soon",
           price: item.price,
           quantity: item.quantity,
-          total: item.totalCount,
+          total: item.price,
         })),
 
 
 
 
-      };
 
+
+      };
+      console.log(newOrder);
       setLoading(true)
       //get unix timestamp
-      const timestamp = Date.now()
+
+      await addOrder({
+        variables: {
+          order: newOrder
+        }
+      }).then(async res => {
+        console.log(res);
+      }).catch(err => {
+        console.log(err);
+      })
+
       const slug = newOrder.id
       if (isValid) {
         await Router.push(`/order/${slug}`)
@@ -184,21 +205,16 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
       }
 
       setLoading(false)
-
-      //add order to cache
-      addOrder({
+      await addOrder({
         variables: {
-          order: newOrder,
-        },
+          order: newOrder
+        }
       });
-      console.log(addOrder({
-        variables: {
-          order: newOrder,
-        },
-      }))
+
+
       //clearCart();
 
-
+      console.log('order added');
 
 
     }

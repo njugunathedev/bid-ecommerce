@@ -1,4 +1,4 @@
-import { Resolver, Query, Arg, Int, Mutation } from 'type-graphql';
+import { Resolver, Query, Arg, Int, ID, Mutation } from 'type-graphql';
 import loadOrders from './order.sample';
 import Order from './order.type';
 import { filterOrder } from '../../helpers/filter';
@@ -20,7 +20,7 @@ export class OrderResolver {
   }
 
   @Query(() => Order, { description: 'Get single order' })
-  async order(@Arg('id', type => Int) id: number): Promise<Order | undefined> {
+  async order(@Arg('id', type => ID) id: number): Promise<Order | undefined> {
     return await this.items.find(item => item.id === id);
   }
 

@@ -1,5 +1,5 @@
 import { type } from 'os';
-import { InputType, Field, ID, GraphQLISODateTime } from 'type-graphql';
+import { InputType, Field, ID, Int } from 'type-graphql';
 import Order from './order.type';
 import ProductInput from '../product/product.input_type';
 import Product from './orderProduct.type';
@@ -8,7 +8,7 @@ import Product from './orderProduct.type';
 
 @InputType({ description: 'New Order Data' })
 export default class AddOrderInput {
-  @Field()
+  @Field(type => ID)
   id: number;
 
   @Field()
@@ -17,22 +17,22 @@ export default class AddOrderInput {
   @Field(type => [ProductInput])
   products: ProductInput[];
 
-  @Field(type => String)
+  @Field(type => Int)
   status: number;
 
   @Field(type => String)
   deliveryTime: string;
 
-  @Field(type => String)
+  @Field(type => Int)
   amount: number;
 
-  @Field(type => String)
+  @Field(type => Int)
   subtotal: number;
 
-  @Field(type => String)
+  @Field(type => Int)
   discount: number;
 
-  @Field(type => String)
+  @Field(type => Int)
   deliveryFee: number;
 
   @Field(type => String)
@@ -40,4 +40,5 @@ export default class AddOrderInput {
 
   @Field(type => String)
   date: string;
+
 }
