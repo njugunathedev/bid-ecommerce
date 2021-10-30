@@ -1,6 +1,6 @@
 import { type } from 'os';
 import { InputType, Field, ID, Int } from 'type-graphql';
-import Order from './order.type';
+import { Order } from './order.type';
 import ProductInput from '../product/product.input_type';
 import Product from './orderProduct.type';
 

@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import express from 'express';
+import { MongoClient } from 'mongodb';
 import { ApolloServer } from 'apollo-server-express';
 import { buildSchema } from 'type-graphql';
 import ProductResolver from './admin/services/product/product.resolver';

@@ -1,9 +1,10 @@
 import { Resolver, Query, Arg, Int, ID, Mutation } from 'type-graphql';
 import loadOrders from './order.sample';
-import Order from './order.type';
+import { OrderModel, Order } from './order.type';
 import { filterOrder } from '../../helpers/filter';
 import { take } from 'lodash';
 import AddOrderInput from './order.input_type';
+import { type } from 'os';
 
 @Resolver()
 export class OrderResolver {
@@ -16,33 +17,40 @@ export class OrderResolver {
     @Arg('limit', type => Int, { defaultValue: 7 }) limit: number
   ): Promise<Order[]> {
     // return await take(this.items.filter(item => item.userId === user), limit);
-    return await filterOrder(this.items, user, limit, text);
+    const orders = await OrderModel.find({ userId: user });
+    if (text) {
+      return filterOrder(orders, limit);
+    }
+    return orders;
   }
 
   @Query(() => Order, { description: 'Get single order' })
-  async order(@Arg('id', type => ID) id: number): Promise<Order | undefined> {
-    return await this.items.find(item => item.id === id);
+  async order(@Arg('id', type => Int) id: number): Promise<Order | undefined> {
+    const order = await OrderModel.findOne({ id });
+    if(order){
+      return order
+    }
+    else{
+      return undefined
+    }
   }
 
   @Mutation(() => Order, { description: 'Add an Order' })
   async addOrder(@Arg('orderInput') orderInput: AddOrderInput): Promise<Order>{
     try {
-      console.log(orderInput, 'orderinput');
+      const newOrder = new OrderModel({ ...orderInput });
+      const order = await newOrder.save();
       //this.items.push(orderInput);
       //add to db
+      return order;
       
-
-      await this.items[this.items.length - 1];
-      this.items.push(orderInput);
-      const newOrder = this.items[this.items.length - 1];
-      
-      return orderInput;
       
     } catch (error) {
       console.log(error);
+      process.exit(1);
       
     }
-    return orderInput;
+    
     
       
      

@@ -20,6 +20,12 @@ export class UserResolver {
     console.log(meInput, 'meInput');
     return await this.items[0];
   }
+  @Mutation(() => User, { description: 'Update User' })
+  async registerUser(@Arg('userInput') registerInput: string): Promise<User> {
+    console.log(registerInput, 'registerInput');
+    return await this.items[0];
+  }
+
 
   @Mutation(() => User, { description: 'Add or Edit Address' })
   async updateAddress(

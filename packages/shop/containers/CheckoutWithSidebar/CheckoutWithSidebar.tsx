@@ -187,16 +187,27 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
       console.log(newOrder);
       setLoading(true)
       //get unix timestamp
+      try {
+        const response = await addOrder({
+          variables: {
+            order: newOrder,
+          },
+        });
+        console.log(response);
 
-      await addOrder({
-        variables: {
-          order: newOrder
-        }
-      }).then(async res => {
-        console.log(res);
-      }).catch(err => {
-        console.log(err);
-      })
+      } catch (err) {
+        console.log(Object.keys(err));
+        console.log(err.graphQLErrors);
+        err.graphQLErrors.map(({ message, locations, path }) => console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,));
+        console.log(err.message)
+        console.log(err.networkError)
+      }
+
+
+
+
+
+
 
       const slug = newOrder.id
       if (isValid) {
