@@ -18,15 +18,48 @@ import { CURRENCY } from 'helper/constant';
 import { useCart } from 'contexts/cart/use-cart';
 
 import { FormattedMessage } from 'react-intl';
+import { GraphQLError } from 'graphql';
 import { calculateTotalPrice } from 'components/helpers/utility';
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 
 type OrderRecivedProps = {
   orderId: any
 };
 
-
+const GET_ORDERS = gql`
+  query getOrders($user: Int, $limit: Int, $text: String) {
+    orders(user: $user, limit: $limit, text: $text) {
+      id
+      userId
+      products{
+        id
+        title
+        image
+        quantity
+        category
+        weight
+        price
+        total
+      }
+      amount
+      deliveryTime
+      deliveryAddress
+      subtotal
+      discount
+      status
+      deliveryFee
+      date
+    }
+  }
+`;
 
 const OrderRecived: React.FunctionComponent<OrderRecivedProps> = ({ orderId }) => {
+  const { data, error, loading } = useQuery(GET_ORDERS, {
+    variables: {
+      id: 1894
+    }
+  });
   const {
     items,
     removeCoupon,
@@ -39,6 +72,11 @@ const OrderRecived: React.FunctionComponent<OrderRecivedProps> = ({ orderId }) =
     calculateSubTotalPrice,
   } = useCart();
   console.log(calculatePrice());
+  console.log(typeof parseInt(orderId));
+  console.log(typeof orderId)
+  if(data) console.log(data)
+  if(!data) console.log(GraphQLError);
+
   return (
     <OrderRecivedWrapper>
       <OrderRecivedContainer>

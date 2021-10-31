@@ -140,15 +140,9 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
 
       cache.writeQuery({
         query: GET_ORDERS,
-        data: {
-          products: {
-            __typename: orders.__typename,
-            items: [addOrder, ...orders.items],
-            hasMore: true,
-            totalCount: orders.items.length + 1,
-          },
-        },
+        data: { orders: orders.concat([addOrder]) },
       });
+      
     },
   });
 

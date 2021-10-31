@@ -28,8 +28,8 @@ export const ADD_ORDER = gql`
   }
 `;
 export const GET_ORDERS = gql`
-  query getOrders($status: String, $limit: Int, $searchText: String) {
-    orders(status: $status, limit: $limit, searchText: $searchText) {
+  query getOrders($user: Int, $limit: Int, $text: String) {
+    orders(user: $user, limit: $limit, text: $text) {
       id
       userId
       products{

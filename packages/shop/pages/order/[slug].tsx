@@ -13,7 +13,7 @@ const OrderRecived: React.FC<any> = (props) => {
     query: { slug },
   } = useRouter();
 
-
+  
 
 
   return (
