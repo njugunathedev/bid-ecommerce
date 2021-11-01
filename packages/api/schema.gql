@@ -25,6 +25,14 @@ type Address {
   info: String!
 }
 
+# Address Input
+input AddressInput {
+  id: String!
+  type: String!
+  name: String!
+  info: String!
+}
+
 type Author {
   id: ID!
   name: String!
@@ -88,7 +96,7 @@ type Mutation {
   updateMe(meInput: String!): User!
 
   # Update User
-  registerUser(userInput: String!): User!
+  registerUser(userInput: UserInput!): User!
 
   # Add or Edit Address
   updateAddress(addressInput: String!): User!
@@ -240,4 +248,14 @@ type User {
   address: [Address!]!
   contact: [Contact!]!
   card: [Card!]!
+}
+
+# User input type
+input UserInput {
+  id: ID!
+  name: String!
+  email: String!
+  address: AddressInput!
+  contact: String!
+  card: String
 }

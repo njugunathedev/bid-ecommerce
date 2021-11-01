@@ -1,10 +1,23 @@
 import { InputType, Field, Int, ID } from 'type-graphql';
-import AddressInput from './address.input_type';
+
 import ContactInput from './contact.input_type';
 import CardInput from './card.input_type';
+@InputType({ description: "Address Input"} )
+class AddressInput {
+  @Field()
+  id: string;
 
+  @Field()
+  type: string;
+
+  @Field()
+  name: string;
+
+  @Field()
+  info: string;
+}
 @InputType({ description: 'User input type' })
-export default class User {
+export default class UserInput {
   @Field(type => ID)
   id: number;
 
@@ -14,12 +27,15 @@ export default class User {
   @Field()
   email: string;
 
-  @Field(type => [AddressInput])
-  address: AddressInput[];
+  @Field(type => AddressInput)
+  address: AddressInput;
+  
 
-  @Field(type => [ContactInput])
-  contact: ContactInput[];
+@Field()
+contact: string;
 
-  @Field(type => [CardInput])
-  card: CardInput[];
+@Field(type => String, { nullable: true })
+card: string;
 }
+
+

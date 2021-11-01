@@ -11,7 +11,7 @@ import Loader from 'components/Loader/Loader';
 import UpdateAddress from './Update/UpdateAddress';
 import UpdateContact from './Update/UpdateContact';
 import StripePaymentForm from '../Payment/StripePaymentForm';
-import { ADD_ORDER, GET_ORDERS } from 'graphql/mutation/order';
+
 import { DELETE_ADDRESS } from 'graphql/mutation/address';
 import { DELETE_CARD } from 'graphql/mutation/card';
 import { DELETE_CONTACT } from 'graphql/mutation/contact';
@@ -59,7 +59,7 @@ import { Plus } from 'components/AllSvgIcon';
 
 import Sticky from 'react-stickynode';
 import { HeaderContext } from 'contexts/header/header.context';
-
+import gql from 'graphql-tag';
 import { ProfileContext } from 'contexts/profile/profile.context';
 import { FormattedMessage } from 'react-intl';
 import { useCart } from 'contexts/cart/use-cart';
@@ -67,7 +67,59 @@ import { APPLY_COUPON } from 'graphql/mutation/coupon';
 import { useLocale } from 'contexts/language/language.provider';
 
 //gql
-
+const ADD_ORDER = gql`
+  mutation ($orderInput: AddOrderInput!) {
+    addOrder(orderInput: $orderInput) {
+      id
+      userId
+      products{
+        id
+        title
+        image
+        quantity
+        category
+        weight
+        price
+        total
+      }
+      amount
+      deliveryTime
+      deliveryAddress
+      subtotal
+      discount
+      status
+      deliveryFee
+      date
+      
+    }
+  }
+`;
+const GET_ORDERS = gql`
+  query getOrders($user: Int, $limit: Int, $text: String) {
+    orders(user: $user, limit: $limit, text: $text) {
+      id
+      userId
+      products{
+        id
+        title
+        image
+        quantity
+        category
+        weight
+        price
+        total
+      }
+      amount
+      deliveryTime
+      deliveryAddress
+      subtotal
+      discount
+      status
+      deliveryFee
+      date
+    }
+  }
+`;
 
 
 

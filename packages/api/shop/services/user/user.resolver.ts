@@ -1,5 +1,5 @@
 import { Resolver, Query, Arg, Int, Mutation } from 'type-graphql';
-
+import UserInput  from './user.input_type';
 import { filterItems } from '../../helpers/filter';
 import User from './user.type';
 import loadUsers from './user.sample';
@@ -21,7 +21,7 @@ export class UserResolver {
     return await this.items[0];
   }
   @Mutation(() => User, { description: 'Update User' })
-  async registerUser(@Arg('userInput') registerInput: string): Promise<User> {
+  async registerUser(@Arg('userInput') registerInput: UserInput): Promise<User> {
     console.log(registerInput, 'registerInput');
     return await this.items[0];
   }
