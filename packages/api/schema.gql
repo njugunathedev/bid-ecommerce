@@ -51,6 +51,15 @@ type Card {
   lastFourDigit: Float!
 }
 
+# Card Input
+input CardInput {
+  id: String!
+  type: String!
+  name: String!
+  cardType: String!
+  lastFourDigit: Float!
+}
+
 type Category {
   id: Int!
   title: String!
@@ -61,6 +70,13 @@ type Category {
 }
 
 type Contact {
+  id: String!
+  type: String!
+  number: String!
+}
+
+# Contact Input
+input ContactInput {
   id: String!
   type: String!
   number: String!
@@ -255,7 +271,7 @@ input UserInput {
   id: ID!
   name: String!
   email: String!
-  address: AddressInput!
-  contact: String!
-  card: String
+  address: [AddressInput!]
+  contact: [ContactInput!]
+  card: [CardInput!]
 }

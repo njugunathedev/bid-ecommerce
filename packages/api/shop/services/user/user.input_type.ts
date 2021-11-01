@@ -1,8 +1,7 @@
 import { InputType, Field, Int, ID } from 'type-graphql';
 
-import ContactInput from './contact.input_type';
-import CardInput from './card.input_type';
-@InputType({ description: "Address Input"} )
+
+@InputType({ description: "Address Input" })
 class AddressInput {
   @Field()
   id: string;
@@ -16,6 +15,36 @@ class AddressInput {
   @Field()
   info: string;
 }
+@InputType({ description: "Card Input" })
+class CardInput {
+  @Field()
+  id: string;
+
+  @Field()
+  type: string;
+
+  @Field()
+  name: string;
+
+  @Field()
+  cardType: string;
+
+  @Field()
+  lastFourDigit: number;
+
+}
+@InputType({ description: "Contact Input" })
+class ContactInput {
+  @Field()
+  id: string;
+
+  @Field()
+  type: string;
+
+  @Field()
+  number: string;
+}
+
 @InputType({ description: 'User input type' })
 export default class UserInput {
   @Field(type => ID)
@@ -27,15 +56,15 @@ export default class UserInput {
   @Field()
   email: string;
 
-  @Field(type => AddressInput)
+  @Field(type => [AddressInput], { nullable: true })
   address: AddressInput;
-  
 
-@Field()
-contact: string;
 
-@Field(type => String, { nullable: true })
-card: string;
+  @Field(type => [ContactInput], { nullable: true })
+  contact: ContactInput;
+
+  @Field(type => [CardInput], { nullable: true })
+  card: CardInput;
 }
 
 

@@ -1,7 +1,7 @@
 import { Resolver, Query, Arg, Int, Mutation } from 'type-graphql';
 import UserInput  from './user.input_type';
 import { filterItems } from '../../helpers/filter';
-import User from './user.type';
+import {User, UserModel } from './user.type';
 import loadUsers from './user.sample';
 
 @Resolver()
@@ -23,7 +23,15 @@ export class UserResolver {
   @Mutation(() => User, { description: 'Update User' })
   async registerUser(@Arg('userInput') registerInput: UserInput): Promise<User> {
     console.log(registerInput, 'registerInput');
-    return await this.items[0];
+    try{
+      const newUser = new UserModel({ ...registerInput });
+      const user = await newUser.save();
+      return user;
+    }catch(err){
+      console.log(err);
+      process.exit(1);
+    }
+    
   }
 
 
