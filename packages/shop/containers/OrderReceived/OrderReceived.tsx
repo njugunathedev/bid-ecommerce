@@ -27,9 +27,9 @@ type OrderRecivedProps = {
   orderId: any
 };
 
-const GET_ORDERS = gql`
-  query getOrders($user: Int, $limit: Int, $text: String) {
-    orders(user: $user, limit: $limit, text: $text) {
+const GET_ORDER = gql`
+  query getOrder($id: Int) {
+    order(id: $id) {
       id
       userId
       products{
@@ -54,10 +54,11 @@ const GET_ORDERS = gql`
   }
 `;
 
+
 const OrderRecived: React.FunctionComponent<OrderRecivedProps> = ({ orderId }) => {
-  const { data, error, loading } = useQuery(GET_ORDERS, {
+  const { data, error, loading } = useQuery(GET_ORDER, {
     variables: {
-      id: 1894
+      id: 2345
     }
   });
   const {
@@ -71,11 +72,12 @@ const OrderRecived: React.FunctionComponent<OrderRecivedProps> = ({ orderId }) =
     calculateDiscount,
     calculateSubTotalPrice,
   } = useCart();
-  console.log(calculatePrice());
-  console.log(typeof parseInt(orderId));
-  console.log(typeof orderId)
-  if(data) console.log(data)
-  if(!data) console.log(GraphQLError);
+  if(loading){
+    console.log(loading)
+  }
+  if(data){
+    console.log('data', typeof data)
+  }
 
   return (
     <OrderRecivedWrapper>
