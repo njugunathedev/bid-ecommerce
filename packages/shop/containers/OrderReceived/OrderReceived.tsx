@@ -22,13 +22,14 @@ import { GraphQLError } from 'graphql';
 import { calculateTotalPrice } from 'components/helpers/utility';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
+import Slug from 'pages/order/[slug]';
 
 type OrderRecivedProps = {
   orderId: any
 };
 
 const GET_ORDER = gql`
-  query getOrder($id: Int) {
+  query getOrder($id: String!) {
     order(id: $id) {
       id
       userId
@@ -58,7 +59,7 @@ const GET_ORDER = gql`
 const OrderRecived: React.FunctionComponent<OrderRecivedProps> = ({ orderId }) => {
   const { data, error, loading } = useQuery(GET_ORDER, {
     variables: {
-      id: 2345
+      id: orderId,
     }
   });
   const {
@@ -77,6 +78,14 @@ const OrderRecived: React.FunctionComponent<OrderRecivedProps> = ({ orderId }) =
   }
   if(data){
     console.log('data', typeof data)
+    console.log(data)
+  }
+  if(loading){
+    return <div>Loading...</div>
+  }
+  if(error){
+    console.log(error)
+    console.log(JSON.stringify(error, null, 2));
   }
 
   return (
@@ -111,7 +120,7 @@ const OrderRecived: React.FunctionComponent<OrderRecivedProps> = ({ orderId }) =
                   defaultMessage="Order Number"
                 />
               </Text>
-              <Text>{orderId}</Text>
+              <Text>{data.order.id}</Text>
             </InfoBlock>
 
             <InfoBlock>
@@ -120,14 +129,7 @@ const OrderRecived: React.FunctionComponent<OrderRecivedProps> = ({ orderId }) =
               </Text>
               <Text>
                 {
-                  new Date().toLocaleDateString(
-                    'en-US',
-                    {
-                      month: 'long',
-                      day: 'numeric',
-                      year: 'numeric',
-                    },
-                  )
+                  data.order.date
                 }
               </Text>
             </InfoBlock>
@@ -177,7 +179,7 @@ const OrderRecived: React.FunctionComponent<OrderRecivedProps> = ({ orderId }) =
               <Text>
                 {
                   //length items
-                  items.length
+                  data.order.products.length
                 }
               </Text>
             </ListDes>
@@ -195,15 +197,7 @@ const OrderRecived: React.FunctionComponent<OrderRecivedProps> = ({ orderId }) =
             <ListDes>
               <Text>
               {
-                  new Date().toLocaleDateString(
-                    'en-US',
-                    {
-                      
-                      hour: 'numeric',
-                      minute: 'numeric',
-                      hour12: true,
-                    },
-                  )
+                  data.order.date
                 }
               </Text>
             </ListDes>
@@ -219,7 +213,7 @@ const OrderRecived: React.FunctionComponent<OrderRecivedProps> = ({ orderId }) =
               </Text>
             </ListTitle>
             <ListDes>
-              <Text>90 Minute Express Delivery</Text>
+              <Text>{data.order.deliveryTime}</Text>
             </ListDes>
           </ListItem>
 
@@ -234,7 +228,7 @@ const OrderRecived: React.FunctionComponent<OrderRecivedProps> = ({ orderId }) =
             </ListTitle>
             <ListDes>
               <Text>
-                1st Floor, House 149, Road-22, Mohakhali DOHS, Dhaka - North
+                {data.order.deliveryAddress}
               </Text>
             </ListDes>
           </ListItem>
@@ -255,7 +249,7 @@ const OrderRecived: React.FunctionComponent<OrderRecivedProps> = ({ orderId }) =
               </Text>
             </ListTitle>
             <ListDes>
-              <Text>{calculateSubTotalPrice()}</Text>
+              <Text>{data.order.subtotal}</Text>
             </ListDes>
           </ListItem>
 
@@ -283,7 +277,7 @@ const OrderRecived: React.FunctionComponent<OrderRecivedProps> = ({ orderId }) =
               </Text>
             </ListTitle>
             <ListDes>
-              <Text>10</Text>
+              <Text>{data.order.deliveryFee}</Text>
             </ListDes>
           </ListItem>
 
@@ -294,7 +288,7 @@ const OrderRecived: React.FunctionComponent<OrderRecivedProps> = ({ orderId }) =
               </Text>
             </ListTitle>
             <ListDes>
-              <Text>{CURRENCY} {calculatePrice()}</Text>
+              <Text>{CURRENCY} {data.order.amount}</Text>
             </ListDes>
           </ListItem>
         </TotalAmount>

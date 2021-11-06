@@ -13,8 +13,8 @@ export default class OrderedProduct {
   title: string;
 
   @prop()
-  @Field(type => Int)
-  weight: number;
+  @Field(type => String)
+  weight: string;
 
   @prop()
   @Field()

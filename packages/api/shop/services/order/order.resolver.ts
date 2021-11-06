@@ -12,7 +12,7 @@ export class OrderResolver {
 
   @Query(() => [Order], { description: 'Get all the Orders' })
   async orders(
-    @Arg('user', type => Int) user: number,
+    @Arg('user', type => String) user: string,
     @Arg('text', type => String, { nullable: true }) text: string,
     @Arg('limit', type => Int, { defaultValue: 7 }) limit: number
   ): Promise<Order[]> {
@@ -25,7 +25,7 @@ export class OrderResolver {
   }
 
   @Query(() => Order, { description: 'Get single order' })
-  async order(@Arg('id', type => Int) id: number): Promise<Order | undefined> {
+  async order(@Arg('id', type => String) id: string): Promise<Order | undefined> {
     const order = await OrderModel.findOne({ id });
     if(order){
       return order

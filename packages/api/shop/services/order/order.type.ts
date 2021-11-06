@@ -6,15 +6,16 @@ import { prop, getModelForClass, modelOptions, Severity} from '@typegoose/typego
 // import { OrderStatusEnum } from './orderStatusEnum';
 
 @modelOptions({ options: { allowMixed : Severity.ALLOW} })
+
 @ObjectType()
 export class Order {
   @prop()
   @Field(type => ID)
-  id: number;
+  id: string;
 
   @prop()
   @Field()
-  userId: number;
+  userId: string;
 
   @prop()
   @Field(type => [Product])

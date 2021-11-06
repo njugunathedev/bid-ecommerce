@@ -13,16 +13,55 @@ import {
   Divider,
 } from './SignInOutForm.style';
 import { Facebook, Google } from 'components/AllSvgIcon';
+import gql from 'graphql-tag';
+import { useQuery } from '@apollo/react-hooks';
 import { AuthContext } from 'contexts/auth/auth.context';
 import { FormattedMessage } from 'react-intl';
 import { closeModal } from '@redq/reuse-modal';
 import Image from 'components/Image/Image';
 import PickBazar from '../../image/PickBazar.png';
 
+
+const GET_USER = gql`
+  query getUser($email: String!) {
+    me(email: $email) {
+    
+      id
+      name
+      email
+      address {
+        id
+        type
+        name
+        info
+      }
+      contact {
+        id
+        type
+        number
+      }
+      card {
+        id
+        type
+        cardType
+        name
+        lastFourDigit
+      }
+    }
+ 
+    
+  }
+`;
+
 export default function SignInModal() {
   const { authDispatch } = useContext<any>(AuthContext);
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const { data, loading, error } = useQuery(GET_USER, {
+    variables: {
+      email: "jhondDoe@demo.com",
+    },
+  });
 
   const toggleSignUpForm = () => {
     authDispatch({
@@ -36,11 +75,26 @@ export default function SignInModal() {
     });
   };
 
-  const loginCallback = () => {
+  const loginCallback = async() => {
     if (typeof window !== 'undefined') {
-      localStorage.setItem('access_token', `${email}.${password}`);
-      authDispatch({ type: 'SIGNIN_SUCCESS' });
-      closeModal();
+      if(error) console.log(JSON.stringify(error, null, 2));
+      if(data){
+        console.log(data)
+        localStorage.setItem('access_token', `${email}.${password} `);
+        authDispatch({ type: 'SIGNIN_SUCCESS' });
+        closeModal();
+      }
+     
+      if (!loading){
+        const user = await data
+        console.log(data)
+         
+       }
+
+      
+
+
+
     }
   };
 

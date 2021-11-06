@@ -1,6 +1,7 @@
 import { ObjectType, Field, Int, ID } from 'type-graphql';
 
 import { prop, getModelForClass, modelOptions, Severity} from '@typegoose/typegoose';
+import { type } from 'os';
 
 
 @ObjectType()
@@ -52,7 +53,11 @@ class Contact {
 export class User {
   @prop()
   @Field(type => ID)
-  id: number;
+  id: string;
+
+  @prop()
+  @Field(type => String, { nullable: true })
+  password: string;
 
   @prop()
   @Field()

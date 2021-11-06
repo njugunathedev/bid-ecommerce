@@ -3,10 +3,11 @@ import Head from 'next/head';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import { onError } from "@apollo/client/link/error";
 import { HttpLink } from 'apollo-link-http';
 import fetch from 'isomorphic-unfetch';
 
-let apolloClient = null;
+let apolloClient=  null;
 
 /**
  * Creates and provides the apolloContext

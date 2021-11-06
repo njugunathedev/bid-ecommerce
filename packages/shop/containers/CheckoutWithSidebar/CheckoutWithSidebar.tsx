@@ -65,6 +65,8 @@ import { FormattedMessage } from 'react-intl';
 import { useCart } from 'contexts/cart/use-cart';
 import { APPLY_COUPON } from 'graphql/mutation/coupon';
 import { useLocale } from 'contexts/language/language.provider';
+import { date } from 'yup';
+import { DeliveryAddress } from 'containers/Checkout/Checkout.style';
 
 //gql
 const ADD_ORDER = gql`
@@ -95,7 +97,7 @@ const ADD_ORDER = gql`
   }
 `;
 const GET_ORDERS = gql`
-  query getOrders($user: Int, $limit: Int, $text: String) {
+  query getOrders($user: String, $limit: Int, $text: String) {
     orders(user: $user, limit: $limit, text: $text) {
       id
       userId
@@ -128,6 +130,7 @@ const GET_ORDERS = gql`
 interface MyFormProps {
   token: string;
   deviceType: any;
+  user: any;
 }
 
 type CartItemProps = {
@@ -152,7 +155,7 @@ const OrderItem: React.FC<CartItemProps> = ({ product }) => {
   );
 };
 
-const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
+const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType, user }) => {
   const [hasCoupon, setHasCoupon] = useState(false);
   const [couponCode, setCouponCode] = useState('');
   const [couponError, setError] = useState('');
@@ -194,59 +197,75 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
         query: GET_ORDERS,
         data: { orders: orders.concat([addOrder]) },
       });
-      
+
     },
   });
-
+  
   const handleSubmit = async () => {
     setLoading(true);
+    
     if (isValid) {
       const newOrder = {
-        //order id unix timestamp string
-        id: Number(new Date().getTime().toString()),
-        userId: 1,
-        amount: Number(calculateSubTotalPrice()),
-        date: new Date().getTime().toString(),
-        deliveryAddress: "address.name",
-        subtotal: Number(calculateSubTotalPrice()),
-        discount: Number(calculateDiscount()),
-        deliveryFee: 0,
-        status: 1,
-        deliveryTime: schedules[0].title,
+        //unique id int
+        id: new Date().getTime().toString(),
+        userId: user.me.id,
         products: items.map(item => ({
           id: item.id,
-          title: "item.name",
+          title: item.title,
           image: item.image,
-          weight: "item.weight",
-          category: "coming soon",
+          weight: item.unit,
+          category: item.categories[0].slug,
           price: item.price,
           quantity: item.quantity,
           total: item.price,
         })),
+        amount: parseInt(calculatePrice()),
+        deliveryTime: schedules
+        ?.filter((schedule) => schedule.type === 'primary'
+        )
+        .map((schedule) => {
+          return schedule.time_slot;
+        }
+        )[0],
+        deliveryAddress: address
+        ?.filter((address) => address.type === 'primary'
+        )
+        .map((address) => {
+          return address.info;
+        }
+        )[0],
+        subtotal: parseInt(calculateSubTotalPrice()),
+        discount: parseInt(calculateDiscount()),
+        status: 1,
+        deliveryFee: 0,
+        date: new Date().toLocaleDateString(
+          'en-US',
+          {
 
-
-
-
-
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true,
+          },
+        )
 
       };
-      console.log(newOrder);
+      console.log(isValid);
       setLoading(true)
       //get unix timestamp
       try {
+
         const response = await addOrder({
           variables: {
-            order: newOrder,
+            orderInput: newOrder,
           },
         });
         console.log(response);
 
+
+
       } catch (err) {
         console.log(Object.keys(err));
-        console.log(err.graphQLErrors);
-        err.graphQLErrors.map(({ message, locations, path }) => console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,));
-        console.log(err.message)
-        console.log(err.networkError)
+        console.log(JSON.stringify(err, null, 2));
       }
 
 
@@ -254,7 +273,7 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
 
 
 
-
+      console.log(typeof newOrder.id);
       const slug = newOrder.id
       if (isValid) {
         await Router.push(`/order/${slug}`)
@@ -447,12 +466,12 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
               </DeliverySchedule>
             </InformationBox>
 
-            {/* Contact number */}
+            {/* Contact parseInt */}
             <InformationBox>
               <Heading>
                 <FormattedMessage
-                  id='contactNumberText'
-                  defaultMessage='Select Your Contact Number'
+                  id='contactparseIntText'
+                  defaultMessage='Select Your Contact parseInt'
                 />
               </Heading>
               <ButtonGroup>
@@ -463,7 +482,7 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType }) => {
                       id={item.id}
                       key={item.id}
                       title={item.type}
-                      content={item.number}
+                      content={item.parseInt}
                       checked={item.type === 'primary'}
                       onChange={() =>
                         dispatch({

@@ -11,8 +11,8 @@ export default class ProductInput {
   @Field()
   title: string;
 
-  @Field(type => Int)
-  weight: number;
+  @Field(type => String, { nullable: true, defaultValue: "o lbs" })
+  weight: string;
 
   @Field()
   image: string;

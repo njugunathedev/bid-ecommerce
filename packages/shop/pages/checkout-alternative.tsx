@@ -21,8 +21,15 @@ const CheckoutPage: NextPage<Props> = ({ deviceType }) => {
   if (loading) {
     return <div>loading...</div>;
   }
-  if (error) return <div>{error.message}</div>;
+  if (error) {
+    console.log(JSON.stringify(error, null, 2));
+
+    return <div>{error.message}</div>;
+
+  }
+  if(data) console.log(data);
   const token = 'true';
+
 
   return (
     <>

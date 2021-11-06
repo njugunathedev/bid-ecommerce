@@ -1,4 +1,4 @@
-import { Resolver, Query, Arg, Int, Mutation } from 'type-graphql';
+import { Resolver, Query, Arg, Int, ID, Mutation } from 'type-graphql';
 import UserInput  from './user.input_type';
 import { filterItems } from '../../helpers/filter';
 import {User, UserModel } from './user.type';
@@ -9,10 +9,18 @@ export class UserResolver {
   private readonly items: User[] = loadUsers();
 
   @Query(() => User)
-  async me(@Arg('id') id: string): Promise<User> {
-    // as auth user. check from middleware.
-    console.log(id, 'user_id');
-    return await this.items[0];
+  async me(
+          @Arg('email', type => String) email: string,
+      
+        ): Promise<User> {
+    // as auth user. check from middleware. where email and password is stored
+
+    const user = await UserModel.findOne({ email });
+    if (!user) {
+      throw new Error('User not found');
+    }
+    return user;
+
   }
 
   @Mutation(() => User, { description: 'Update User' })

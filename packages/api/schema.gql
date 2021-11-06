@@ -6,8 +6,8 @@
 # New Order Data
 input AddOrderInput {
   id: ID!
-  userId: Float!
-  products: [ProductInput!]!
+  userId: String!
+  products: [ProductInput!]
   status: Int!
   deliveryTime: String!
   amount: Int!
@@ -142,7 +142,7 @@ type Mutation {
 
 type Order {
   id: ID!
-  userId: Float!
+  userId: String!
   products: [OrderedProduct!]!
   status: String!
   deliveryTime: String!
@@ -157,7 +157,7 @@ type Order {
 type OrderedProduct {
   id: ID!
   title: String!
-  weight: Int!
+  weight: String!
   image: String!
   price: Int!
   category: String!
@@ -199,7 +199,7 @@ type Product {
 input ProductInput {
   id: ID!
   title: String!
-  weight: Int!
+  weight: String = "0 lbs"
   image: String!
   price: Int!
   category: String!
@@ -228,7 +228,7 @@ enum ProductType {
 }
 
 type Query {
-  me(id: String!): User!
+  me(email: String!): User!
 
   # Get all the products
   products(category: String, text: String, type: String, offset: Int = 0, limit: Int = 10): ProductResponse!
@@ -238,10 +238,10 @@ type Query {
   relatedProducts(type: String, slug: String!): [Product!]!
 
   # Get all the Orders
-  orders(limit: Int = 7, text: String, user: Int!): [Order!]!
+  orders(limit: Int = 7, text: String, user: String!): [Order!]!
 
   # Get single order
-  order(id: Int!): Order!
+  order(id: String!): Order!
 
   # Get all the Coupons
   coupons: [Coupon!]!
@@ -259,6 +259,7 @@ type Social {
 
 type User {
   id: ID!
+  password: String
   name: String!
   email: String!
   address: [Address!]!
@@ -270,6 +271,7 @@ type User {
 input UserInput {
   id: ID!
   name: String!
+  password: String
   email: String!
   address: [AddressInput!]
   contact: [ContactInput!]
