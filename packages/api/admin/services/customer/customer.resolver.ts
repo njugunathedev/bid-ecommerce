@@ -1,11 +1,11 @@
 import { Resolver, Query, Arg, ID, Int, Mutation } from "type-graphql";
-import Customer from "./customer.type";
+import { Customer, CustomerModel } from "./customer.type";
 import loadCustomers from "../../data/customer.data";
 import search from "../../helpers/search";
 import { sortByHighestNumber, sortByLowestNumber } from "../../helpers/sorts";
 @Resolver()
 export default class CustomerResolver {
-  private readonly customersCollection: Customer[] = loadCustomers();
+  //private readonly customersCollection: Customer[] = loadCustomers();
 
   @Query(() => [Customer])
   async customers(
@@ -14,15 +14,18 @@ export default class CustomerResolver {
     @Arg("limit", type => Int, { defaultValue: 7 }) limit: number
   ): Promise<Customer[] | undefined> {
     // as auth Customer. check from middleware.
-    let customers = this.customersCollection;
-
+    
+    let customers = await CustomerModel.find({});
+    
     if (sortBy === "highestToLowest") {
       customers = await sortByHighestNumber(customers, "total_order_amount");
     }
     if (sortBy === "lowestToHighest") {
-      customers = await sortByLowestNumber(customers, "total_order_amount");
+      customers =  await sortByLowestNumber(customers, "total_order_amount");
     }
+
     return await search(customers, ["name", "creation_date"], searchBy);
+
   }
 
   @Query(() => Customer)
@@ -31,7 +34,13 @@ export default class CustomerResolver {
   ): Promise<Customer | undefined> {
     // as auth Customer. check from middleware.
     console.log(id, "customer_id");
-    return await this.customersCollection.find(customer => customer.id === id);
+    const customer = await CustomerModel.findOne({ id });
+    if(customer){
+      return customer;
+    }
+    else{
+      return undefined;
+    }
   }
   // input CustomersFilterInput{
   //   id:

@@ -1,10 +1,10 @@
 import { Resolver, Query, Arg, Int, Mutation, ID } from "type-graphql";
 import loadOrders from "../../data/order.data";
-import Order from "./order.type";
+import { Order, OrderModel } from "../../../shop/services/order/order.type";
 import search from "../../helpers/search";
 @Resolver()
 export default class OrderResolver {
-  private readonly ordersCollection: Order[] = loadOrders();
+  //private readonly ordersCollection: Order[] = loadOrders();
 
   @Query(returns => [Order], { description: "Get all the Orders" })
   async orders(
@@ -12,20 +12,33 @@ export default class OrderResolver {
     @Arg("limit", type => Int, { defaultValue: 50 }) limit: number,
     @Arg("searchText", type => String, { defaultValue: "" }) searchText: string
   ): Promise<Order[] | undefined> {
-    let orders = this.ordersCollection;
+    let orders = OrderModel.find({});
     if (status) {
-      orders = await orders.filter(order => order.status === status);
+      orders = await orders.filter(orders, { status });
     }
-    return await search(
-      orders.slice(0, limit),
-      ["delivery_address"],
-      searchText
-    );
+    //limit the number of orders returned
+    orders = orders.limit(limit);
+    if (searchText) {
+      orders = await orders.search(searchText);
+    }
+    if(orders){
+
+      return orders;
+    }
+    else{
+      return undefined
+    }
   }
 
   @Query(returns => Order, { description: "Get single order" })
   async order(@Arg("id", type => ID) id: string): Promise<Order | undefined> {
-    return await this.ordersCollection.find(item => item.id === id);
+    const order = await OrderModel.findOne({ id: id });
+    if(order){
+      return order 
+    }
+    else{
+      return undefined
+    }
   }
 
   // @Mutation(returns => Order, { description: 'Add an Order' })

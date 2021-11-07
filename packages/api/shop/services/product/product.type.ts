@@ -4,6 +4,7 @@ import Category from '../category/category.type';
 import Gallery from './gallery.type';
 import PaginatedResponse from '../../helpers/paginated-response';
 import { prop, getModelForClass, modelOptions, Severity} from '@typegoose/typegoose';
+import { Ticket } from '../tickets/ticket.type';
 
 @modelOptions({ options: { allowMixed : Severity.ALLOW} })
 @ObjectType()
@@ -58,6 +59,7 @@ export class Social {
   profileLink: string;
 }
 export const SocialModel = getModelForClass(Social);
+
 
 @modelOptions({ options: { allowMixed : Severity.ALLOW} })
 @ObjectType()
@@ -149,6 +151,10 @@ export default class Product {
   @prop()
   @Field(() => Meta, { nullable: true })
   meta?: Meta;
+
+  @prop()
+  @Field(() => Ticket, { nullable: true })
+  ticket?: Ticket;
 
   @prop()
   @Field()

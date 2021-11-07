@@ -68,6 +68,10 @@ export class User {
   email: string;
 
   @prop()
+  @Field(type => String)
+  image: string;
+
+  @prop()
   @Field(type => [Address])
   address: Address[];
 
@@ -78,6 +82,10 @@ export class User {
   @prop()
   @Field(type => [Card])
   card: Card[];
+
+  @prop()
+  @Field({ nullable: true })
+  created_date: Date;
 }
 
 export const UserModel = getModelForClass(User, { schemaOptions: { timestamps: true } });

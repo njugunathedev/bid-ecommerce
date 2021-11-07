@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import express from 'express';
-import { MongoClient } from 'mongodb';
+import { TypegooseMiddleware } from "./typegoose.middleware";
+import { connectDB } from './db';
 import { ApolloServer } from 'apollo-server-express';
 import { buildSchema } from 'type-graphql';
 import ProductResolver from './admin/services/product/product.resolver';
@@ -24,20 +25,38 @@ const main = async () => {
       StuffResolver,
     ],
     validate: false,
+    globalMiddlewares: [TypegooseMiddleware],
+
+    emitSchemaFile: {
+      path: __dirname + "/schema.gql",
+      commentDescriptions: true,
+
+    }
   });
 
-  const apolloServer = new ApolloServer({
-    schema,
-    introspection: true,
-    playground: true,
-    tracing: true,
-  });
+connectDB();
+const apolloServer = new ApolloServer({
+  schema,
+  introspection: true,
+  playground: true,
+  context: ({ req, res }) => ({
+    req,
+    res
+  }),
+  tracing: true,
+});
 
-  apolloServer.applyMiddleware({ app, path });
+//set path == paths
 
-  app.listen(PORT, () => {
-    console.log(`🚀 started http://localhost:${PORT}${path}`);
-  });
+
+apolloServer.start();
+apolloServer.applyMiddleware({ app, path: "/admin/graphql" });
+
+
+app.listen(PORT, () => {
+  console.log(`🚀 started http://localhost:${PORT}/admin/graphql`);
+});
 };
 
 main();
+

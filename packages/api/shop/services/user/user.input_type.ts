@@ -60,6 +60,9 @@ export default class UserInput {
   @Field()
   email: string;
 
+  @Field(type => String, {nullable:true})
+  image: string;
+
   @Field(type => [AddressInput], { nullable: true })
   address: AddressInput;
 
@@ -69,6 +72,9 @@ export default class UserInput {
 
   @Field(type => [CardInput], { nullable: true })
   card: CardInput;
+
+  @Field({nullable:true})
+  created_date: Date;
 }
 
 

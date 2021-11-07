@@ -10,6 +10,7 @@ import { PaymentResolver } from './shop/services/payment/payment.resolver';
 import { OrderResolver } from './shop/services/order/order.resolver';
 import { CouponResolver } from './shop/services/coupon/coupon.resolver';
 import { CategoryResolver } from './shop/services/category/category.resolver';
+import { TickerResolver } from './shop/services/tickets/ticket.resolver';
 const app: express.Application = express();
 
 const PORT = process.env.PORT || 4000;
@@ -22,6 +23,7 @@ const main = async () => {
       OrderResolver,
       CouponResolver,
       CategoryResolver,
+      TickerResolver
     ],
 
     globalMiddlewares: [TypegooseMiddleware],
