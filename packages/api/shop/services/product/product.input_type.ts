@@ -1,7 +1,7 @@
 import { InputType, Field, ID, Int } from 'type-graphql';
 import Product from './product.type';
 import { ProductType } from './product.enum';
-import Category from '../category/category.type';
+import { Category } from '../category/category.type';
 
 @InputType({ description: 'Product Input' })
 export default class ProductInput {

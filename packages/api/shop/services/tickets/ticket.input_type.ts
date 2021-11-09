@@ -1,7 +1,7 @@
 import { InputType, Field, ID, Int } from 'type-graphql';
 
 @InputType()
-class TicketInput {
+export class TicketInput {
     @Field(() => ID)
     _id: string;
 
@@ -16,6 +16,9 @@ class TicketInput {
     
     @Field()
     ticketType: string;
+
+    @Field()
+    userId: string;
 
 
 }

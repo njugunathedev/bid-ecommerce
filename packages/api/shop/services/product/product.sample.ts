@@ -1,4 +1,4 @@
-import Product from './product.type';
+import { Product } from './product.type';
 import { plainToClass } from 'class-transformer';
 
 export function createProductSamples() {

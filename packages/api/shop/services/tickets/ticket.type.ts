@@ -22,6 +22,10 @@ export class Ticket {
     @Field()
     ticketType: string;
 
+    @prop()
+    @Field()
+    userId: string;
+
 
 }
 export const TicketModel = getModelForClass(Ticket, { schemaOptions: { timestamps: true } });

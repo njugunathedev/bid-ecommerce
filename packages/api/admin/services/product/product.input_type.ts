@@ -1,47 +1,167 @@
+import { NotNumberTypeError } from '@typegoose/typegoose/lib/internal/errors';
 import { InputType, Field, ID, Int, Float } from 'type-graphql';
-import Product from './product.type';
+import { Product } from '../../../shop/services/product/product.type';
 import CategoryInput from '../category/category.input_type';
-@InputType({ description: 'New recipe data' })
-export default class AddProductInput implements Partial<Product> {
-  @Field(type => ID)
+import { ProductType } from '../../../shop/services/product/product.enum';
+import TicketInput from '../../../shop/services/tickets/ticket.input_type'
+
+
+@InputType()
+class Gallery {
+  @Field()
+  url: string;
+}
+@InputType()
+export class Meta {
+  
+  @Field()
+  publisher: string;
+
+  
+  @Field()
+  isbn: string;
+
+  
+  @Field()
+  edition: string;
+
+  
+  @Field()
+  country: string;
+
+  
+  @Field(() => [String])
+  languages: string[];
+
+  
+  @Field()
+  numberOfReader: string;
+
+  
+  @Field()
+  numberOfPage: string;
+
+  
+  @Field()
+  samplePDF: string;
+}
+
+
+
+@InputType()
+export class Social {
+  
+  @Field(() => ID)
   id: string;
 
+  
+  @Field()
+  media: string;
+
+  
+  @Field()
+  profileLink: string;
+}
+
+
+
+
+@InputType()
+export class Author {
+  
+  @Field(() => ID)
+  id: string;
+
+  
   @Field()
   name: string;
 
+  
+  @Field()
+  avatar: string;
+
+  
+  @Field()
+  bio: string;
+
+  
+  @Field()
+  email: string;
+
+  
+  @Field()
+  website: string;
+
+  
+  @Field(() => [Social])
+  socials: Social[];
+}
+@InputType({ description: 'New recipe data' })
+export default class AddProductInput implements Partial<Product> {
+  
+  @Field()
+  id: number;
+
+  
   @Field()
   slug: string;
 
+  
+  @Field()
+  title: string;
+
+  
+  @Field(() => ProductType)
+  type: ProductType;
+
+  
+  @Field(() => [CategoryInput])
+  categories: CategoryInput[];
+
+  
+  @Field()
+  unit: string;
+
+  
   @Field()
   image: string;
 
+  
+  @Field(() => [Gallery])
+  gallery: Gallery[];
+
   @Field()
-  type: string;
+  description: string;
 
-  @Field({ defaultValue: '1' })
-  unit: string;
-
-  @Field(type => [CategoryInput], { nullable: true })
-  categories: CategoryInput[];
-
-  @Field(type => Int)
+  
+  @Field()
   price: number;
 
-  @Field(type => Float, { nullable: true })
+  
+  @Field()
   salePrice: number;
 
-  @Field(type => Int, { defaultValue: 0 })
+  
+  @Field()
   discountInPercent: number;
 
-  @Field(type => Int, { defaultValue: 1 })
-  per_unit: number;
+  
+  @Field(() => Author, { nullable: true })
+  author?: Author;
 
-  @Field(type => Int)
-  quantity: number;
+  
+  @Field(() => Meta, { nullable: true })
+  meta?: Meta;
 
-  @Field({ nullable: true })
-  description?: string;
+  
+  @Field(() => [TicketInput], { nullable: true })
+  ticket?: TicketInput[];
 
+  
   @Field()
-  creation_date: Date;
+  createdAt: Date;
+
+  
+  @Field()
+  quantity: number;
 }

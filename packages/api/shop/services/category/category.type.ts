@@ -4,7 +4,7 @@ import { prop, getModelForClass, modelOptions, Severity} from '@typegoose/typego
 
 @modelOptions({ options: { allowMixed: Severity.ALLOW } })
 @ObjectType()
-export default class Category {
+export class Category {
   @prop()
   @Field(type => Int)
   id: number;
@@ -26,8 +26,16 @@ export default class Category {
   icon: string;
 
   @prop()
+  @Field({ defaultValue: 0 })
+  number_of_product?: number;
+
+  @prop()
   @Field(type => String)
   slug: string;
+
+  @prop()  
+  @Field()
+  created_date: Date;
 }
 
 export const CategoryModel = getModelForClass(Category, { schemaOptions: { timestamps: true } });

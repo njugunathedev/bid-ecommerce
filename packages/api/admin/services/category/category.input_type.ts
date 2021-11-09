@@ -1,28 +1,36 @@
-import { InputType, Field, ID } from 'type-graphql';
-import Category from './category.type';
+import { InputType, Field, ID, Int } from 'type-graphql';
+import { Category } from '../../../shop/services/category/category.type';
 @InputType({ description: 'New Category Data' })
 export default class AddCategoryInput implements Partial<Category> {
+  
   @Field(type => ID)
-  id: string;
+  id: number;
 
+  
   @Field()
-  name: string;
+  title: string;
 
-  @Field({ defaultValue: null })
-  value: string;
+  
+  @Field(type => [Category])
+  children: Category[];
 
-  @Field({ defaultValue: null })
+  
+  @Field(type => String)
   type: string;
 
-  @Field({ nullable: true })
+  
+  @Field(type => String)
   icon: string;
 
-  @Field({ nullable: true })
+  
+  @Field({ defaultValue: 0 })
+  number_of_product?: number;
+
+  
+  @Field(type => String)
   slug: string;
 
-  // @Field({ nullable: true })
-  // number_of_product?: number;
-
-  @Field({ nullable: true })
-  creation_date: Date;
+    
+  @Field()
+  created_date: Date;
 }

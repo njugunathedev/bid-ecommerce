@@ -1,7 +1,7 @@
 import { ObjectType, Field, Int } from 'type-graphql';
 import Product from './product.type';
 @ObjectType()
-export default class ProductsConnection {
+export default class Products {
   @Field(type => [Product])
   items: Product[];
 

@@ -6,26 +6,23 @@ import GetProductsArgs from './product.args_type';
 import AddProductInput from './product.input_type';
 import search from '../../helpers/search';
 import shuffle from '../../helpers/shuffle';
+import { ProductModel } from '../../../shop/services/product/product.type';
 import { sortByHighestNumber, sortByLowestNumber } from '../../helpers/sorts';
 @Resolver()
 export default class ProductResolver {
-  private readonly productsCollection: Product[] = loadProducts();
+  //private readonly productsCollection: Product[] = loadProducts();
 
   @Query(returns => Products, { description: 'Get all the products' })
   async products(
     @Args()
     { limit, offset, sortByPrice, type, searchText, category }: GetProductsArgs
   ): Promise<Products> {
-    let products = this.productsCollection;
+    var products = await ProductModel.find({});
     if (category) {
-      products = products.filter(product =>
-        product.categories.find(
-          category_item => category_item.slug === category
-        )
-      );
+      products = await ProductModel.find({ slug: category });
     }
     if (type) {
-      products = products.filter(product => product.type === type);
+        products = await ProductModel.find({ type });
     }
     if (sortByPrice) {
       if (sortByPrice === 'highestToLowest') {

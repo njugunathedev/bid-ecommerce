@@ -1,6 +1,6 @@
 import { ObjectType, Field, ID } from 'type-graphql';
 import { ProductType } from './product.enum';
-import Category from '../category/category.type';
+import { Category } from '../category/category.type';
 import Gallery from './gallery.type';
 import PaginatedResponse from '../../helpers/paginated-response';
 import { prop, getModelForClass, modelOptions, Severity} from '@typegoose/typegoose';
@@ -96,7 +96,7 @@ export const AuthorModel = getModelForClass(Author);
 
 @modelOptions({ options: { allowMixed : Severity.ALLOW} })
 @ObjectType()
-export default class Product {
+export class Product {
   @prop()
   @Field()
   id: number;
@@ -153,12 +153,18 @@ export default class Product {
   meta?: Meta;
 
   @prop()
-  @Field(() => Ticket, { nullable: true })
-  ticket?: Ticket;
+  @Field(() => [Ticket], { nullable: true })
+  ticket?: Ticket[];
 
   @prop()
   @Field()
   createdAt: Date;
+
+  @prop()
+  @Field()
+  quantity: number;
+
+  
 }
 
 // TODO: Need to change this in next update
