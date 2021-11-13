@@ -1,6 +1,6 @@
 import { Resolver, Query, Arg, Int, ObjectType } from 'type-graphql';
 import { createProductSamples } from './product.sample';
-import Product, { ProductResponse } from './product.type';
+import { Product, ProductResponse } from './product.type';
 import { filterItems, getRelatedItems } from '../../helpers/filter';
 
 @Resolver()

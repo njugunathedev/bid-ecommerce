@@ -90,7 +90,7 @@ const GET_CATEGORIES = gql`
     categories(type: $type, searchBy: $searchBy) {
       id
       icon
-      name
+      title
       slug
       type
     }
@@ -134,6 +134,7 @@ export default function Category() {
   const { data, error, refetch } = useQuery(GET_CATEGORIES);
 
   if (error) {
+    console.log(JSON.stringify(error, null, 2));
     return <div>Error! {error.message}</div>;
   }
   function handleSearch(event) {

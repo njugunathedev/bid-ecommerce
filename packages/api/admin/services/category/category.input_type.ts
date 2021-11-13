@@ -1,7 +1,7 @@
 import { InputType, Field, ID, Int } from 'type-graphql';
 import { Category } from '../../../shop/services/category/category.type';
 @InputType({ description: 'New Category Data' })
-export default class AddCategoryInput implements Partial<Category> {
+export class AddCategoryInput implements Partial<Category> {
   
   @Field(type => ID)
   id: number;
@@ -11,8 +11,8 @@ export default class AddCategoryInput implements Partial<Category> {
   title: string;
 
   
-  @Field(type => [Category])
-  children: Category[];
+  @Field(type => [AddCategoryInput])
+  children: AddCategoryInput[];
 
   
   @Field(type => String)

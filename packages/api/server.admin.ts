@@ -3,6 +3,7 @@ import express from 'express';
 import { TypegooseMiddleware } from "./typegoose.middleware";
 import { connectDB } from './db';
 import { ApolloServer } from 'apollo-server-express';
+import { ApolloError } from 'apollo-server-errors';
 import { buildSchema } from 'type-graphql';
 import ProductResolver from './admin/services/product/product.resolver';
 import CategoryResolver from './admin/services/category/category.resolver';
@@ -33,29 +34,46 @@ const main = async () => {
 
     }
   });
+  try {
+    connectDB();
+    const apolloServer = new ApolloServer({
+      schema,
+      introspection: true,
+      playground: true,
+      context: ({ req, res }) => ({
+        req,
+        res
+      }),
+      tracing: true,
+      formatError: (err) => {
+        // Don't give the specific errors to the client.
+        if (err.message.startsWith('Database Error: ')) {
+          return new Error('Internal server error');
+        }
+        // Otherwise return the original error. The error can also
+        // be manipulated in other ways, as long as it's returned.
+        return err;
+      },
+    });
+    apolloServer.start();
+    apolloServer.applyMiddleware({ app, path: "/admin/graphql" });
 
-connectDB();
-const apolloServer = new ApolloServer({
-  schema,
-  introspection: true,
-  playground: true,
-  context: ({ req, res }) => ({
-    req,
-    res
-  }),
-  tracing: true,
-});
-
-//set path == paths
 
 
-apolloServer.start();
-apolloServer.applyMiddleware({ app, path: "/admin/graphql" });
+    app.listen(PORT, () => {
+      console.log(`🚀 started http://localhost:${PORT}/admin/graphql`);
+    });
+
+  } catch (error) {
+    console.log(error);
+    console.log(JSON.stringify(error, null, 2));
+  }
 
 
-app.listen(PORT, () => {
-  console.log(`🚀 started http://localhost:${PORT}/admin/graphql`);
-});
+  //set path == paths
+
+
+
 };
 
 main();

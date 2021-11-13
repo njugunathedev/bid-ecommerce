@@ -1,12 +1,12 @@
 import { Resolver, Query, Arg, Args, Mutation } from 'type-graphql';
 import loadProducts from '../../data/product.data';
-import Product from './product.type';
-import Products from './products.type';
+
+import { Products, ProductsModel } from './products.type';
 import GetProductsArgs from './product.args_type';
 import AddProductInput from './product.input_type';
 import search from '../../helpers/search';
 import shuffle from '../../helpers/shuffle';
-import { ProductModel } from '../../../shop/services/product/product.type';
+import { ProductModel, Product } from '../../../shop/services/product/product.type';
 import { sortByHighestNumber, sortByLowestNumber } from '../../helpers/sorts';
 @Resolver()
 export default class ProductResolver {
@@ -22,7 +22,8 @@ export default class ProductResolver {
       products = await ProductModel.find({ slug: category });
     }
     if (type) {
-        products = await ProductModel.find({ type });
+      products = await ProductModel.find({ type });
+    
     }
     if (sortByPrice) {
       if (sortByPrice === 'highestToLowest') {
@@ -38,17 +39,32 @@ export default class ProductResolver {
     // return await products.slice(0, limit);
     products = await search(products, ['name'], searchText);
     const hasMore = products.length > offset + limit;
+    if (products) {
+      
+      return {
+        items: products.slice(offset, offset + limit),
+        totalCount: ProductModel.length,
+        hasMore,
+      };
 
-    return {
-      items: products.slice(offset, offset + limit),
-      totalCount: this.productsCollection.length,
-      hasMore,
-    };
+    }
+    else{
+      return {
+        items: [],
+        totalCount: 0,
+        hasMore: false,
+      };
+    }
+   
   }
 
   @Query(() => Product)
   async product(@Arg('slug') slug: string): Promise<Product | undefined> {
-    return await this.productsCollection.find(item => item.slug === slug);
+    const product = await ProductModel.findOne({ slug });
+    if(product){
+      return product;
+    }
+    return undefined;
   }
 
   @Mutation(() => Product, { description: 'Create Category' })
@@ -57,6 +73,8 @@ export default class ProductResolver {
   ): Promise<Product> {
     console.log(product, 'product');
 
-    return await product;
+    const newProduct = new ProductModel({ ...AddProductInput });
+    const result = await newProduct.save();
+    return result;
   }
 }

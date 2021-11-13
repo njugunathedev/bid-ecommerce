@@ -1,20 +1,20 @@
 import { Resolver, Mutation, Arg, Query } from 'type-graphql';
 import loadCoupons from '../../data/coupon.data';
-import Coupon from './coupon.type';
+import { Coupon, CouponModel } from './coupon.type';
 import AddCouponInput from './coupon.input_type';
 import search from '../../helpers/search';
 @Resolver()
 export default class CouponResolver {
-  private readonly couponsCollection: Coupon[] = loadCoupons();
+  //private readonly couponsCollection: Coupon[] = loadCoupons();
 
   @Query(returns => [Coupon], { description: 'Get All Coupons' })
   async coupons(
     @Arg('status', { nullable: true }) status?: string,
     @Arg('searchBy', { nullable: true }) searchBy?: string
   ): Promise<Coupon[] | undefined> {
-    let coupons = this.couponsCollection;
+    let coupons = CouponModel.find();
     if (status) {
-      coupons = coupons.filter(coupon => coupon.status === status);
+      coupons = CouponModel.find({ status });
     }
     return await search(coupons, ['title', 'code'], searchBy);
   }
@@ -23,8 +23,9 @@ export default class CouponResolver {
   async createCoupon(
     @Arg('coupon') coupon: AddCouponInput
   ): Promise<Coupon | undefined> {
-    console.log(coupon, 'coupon');
+    const newCoupon = new CouponModel({...AddCouponInput});
+    return await newCoupon.save();
 
-    return await coupon;
+   
   }
 }

@@ -1,14 +1,19 @@
 import { ObjectType, Field, ID } from 'type-graphql';
 import { ProductType } from './product.enum';
 import { Category } from '../category/category.type';
-import Gallery from './gallery.type';
+import { Gallery } from './gallery.type';
 import PaginatedResponse from '../../helpers/paginated-response';
 import { prop, getModelForClass, modelOptions, Severity} from '@typegoose/typegoose';
 import { Ticket } from '../tickets/ticket.type';
+import { type } from 'os';
 
 @modelOptions({ options: { allowMixed : Severity.ALLOW} })
 @ObjectType()
 export class Meta {
+  @prop()
+  @Field(type => ID)
+  id: string;
+
   @prop()
   @Field()
   publisher: string;
@@ -126,7 +131,7 @@ export class Product {
   image: string;
 
   @prop()
-  @Field(() => [Gallery])
+  @Field(() => [Gallery], { nullable: true })
   gallery: Gallery[];
 
   @Field()
@@ -158,7 +163,7 @@ export class Product {
 
   @prop()
   @Field()
-  createdAt: Date;
+  creation_date: Date;
 
   @prop()
   @Field()

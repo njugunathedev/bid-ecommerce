@@ -1,5 +1,5 @@
 import { InputType, Field, ID, Int } from 'type-graphql';
-import Coupon from './coupon.type';
+import { Coupon } from './coupon.type';
 import AddProductInput from '../product/product.input_type';
 
 @InputType({ description: 'New coupon data' })

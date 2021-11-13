@@ -6,12 +6,13 @@
 # New Category Data
 input AddCategoryInput {
   id: ID!
-  name: String!
-  value: String = null
-  type: String = null
-  icon: String
-  slug: String
-  creation_date: DateTime
+  title: String!
+  children: [AddCategoryInput!]!
+  type: String!
+  icon: String!
+  number_of_product: Float = 0
+  slug: String!
+  created_date: DateTime!
 }
 
 # New coupon data
@@ -32,20 +33,23 @@ input AddCouponInput {
 
 # New recipe data
 input AddProductInput {
-  id: ID!
-  name: String!
+  id: Float!
   slug: String!
+  title: String!
+  type: ProductType!
+  categories: [AddCategoryInput!]!
+  unit: String!
   image: String!
-  type: String!
-  unit: String = "1"
-  categories: [AddCategoryInput!]
-  price: Int!
-  salePrice: Float
-  discountInPercent: Int = 0
-  per_unit: Int = 1
-  quantity: Int!
-  description: String
+  gallery: [GalleryInput!]
+  description: String!
+  price: Float!
+  salePrice: Float!
+  discountInPercent: Float!
+  author: AuthorInput
+  meta: MetaInput
+  ticket: [TicketInput!]
   creation_date: DateTime!
+  quantity: Float!
 }
 
 type Address {
@@ -67,6 +71,26 @@ input AddStuffInput {
   creation_date: DateTime!
 }
 
+type Author {
+  id: ID!
+  name: String!
+  avatar: String!
+  bio: String!
+  email: String!
+  website: String!
+  socials: [Social!]!
+}
+
+input AuthorInput {
+  id: ID!
+  name: String!
+  avatar: String!
+  bio: String!
+  email: String!
+  website: String!
+  socials: [SocialInput!]!
+}
+
 type Card {
   id: String!
   type: String!
@@ -76,13 +100,14 @@ type Card {
 }
 
 type Category {
-  id: ID!
-  name: String!
-  type: String
+  id: Int!
+  title: String!
+  children: [Category!]!
+  type: String!
   icon: String!
-  slug: String!
   number_of_product: Float
-  creation_date: DateTime!
+  slug: String!
+  created_date: DateTime!
 }
 
 type Contact {
@@ -126,6 +151,40 @@ type Customer {
 # The javascript `Date` as string. Type represents date and time as the ISO Date string.
 scalar DateTime
 
+type Gallery {
+  id: ID!
+  url: String!
+}
+
+input GalleryInput {
+  id: String!
+  url: String!
+}
+
+type Meta {
+  id: ID!
+  publisher: String!
+  isbn: String!
+  edition: String!
+  country: String!
+  languages: [String!]!
+  numberOfReader: String!
+  numberOfPage: String!
+  samplePDF: String!
+}
+
+input MetaInput {
+  id: ID!
+  publisher: String!
+  isbn: String!
+  edition: String!
+  country: String!
+  languages: [String!]!
+  numberOfReader: String!
+  numberOfPage: String!
+  samplePDF: String!
+}
+
 type Mutation {
   # Create Category
   createProduct(product: AddProductInput!): Product!
@@ -164,33 +223,54 @@ type OrderedProduct {
 }
 
 type Product {
-  id: ID!
-  name: String!
-  image: String!
-  type: String!
-  unit: String!
+  id: Float!
+  slug: String!
+  title: String!
+  type: ProductType!
   categories: [Category!]!
+  unit: String!
+  image: String!
+  gallery: [Gallery!]
+  description: String!
   price: Float!
   salePrice: Float!
-  discountInPercent: Int!
-  per_unit: Int
-  quantity: Int!
-  views: Int
-  sales: Int
-  description: String
+  discountInPercent: Float!
+  author: Author
+  meta: Meta
+  ticket: [Ticket!]
   creation_date: DateTime!
-  slug: String!
+  quantity: Float!
 }
 
-type ProductsConnection {
+type ProductResponse {
+  items: [Product!]!
+  total: Int!
+  hasMore: Boolean!
+}
+
+type Products {
   items: [Product!]!
   totalCount: Int!
   hasMore: Boolean!
 }
 
+# The basic product types
+enum ProductType {
+  BOOK
+  BAGS
+  GROCERY
+  HOME
+  MEDICINE
+  FOOD
+  CLOTH
+  CLOTHING
+  FURNITURE
+  MAKEUP
+}
+
 type Query {
   # Get all the products
-  products(limit: Int = 12, offset: Int = 0, sortByPrice: String, type: String, searchText: String, category: String): ProductsConnection!
+  products(limit: Int = 12, offset: Int = 0, sortByPrice: String, type: ProductType, searchText: String, category: String): Products!
   product(slug: String!): Product!
 
   # Get all the categories
@@ -211,6 +291,18 @@ type Query {
   stuff(id: ID!): Stuff!
 }
 
+type Social {
+  id: ID!
+  media: String!
+  profileLink: String!
+}
+
+input SocialInput {
+  id: ID!
+  media: String!
+  profileLink: String!
+}
+
 type Stuff {
   id: ID!
   first_name: String!
@@ -220,6 +312,22 @@ type Stuff {
   role: String!
   name: String
   creation_date: DateTime!
+}
+
+type Ticket {
+  _id: ID!
+  roundNumber: String!
+  ticketNumber: String!
+  ticketType: String!
+  userId: String!
+}
+
+input TicketInput {
+  _id: ID!
+  roundNumber: String!
+  ticketNumber: String!
+  ticketType: String!
+  userId: String!
 }
 
 type User {

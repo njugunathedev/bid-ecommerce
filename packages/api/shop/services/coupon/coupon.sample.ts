@@ -1,4 +1,4 @@
-import Coupon from './coupon.type';
+import { Coupon } from './coupon.type';
 import { plainToClass } from 'class-transformer';
 const loadCoupons = (): Coupon[] => {
   return plainToClass(Coupon, [

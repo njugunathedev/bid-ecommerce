@@ -1,4 +1,4 @@
-import Category from './category.type';
+import { Category } from './category.type';
 import { plainToClass } from 'class-transformer';
 
 const loadCategories = (): Category[] => {

@@ -26,14 +26,14 @@ const GET_CUSTOMERS = gql`
       id
       image
       name
-      contacts {
+      contact {
         id
         type
         number
       }
       total_order
       total_order_amount
-      creation_date
+      created_date
     }
   }
 `;
@@ -79,6 +79,7 @@ export default function Customers() {
   const [search, setSearch] = useState([]);
 
   if (error) {
+    console.log(JSON.stringify(error, null, 2));
     return <div>Error! {error.message}</div>;
   }
 

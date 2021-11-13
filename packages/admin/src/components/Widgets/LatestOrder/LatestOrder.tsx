@@ -95,13 +95,15 @@ const GET_ORDERS = gql`
   query getOrders($status: String, $limit: Int, $searchText: String) {
     orders(status: $status, limit: $limit, searchText: $searchText) {
       id
-      creation_date
-      delivery_address
+      userId
       amount
-      payment_method
-      contact_number
+      deliveryTime
+      deliveryAddress
+      subtotal
+      discount
       status
-      customer_id
+      deliveryFee
+      
     }
   }
 `;
@@ -137,6 +139,8 @@ export default function Orders() {
 
   const { data, error, refetch } = useQuery(GET_ORDERS);
   if (error) {
+    console.log(JSON.stringify(error, null, 2));
+
     return <div>Error! {error.message}</div>;
   }
 

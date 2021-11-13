@@ -1,4 +1,4 @@
-import Coupon from "../services/coupon/coupon.type";
+import { Coupon } from "../services/coupon/coupon.type";
 import { plainToClass } from "class-transformer";
 
 const loadCoupons = (): Coupon[] => {

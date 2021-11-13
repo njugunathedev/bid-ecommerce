@@ -1,5 +1,5 @@
 import { plainToClass } from "class-transformer";
-import Customer from "../services/customer/customer.type";
+import { Customer } from "../services/customer/customer.type";
 
 const loadCustomers = (): Customer[] => {
   return plainToClass(Customer, [

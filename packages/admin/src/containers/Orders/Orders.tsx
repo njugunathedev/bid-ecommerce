@@ -26,12 +26,10 @@ const GET_ORDERS = gql`
   query getOrders($status: String, $limit: Int, $searchText: String) {
     orders(status: $status, limit: $limit, searchText: $searchText) {
       id
-      customer_id
-      creation_date
-      delivery_address
+      userId
+      date
+      deliveryAddress
       amount
-      payment_method
-      contact_number
       status
     }
   }
@@ -123,6 +121,7 @@ export default function Orders() {
 
   const { data, error, refetch } = useQuery(GET_ORDERS);
   if (error) {
+    console.log(JSON.stringify(error, null, 2));
     return <div>Error! {error.message}</div>;
   }
 
@@ -278,27 +277,28 @@ export default function Orders() {
                           <StyledCell>{row[0]}</StyledCell>
                           <StyledCell>{row[1]}</StyledCell>
                           <StyledCell>
-                            <Moment format='Do MMM YYYY'>{row[2]}</Moment>
+                            {row[2]}
                           </StyledCell>
                           <StyledCell>{row[3]}</StyledCell>
-                          <StyledCell>${row[4]}</StyledCell>
+                          <StyledCell>Ksh{row[4]}</StyledCell>
                           <StyledCell>{row[5]}</StyledCell>
                           <StyledCell>{row[6]}</StyledCell>
                           <StyledCell style={{ justifyContent: 'center' }}>
+                            
                             <Status
                               className={
-                                row[7].toLowerCase() === 'delivered'
+                                row[5] === "1"
                                   ? sent
-                                  : row[7].toLowerCase() === 'pending'
+                                  : row[5].toLowerCase() === '2'
                                   ? paid
-                                  : row[7].toLowerCase() === 'processing'
+                                  : row[5].toLowerCase() === '3'
                                   ? processing
-                                  : row[7].toLowerCase() === 'failed'
+                                  : row[5].toLowerCase() === '4'
                                   ? failed
                                   : ''
                               }
                             >
-                              {row[7]}
+                              
                             </Status>
                           </StyledCell>
                         </React.Fragment>

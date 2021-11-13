@@ -96,6 +96,7 @@ export default function Coupons() {
 
   const { data, error, refetch } = useQuery(GET_COUPONS);
   if (error) {
+    console.log(JSON.stringify(error, null, 2));
     return <div>Error! {error.message}</div>;
   }
   function handleSelect({ value }) {

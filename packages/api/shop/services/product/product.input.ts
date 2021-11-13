@@ -7,7 +7,7 @@ class ProductSearchInput {
   @Field({ nullable: true })
   id?: number;
 
-  @Field( type => [ProductType], { nullable: true })
+  @Field( type => ProductType, { nullable: true })
   type: ProductType;
 
   @Field({ nullable: true })

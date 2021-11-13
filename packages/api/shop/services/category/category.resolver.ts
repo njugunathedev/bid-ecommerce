@@ -1,6 +1,6 @@
 import { Resolver, Query, Arg, Int } from 'type-graphql';
 import loadCategories from './category.sample';
-import Category from './category.type';
+import { Category }from './category.type';
 
 @Resolver()
 export class CategoryResolver {

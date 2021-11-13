@@ -1,7 +1,7 @@
 import { Resolver, Query, Arg, ID, Mutation } from 'type-graphql';
 import loadCategories from '../../data/category.data';
 import { Category, CategoryModel } from '../../../shop/services/category/category.type'
-import AddCategoryInput from './category.input_type';
+import { AddCategoryInput } from './category.input_type';
 import search from '../../helpers/search';
 @Resolver()
 export default class CategoryResolver {

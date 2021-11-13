@@ -1,19 +1,17 @@
 import { NotNumberTypeError } from '@typegoose/typegoose/lib/internal/errors';
 import { InputType, Field, ID, Int, Float } from 'type-graphql';
 import { Product } from '../../../shop/services/product/product.type';
-import CategoryInput from '../category/category.input_type';
+import { AddCategoryInput } from '../category/category.input_type';
 import { ProductType } from '../../../shop/services/product/product.enum';
 import TicketInput from '../../../shop/services/tickets/ticket.input_type'
+import { GalleryInput } from '../../../shop/services/product/gallery.type';
 
 
 @InputType()
-class Gallery {
-  @Field()
-  url: string;
-}
-@InputType()
-export class Meta {
-  
+export class MetaInput {
+  @Field(type => ID)
+  id: string;
+
   @Field()
   publisher: string;
 
@@ -49,7 +47,7 @@ export class Meta {
 
 
 @InputType()
-export class Social {
+export class SocialInput {
   
   @Field(() => ID)
   id: string;
@@ -67,7 +65,7 @@ export class Social {
 
 
 @InputType()
-export class Author {
+export class AuthorInput {
   
   @Field(() => ID)
   id: string;
@@ -93,8 +91,8 @@ export class Author {
   website: string;
 
   
-  @Field(() => [Social])
-  socials: Social[];
+  @Field(() => [SocialInput])
+  socials: SocialInput[];
 }
 @InputType({ description: 'New recipe data' })
 export default class AddProductInput implements Partial<Product> {
@@ -115,8 +113,8 @@ export default class AddProductInput implements Partial<Product> {
   type: ProductType;
 
   
-  @Field(() => [CategoryInput])
-  categories: CategoryInput[];
+  @Field(() => [AddCategoryInput])
+  categories: AddCategoryInput[];
 
   
   @Field()
@@ -127,8 +125,9 @@ export default class AddProductInput implements Partial<Product> {
   image: string;
 
   
-  @Field(() => [Gallery])
-  gallery: Gallery[];
+
+  @Field(type => [GalleryInput], { nullable: true })
+  gallery: GalleryInput[];
 
   @Field()
   description: string;
@@ -146,12 +145,12 @@ export default class AddProductInput implements Partial<Product> {
   discountInPercent: number;
 
   
-  @Field(() => Author, { nullable: true })
-  author?: Author;
+  @Field(() => AuthorInput, { nullable: true })
+  author?: AuthorInput;
 
   
-  @Field(() => Meta, { nullable: true })
-  meta?: Meta;
+  @Field(() => MetaInput, { nullable: true })
+  meta?: MetaInput;
 
   
   @Field(() => [TicketInput], { nullable: true })
@@ -159,7 +158,7 @@ export default class AddProductInput implements Partial<Product> {
 
   
   @Field()
-  createdAt: Date;
+  creation_date: Date;
 
   
   @Field()

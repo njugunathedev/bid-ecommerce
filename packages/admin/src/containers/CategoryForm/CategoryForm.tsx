@@ -25,7 +25,7 @@ const GET_CATEGORIES = gql`
     categories(type: $type, searchBy: $searchBy) {
       id
       icon
-      name
+      title
       slug
       type
     }
@@ -35,12 +35,12 @@ const CREATE_CATEGORY = gql`
   mutation createCategory($category: AddCategoryInput!) {
     createCategory(category: $category) {
       id
-      name
+      title
       type
       icon
-      # creation_date
+      creation_date
       slug
-      # number_of_product
+      number_of_product
     }
   }
 `;

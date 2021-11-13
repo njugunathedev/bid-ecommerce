@@ -1,5 +1,5 @@
 import { InputType, Field, ID, Int } from 'type-graphql';
-import Product from './product.type';
+import { Product } from './product.type';
 import { ProductType } from './product.enum';
 import { Category } from '../category/category.type';
 

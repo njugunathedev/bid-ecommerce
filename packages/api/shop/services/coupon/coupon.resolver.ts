@@ -1,6 +1,6 @@
 import { Resolver, Query, Mutation, Arg } from 'type-graphql';
 import loadCoupons from './coupon.sample';
-import Coupon from './coupon.type';
+import { Coupon } from './coupon.type';
 
 @Resolver()
 export class CouponResolver {
