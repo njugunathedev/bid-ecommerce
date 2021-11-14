@@ -67,7 +67,7 @@ export const LoaderItem = styled('div', () => ({
 
 const GET_PRODUCTS = gql`
   query getProducts(
-    $type: String
+    $type: ProductType
     $sortByPrice: String
     $searchText: String
     $offset: Int
@@ -80,7 +80,7 @@ const GET_PRODUCTS = gql`
     ) {
       items {
         id
-        name
+        title
         description
         image
         type
@@ -96,7 +96,8 @@ const GET_PRODUCTS = gql`
 `;
 
 const typeSelectOptions = [
-  { value: 'computing', label: 'Computing and Accessories' },
+  //TODO Change to enum
+  { value: 'BOOK', label: 'Computing and Accessories' },
   { value: 'computers', label: 'Laptops and Computers' },
   { value: 'gaming', label: 'Gaming Consoles' },
   { value: 'smartphones', label: 'Smart Phones' },
@@ -114,6 +115,7 @@ export default function Products() {
   const [search, setSearch] = useState([]);
 
   if (error) {
+    console.log(JSON.stringify(error, null, 2));
     return <div>Error! {error.message}</div>;
   }
   function loadMore() {

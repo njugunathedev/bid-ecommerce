@@ -11,7 +11,7 @@ export class AddCategoryInput implements Partial<Category> {
   title: string;
 
   
-  @Field(type => [AddCategoryInput])
+  @Field(type => [AddCategoryInput], { nullable: true })
   children: AddCategoryInput[];
 
   

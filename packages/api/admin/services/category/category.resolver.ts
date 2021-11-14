@@ -42,10 +42,10 @@ export default class CategoryResolver {
 
   @Mutation(() => Category, { description: 'Create Category' })
   async createCategory(
-    @Arg('category') category: AddCategoryInput
+    @Arg('category') categoryInput: AddCategoryInput
   ): Promise<Category> {
     try {
-      const newCategory = new CategoryModel({ ...AddCategoryInput });
+      const newCategory = new CategoryModel({ ...categoryInput });
       const category = await newCategory.save();
       //this.items.push(orderInput);
       //add to db

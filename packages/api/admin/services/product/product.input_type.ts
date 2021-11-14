@@ -152,7 +152,9 @@ export default class AddProductInput implements Partial<Product> {
   @Field(() => MetaInput, { nullable: true })
   meta?: MetaInput;
 
-  
+  @Field({ nullable: true })
+  totalTickets?: number;
+
   @Field(() => [TicketInput], { nullable: true })
   ticket?: TicketInput[];
 

@@ -158,6 +158,10 @@ export class Product {
   meta?: Meta;
 
   @prop()
+  @Field({ nullable: true })
+  totalTickets?: number;
+
+  @prop()
   @Field(() => [Ticket], { nullable: true })
   ticket?: Ticket[];
 

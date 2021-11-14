@@ -26,7 +26,7 @@ import {
   CloseButton,
   DrawerWrapper,
 } from './Topbar.style';
-import Logoimage from '../../../image/logo.svg';
+import Logoimage from '../../../image/LuckyArcadeLogo.svg';
 import UserImage from '../../../image/user.jpg';
 import { useDrawerDispatch } from '../../../context/DrawerContext';
 import { MenuIcon } from '../../../components/AllSvgIcon';

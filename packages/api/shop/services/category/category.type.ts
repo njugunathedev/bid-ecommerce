@@ -14,7 +14,7 @@ export class Category {
   title: string;
 
   @prop()
-  @Field(type => [Category])
+  @Field(type => [Category], { nullable: true })
   children: Category[];
 
   @prop()

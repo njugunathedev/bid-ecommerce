@@ -8,7 +8,7 @@ import AuthenticationForm from '../../SignInOutForm/Form';
 import { RightMenu } from './Menu/RightMenu/RightMenu';
 import { LeftMenu } from './Menu/LeftMenu/LeftMenu';
 import HeaderWrapper from './Header.style';
-import LogoImage from 'image/luckyarcade.png';
+import LogoImage from 'image/LuckyArcadeLogo.png';
 import UserImage from 'image/user.jpg';
 import { isCategoryPage } from '../is-home-page';
 

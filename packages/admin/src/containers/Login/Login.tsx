@@ -12,7 +12,7 @@ import {
 import { Wrapper, FormWrapper, LogoImage, LogoWrapper } from './Login.style';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
-import Logoimage from '../../image/bid.png';
+import Logoimage from '../../image/LuckyArcadeLogo.svg';
 
 const initialValues = {
   username: '',

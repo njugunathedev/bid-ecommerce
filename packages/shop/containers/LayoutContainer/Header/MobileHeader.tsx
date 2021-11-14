@@ -15,7 +15,7 @@ import {
 import SearchBox from 'components/SearchBox/SearchBox';
 import { SearchContext } from 'contexts/search/search.context';
 import { HeaderContext } from 'contexts/header/header.context';
-import LogoImage from 'image/luckyarcade.svg';
+import LogoImage from 'image/LuckyArcadeLogo.png';
 
 import { SearchIcon, LongArrowLeft } from 'components/AllSvgIcon';
 import Logo from 'components/Logo/Logo';

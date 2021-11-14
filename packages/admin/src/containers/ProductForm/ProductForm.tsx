@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, Children } from 'react';
 import { useForm } from 'react-hook-form';
 import uuidv4 from 'uuid/v4';
 import gql from 'graphql-tag';
@@ -41,6 +41,17 @@ const typeOptions = [
   { value: 'gaming', name: 'Gaming Consoles', id: '3' },
   { value: 'smartphones', name: 'Smart Phones', id: '4' },
 ];
+const GET_CATEGORIES = gql`
+  query getCategories($type: String, $searchBy: String) {
+    categories(type: $type, searchBy: $searchBy) {
+      id
+      icon
+      title
+      slug
+      type
+    }
+  }
+`;
 const GET_PRODUCTS = gql`
   query getProducts(
     $type: String
@@ -82,9 +93,9 @@ const CREATE_PRODUCT = gql`
       description
       salePrice
       discountInPercent
-      # per_unit
+      unit
       quantity
-      # creation_date
+      creation_date
     }
   }
 `;
@@ -147,7 +158,7 @@ const AddProduct: React.FC<Props> = props => {
   const onSubmit = data => {
     const newProduct = {
       id: uuidv4(),
-      name: data.name,
+      title: data.name,
       type: data.type[0].value,
       description: data.description,
       image: data.image && data.image.length !== 0 ? data.image : '',
