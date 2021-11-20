@@ -32,7 +32,7 @@ const AccordionWrapper = styled.div`
           width: 22px;
           height: 22px;
           flex-shrink: 0;
-          color: ${themeGet('colors.darkBold', '#0D1136')};
+          color: ${themeGet('colors.darkBold', '#1C0C5B')};
           display: flex;
           align-items: center;
           justify-content: center;
@@ -44,7 +44,7 @@ const AccordionWrapper = styled.div`
           font-family: 'Lato', sans-serif;
           font-size: ${themeGet('fontSizes.2', '15')}px;
           font-weight: ${themeGet('fontWeights.6', '700')};
-          color: ${themeGet('colors.darkBold', '#0D1136')};
+          color: ${themeGet('colors.darkBold', '#1C0C5B')};
           line-height: 1.5;
         }
       }

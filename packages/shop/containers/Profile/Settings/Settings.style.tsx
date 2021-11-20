@@ -21,7 +21,7 @@ const Title = styled.h3`
   font-family: 'Poppins', sans-serif;
   font-size: ${themeGet('fontSizes.4', '21')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
 `;
 
 const SettingsFormContent = styled.div`
@@ -104,7 +104,7 @@ const ButtonGroup = styled.div`
     margin-left: 0;
     margin-right: auto;
     &:hover {
-      border-color: ${themeGet('colors.primary', '#009E7F')};
+      border-color: ${themeGet('colors.primary', '#160da4')};
     }
 
     @media (max-width: 700px) {

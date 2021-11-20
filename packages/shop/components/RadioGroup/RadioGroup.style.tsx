@@ -18,7 +18,7 @@ const RadioGroupWrapper = styled.div`
     font-family: 'Lato', sans-serif;
     font-size: ${themeGet('fontSizes.1', '13')}px;
     font-weight: ${themeGet('fontWeights.3', '400')};
-    color: ${themeGet('colors.darkBold', '#0D1136')};
+    color: ${themeGet('colors.darkBold', '#1C0C5B')};
     font-size: 14px;
     line-height: 24px;
     max-width: 240px;
@@ -27,7 +27,7 @@ const RadioGroupWrapper = styled.div`
     transition: all 0.25s ease;
 
     &.active {
-      border: 1px solid ${themeGet('colors.primary', '#009e7f')};
+      border: 1px solid ${themeGet('colors.primary', '#160da4')};
       background-color: #ffffff;
     }
 
@@ -69,7 +69,7 @@ export const RadioTitle = styled.h3`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   line-height: 1.2;
   margin-bottom: 5px;
 `;
@@ -102,7 +102,7 @@ export const ActionButton = styled.button`
   color: #fff;
 
   &.edit-btn {
-    background-color: ${themeGet('colors.primary', '#009e7f')};
+    background-color: ${themeGet('colors.primary', '#160da4')};
   }
   &.close-btn {
     background-color: ${themeGet('colors.secondary', '#ff5b60')};

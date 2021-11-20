@@ -188,7 +188,7 @@ export const NoResult = styled.div`
   font-family: ${themeGet('fontFamily.0', 'sans-serif')};
   font-size: ${themeGet('fontSizes.4', '21')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
 `;
 
 export const LoaderWrapper = styled.div`

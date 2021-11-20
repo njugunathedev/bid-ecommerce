@@ -33,7 +33,7 @@ const accor = [
 const Heading = styled.h3`
   font-size: 21px;
   font-weight: 700;
-  color: #0d1136;
+  color: #1C0C5B;
   line-height: 1.2;
   margin-bottom: 25px;
   width: 100%;

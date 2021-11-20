@@ -35,7 +35,7 @@ export const LogoWrapper = styled.div`
 `;
 
 export const Heading = styled.h3`
-  color: ${themeGet('colors.primary', '#009E7F')};
+  color: ${themeGet('colors.primary', '#160da4')};
   margin-bottom: 10px;
   font-family: 'Poppins', sans-serif;
   font-size: ${themeGet('fontSizes.4', '21')}px;
@@ -54,7 +54,7 @@ export const SubHeading = styled.span`
 export const OfferSection = styled.div`
   padding: 20px;
   background-color: ${themeGet('colors.lightColor', '#F7F7F7')};
-  color: ${themeGet('colors.primary', '#009E7F')};
+  color: ${themeGet('colors.primary', '#160da4')};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,7 +92,7 @@ export const Input = styled.input`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   line-height: 19px;
   padding: 0 18px;
   box-sizing: border-box;
@@ -105,7 +105,7 @@ export const Input = styled.input`
   }
 
   &:focus {
-    border-color: ${themeGet('colors.primary', '#009e7f')};
+    border-color: ${themeGet('colors.primary', '#160da4')};
   }
 
   &::placeholder {
@@ -139,7 +139,7 @@ export const Divider = styled.div`
     font-family: 'Lato', sans-serif;
     font-size: ${themeGet('fontSizes.2', '15')}px;
     font-weight: ${themeGet('fontWeights.3', '400')};
-    color: ${themeGet('colors.darkBold', '#0D1136')};
+    color: ${themeGet('colors.darkBold', '#1C0C5B')};
     line-height: 1;
     background-color: #fff;
     z-index: 1;
@@ -165,7 +165,7 @@ export const LinkButton = styled.button`
   padding: 0;
   font-size: 14px;
   font-weight: 700;
-  color: ${themeGet('colors.primary', '#009E7F')};
+  color: ${themeGet('colors.primary', '#160da4')};
   text-decoration: underline;
   cursor: pointer;
 `;

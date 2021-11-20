@@ -52,7 +52,7 @@ export const Heading = styled.h3`
   font-family: 'Lato', sans-serif;
   font-size: 21px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   line-height: 1.4;
   margin-bottom: 35px;
   position: relative;
@@ -99,7 +99,7 @@ export const InformationBox = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: ${themeGet('colors.primary', '#009E7F')};
+      background-color: ${themeGet('colors.primary', '#160da4')};
       margin-right: 15px;
 
       @media (max-width: 600px) {
@@ -207,7 +207,7 @@ export const ButtonGroup = styled.div`
     font-family: 'Lato', sans-serif;
     font-size: 14px;
     font-weight: ${themeGet('fontWeights.6', '700')};
-    color: ${themeGet('colors.primary', '#009E7F')};
+    color: ${themeGet('colors.primary', '#160da4')};
     position: absolute;
     top: 40px;
     right: 30px;
@@ -230,7 +230,7 @@ export const InfoText = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   margin-bottom: 15px;
   margin-top: 15px;
 `;
@@ -260,7 +260,7 @@ export const CouponCode = styled.p`
 
   span {
     font-weight: ${themeGet('fontWeights.6', '700')};
-    color: ${themeGet('colors.primary', '#009E7F')};
+    color: ${themeGet('colors.primary', '#160da4')};
     margin-left: 10px;
   }
 `;
@@ -312,7 +312,7 @@ export const HaveCoupon = styled.button`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.primary', '#009E7F')};
+  color: ${themeGet('colors.primary', '#160da4')};
   width: auto;
   height: auto;
   display: inline-block;
@@ -384,7 +384,7 @@ export const Title = styled.h3`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   text-align: center;
   margin-bottom: 40px;
 `;
@@ -417,7 +417,7 @@ export const Quantity = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: 14px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
 `;
 
 export const Multiplier = styled.span`
@@ -462,7 +462,7 @@ export const Bold = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: 14px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
 `;
 
 export const Small = styled.span`

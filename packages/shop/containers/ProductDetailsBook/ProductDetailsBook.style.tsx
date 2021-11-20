@@ -136,7 +136,7 @@ export const BookTitle = styled.h1`
   font-family: 'Poppins', sans-serif;
   font-size: ${themeGet('fontSizes.4', '21')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   line-height: 1.2;
   margin-bottom: 15px;
 `;
@@ -145,7 +145,7 @@ export const AuthorName = styled.div`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   display: flex;
   align-items: center;
 
@@ -217,7 +217,7 @@ export const ProductPrice = styled.div`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.3', '19')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.primary', '#009E7F')};
+  color: ${themeGet('colors.primary', '#160da4')};
 `;
 
 export const SalePrice = styled.span`
@@ -276,10 +276,10 @@ export const ProductCartBtn = styled.div`
       }
 
       &:hover {
-        color: ${themeGet('colors.primary', '#009E7F')};
+        color: ${themeGet('colors.primary', '#160da4')};
 
         svg {
-          color: ${themeGet('colors.primary', '#009E7F')};
+          color: ${themeGet('colors.primary', '#160da4')};
         }
       }
     }
@@ -303,7 +303,7 @@ export const MetaItem = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   margin-right: 10px;
   background-color: ${themeGet('colors.lightColor', '#f7f7f7')};
   padding: 0 15px;
@@ -339,7 +339,7 @@ export const DetailsTitle = styled.h3`
   font-family: 'Poppins', sans-serif;
   font-size: ${themeGet('fontSizes.4', '21')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   line-height: 1.2;
   margin-bottom: 20px;
 `;
@@ -410,7 +410,7 @@ export const RelatedItems = styled.div`
     font-family: 'Poppins', sans-serif;
     font-size: ${themeGet('fontSizes.4', '21')}px;
     font-weight: ${themeGet('fontWeights.6', '700')};
-    color: ${themeGet('colors.darkBold', '#0D1136')};
+    color: ${themeGet('colors.darkBold', '#1C0C5B')};
     line-height: 1.2;
     margin-left: 15px;
     margin-bottom: 30px;

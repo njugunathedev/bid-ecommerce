@@ -8,7 +8,7 @@ import { type } from 'os';
 export class Ticket {
     @prop()
     @Field(() => ID)
-    _id: string;
+    id: string;
 
     @prop()
     @Field()

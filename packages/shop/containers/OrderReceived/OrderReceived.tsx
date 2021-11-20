@@ -138,7 +138,7 @@ const OrderRecived: React.FunctionComponent<OrderRecivedProps> = ({ orderId }) =
               <Text bold className="title">
                 <FormattedMessage id="totalText" defaultMessage="Total" />
               </Text>
-              <Text>{calculatePrice()}</Text>
+              <Text>{CURRENCY}  {data.order.amount}</Text>
             </InfoBlock>
 
             <InfoBlock>

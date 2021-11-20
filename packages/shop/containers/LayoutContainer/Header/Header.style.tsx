@@ -28,7 +28,7 @@ const hideSearch = keyframes`
 export const SearchWrapper = styled.div`
   padding: 5px;
   cursor: pointer;
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   svg {
     display: block;
     width: 17px;
@@ -138,10 +138,10 @@ const HeaderWrapper = styled.header`
             border-bottom: 0;
           }
           &:hover {
-            color: ${themeGet('colors.primary', '#009E7F')};
+            color: ${themeGet('colors.primary', '#160da4')};
           }
           &.current-page {
-            color: ${themeGet('colors.primary', '#009E7F')};
+            color: ${themeGet('colors.primary', '#160da4')};
           }
 
           .menu-item-icon {
@@ -193,7 +193,7 @@ export const HeaderRightSide = styled.div`
       font-family: 'Lato', sans-serif;
       font-size: ${themeGet('fontSizes.2', '15')}px;
       font-weight: ${themeGet('fontWeights.6', '700')};
-      color: ${themeGet('colors.darkBold', '#0D1136')};
+      color: ${themeGet('colors.darkBold', '#1C0C5B')};
       line-height: 1.2em;
       display: block;
       transition: 0.15s ease-in-out;
@@ -206,10 +206,10 @@ export const HeaderRightSide = styled.div`
         font-size: 15px;
       }
       &:hover {
-        color: ${themeGet('colors.primary', '#009E7F')};
+        color: ${themeGet('colors.primary', '#160da4')};
       }
       &.current-page {
-        color: ${themeGet('colors.primary', '#009E7F')};
+        color: ${themeGet('colors.primary', '#160da4')};
       }
     }
   }
@@ -247,7 +247,7 @@ export const MainMenu = styled.div`
         a {
           font-size: 15px;
           font-weight: 700;
-          color: ${themeGet('colors.darkBold', '#0D1136')};
+          color: ${themeGet('colors.darkBold', '#1C0C5B')};
           line-height: 1.2em;
           display: block;
           padding: 15px 30px;
@@ -265,10 +265,10 @@ export const MainMenu = styled.div`
           }
 
           &:hover {
-            color: ${themeGet('colors.primary', '#009E7F')};
+            color: ${themeGet('colors.primary', '#160da4')};
           }
           &.current-page {
-            color: ${themeGet('colors.primary', '#009E7F')};
+            color: ${themeGet('colors.primary', '#160da4')};
             background-color: #fff;
           }
         }
@@ -307,7 +307,7 @@ export const SelectedType = styled.button`
     font-family: 'Lato', sans-serif;
     font-size: ${themeGet('fontSizes.2', '15')}px;
     font-weight: ${themeGet('fontWeights.6', '700')};
-    color: ${themeGet('colors.primary', '#009E7F')};
+    color: ${themeGet('colors.primary', '#160da4')};
     text-decoration: none;
 
     &:first-child {
@@ -368,7 +368,7 @@ export const HamburgerIcon = styled.div`
   position: relative;
   > span {
     display: block;
-    background-color: ${themeGet('colors.darkBold', '#0D1136')};
+    background-color: ${themeGet('colors.darkBold', '#1C0C5B')};
     border-radius: 6px;
     height: 2px;
     margin-bottom: 6px;
@@ -470,7 +470,7 @@ export const UserDetails = styled.div`
   h3 {
     font-size: 14px;
     font-weight: 700;
-    color: ${themeGet('colors.darkBold', '#0D1136')};
+    color: ${themeGet('colors.darkBold', '#1C0C5B')};
     margin-bottom: 10px;
     line-height: 1.2;
   }
@@ -478,7 +478,7 @@ export const UserDetails = styled.div`
     display: block;
     font-size: 12px;
     font-weight: 400;
-    color: ${themeGet('colors.darkBold', '#0D1136')};
+    color: ${themeGet('colors.darkBold', '#1C0C5B')};
   }
 `;
 
@@ -499,13 +499,13 @@ export const DrawerMenuItem = styled.div`
       padding: 5px 45px;
       font-size: 14px;
       font-weight: 400;
-      color: ${themeGet('colors.darkBold', '#0D1136')};
+      color: ${themeGet('colors.darkBold', '#1C0C5B')};
       margin-bottom: 19px;
       position: relative;
       transition: 0.15s ease-in-out;
 
       &:hover {
-        color: ${themeGet('colors.primary', '#009E7F')};
+        color: ${themeGet('colors.primary', '#160da4')};
       }
       &:before {
         content: '';
@@ -518,10 +518,10 @@ export const DrawerMenuItem = styled.div`
         background: transparent;
       }
       &.current-page {
-        color: ${themeGet('colors.primary', '#009E7F')};
+        color: ${themeGet('colors.primary', '#160da4')};
         font-weight: 700;
         &:before {
-          background-color: ${themeGet('colors.primary', '#009E7F')};
+          background-color: ${themeGet('colors.primary', '#160da4')};
         }
       }
     }
@@ -551,12 +551,12 @@ export const SearchModalWrapper = styled.div`
 
     button {
       background: transparent;
-      color: ${themeGet('colors.darkBold', '#0D1136')};
+      color: ${themeGet('colors.darkBold', '#1C0C5B')};
       padding-left: 15px;
       padding-right: 15px;
     }
     input {
-      color: ${themeGet('colors.darkBold', '#0D1136')};
+      color: ${themeGet('colors.darkBold', '#1C0C5B')};
       padding-left: 5px;
       padding-right: 5px;
     }
@@ -568,7 +568,7 @@ export const SearchModalClose = styled.button`
   background: transparent;
   display: block;
   padding: 0 15px;
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -585,7 +585,7 @@ export const LanguageItem = styled.button`
   width: 100%;
   font-size: 15px;
   font-weight: 700;
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   line-height: 1.2em;
   display: block;
   padding: 15px 30px;

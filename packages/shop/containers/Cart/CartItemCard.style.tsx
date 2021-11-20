@@ -31,13 +31,13 @@ const PopupHeader = styled.div`
 const PopupItemCount = styled.div`
   display: inline-flex;
   align-items: center;
-  color: ${themeGet('colors.primary', '#009E7F')};
+  color: ${themeGet('colors.primary', '#160da4')};
 
   span {
     font-family: 'Lato', sans-serif;
     font-size: ${themeGet('fontSizes.2', '15')}px;
     font-weight: ${themeGet('fontWeights.6', '700')};
-    color: ${themeGet('colors.primary', '#009E7F')};
+    color: ${themeGet('colors.primary', '#160da4')};
     padding-left: 10px;
 
     @media (max-width: 767px) {
@@ -123,7 +123,7 @@ const ItemTitle = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   margin-bottom: 10px;
 `;
 
@@ -131,7 +131,7 @@ const ItemPrice = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.primary', '#009E7F')};
+  color: ${themeGet('colors.primary', '#160da4')};
   margin-bottom: 10px;
 `;
 
@@ -146,7 +146,7 @@ const TotalPrice = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   flex-shrink: 0;
   margin-left: auto;
 `;
@@ -187,7 +187,7 @@ const PromoCode = styled.span`
     font-family: 'Lato', sans-serif;
     font-size: ${themeGet('fontSizes.2', '15')}px;
     font-weight: ${themeGet('fontWeights.6', '700')};
-    color: ${themeGet('colors.primary', '#009E7F')};
+    color: ${themeGet('colors.primary', '#160da4')};
     transition: color 0.35s ease;
     &:hover {
       color: ${themeGet('colors.primaryHover', '#008466')};
@@ -201,7 +201,7 @@ const CheckoutButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: ${themeGet('colors.primary', '#009E7F')};
+  background-color: ${themeGet('colors.primary', '#160da4')};
   padding: 0;
   border-radius: 48px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
@@ -254,7 +254,7 @@ const PriceBox = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.primary', '#009E7F')};
+  color: ${themeGet('colors.primary', '#160da4')};
   margin-right: 2px;
 
   @media (max-width: 767px) {
@@ -292,7 +292,7 @@ const CouponCode = styled.p`
 
   span {
     font-weight: ${themeGet('fontWeights.6', '700')};
-    color: ${themeGet('colors.primary', '#009E7F')};
+    color: ${themeGet('colors.primary', '#160da4')};
     margin-left: 5px;
   }
 `;

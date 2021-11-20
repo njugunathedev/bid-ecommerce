@@ -47,7 +47,7 @@ export const TrackID = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
 
   span {
     font-weight: 400;
@@ -75,7 +75,7 @@ export const Meta = styled.div`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -123,7 +123,7 @@ export const SingleOrderList = styled.div`
   }
 
   &.active {
-    border: 2px solid ${themeGet('colors.primary', '#009E7F')};
+    border: 2px solid ${themeGet('colors.primary', '#160da4')};
   }
 `;
 

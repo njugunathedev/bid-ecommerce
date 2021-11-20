@@ -30,7 +30,7 @@ const ProgressText = styled.span`
   font-family: ${themeGet('fontFamily.0', 'sans-serif')};
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: 400;
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
 `;
 
 export { ProgressBarWrapper, ProgressBar, ProgressMeter, ProgressText };

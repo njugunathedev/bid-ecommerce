@@ -14,7 +14,7 @@ export const Wrapper = styled.label`
     opacity: 0;
     &:checked {
       & ~ .payment-card {
-        border-color: #009e7f;
+        border-color: #160da4;
       }
     }
   }
@@ -56,7 +56,7 @@ export const CardNumber = styled.span`
   span {
     font-size: 14px;
     font-weight: 700;
-    color: #0d1136;
+    color: #1C0C5B;
     line-height: 1.25;
     &.card-number {
       font-size: 12px;
@@ -75,7 +75,7 @@ export const CardNumTitle = styled.span`
 export const Name = styled.span`
   font-size: 12px;
   font-weight: 700;
-  color: #0d1136;
+  color: #1C0C5B;
   display: block;
 `;
 export const DeleteButton = styled.span`

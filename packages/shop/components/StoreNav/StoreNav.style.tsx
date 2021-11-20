@@ -41,7 +41,7 @@ export const StoreNavLinks = styled.div`
       }
 
       &.current-page {
-        color: ${themeGet("colors.primary", "#009E7F")};
+        color: ${themeGet("colors.primary", "#160da4")};
         background-color: #f8f8f8;
       }
     }

@@ -1,8 +1,8 @@
-import { Resolver, Query, Arg, Int, ObjectType } from 'type-graphql';
+import { Resolver, Query, Arg, Int, ObjectType, Mutation, Args } from 'type-graphql';
 import { createProductSamples } from './product.sample';
-import { Product, ProductResponse } from './product.type';
+import { Product, ProductResponse, ProductModel } from './product.type';
 import { filterItems, getRelatedItems } from '../../helpers/filter';
-
+import { TicketInput } from '../tickets/ticket.input_type';
 @Resolver()
 export class ProductResolver {
   private readonly items: Product[] = createProductSamples();
@@ -45,4 +45,39 @@ export class ProductResolver {
     const relatedItem = await getRelatedItems(type, slug, this.items);
     return relatedItem;
   }
+  // @Mutation(() => Product, { description: 'Create Category' })
+  // async createProduct(
+  //   @Arg('product') product: AddProductInput
+  // ): Promise<Product> {
+  //   console.log(product, 'product');
+
+  //   const newProduct = new ProductModel({ ...AddProductInput });
+  //   const result = await newProduct.save();
+  //   return result;
+  // }
+
+  @Mutation(() => Product, { description: 'Update Product' })
+  async updateProduct(
+    @Arg('id', (id) => String) id: string,
+    @Arg('ticket') ticket: TicketInput
+  ): Promise<Product> {
+    const product = await ProductModel.findById(id);
+    if (!product) {
+      throw new Error('Product not found');
+    }
+    
+    if(product.ticket){
+      product.ticket.push(ticket);
+    }
+    if(!product.ticket){
+      product.ticket = [ticket];
+    }
+
+    const result = await product.save();
+    return result;
+    
+
+  }
+
+
 }

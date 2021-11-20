@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import Router from 'next/router';
 import { RouteComponentProps } from '@reach/router'
-
+import uuidv4 from 'uuid/v4';
 import Link from 'next/link';
 import Button from 'components/Button/Button';
 import RadioCard from 'components/RadioCard/RadioCard';
@@ -69,6 +69,31 @@ import { date } from 'yup';
 import { DeliveryAddress } from 'containers/Checkout/Checkout.style';
 
 //gql
+const CREATE_TICKET = gql`
+mutation ($ticketInput: TicketInput!) {
+  addTicket(ticketInput: $ticketInput){
+    id
+    userId
+    ticketType
+    ticketNumber
+    roundNumber
+  }
+}
+`;
+
+const GET_TICKETS = gql`
+query getTickets($userId: String, $limit: Int, $text: String) {
+    tickets(userId: $userId, limit: $limit, text: $text){
+      id
+      userId
+      ticketType
+      ticketNumber
+      roundNumber
+    }
+  }
+`;
+
+
 const ADD_ORDER = gql`
   mutation ($orderInput: AddOrderInput!) {
     addOrder(orderInput: $orderInput) {
@@ -96,6 +121,7 @@ const ADD_ORDER = gql`
     }
   }
 `;
+
 const GET_ORDERS = gql`
   query getOrders($user: String, $limit: Int, $text: String) {
     orders(user: $user, limit: $limit, text: $text) {
@@ -200,10 +226,23 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType, user })
 
     },
   });
-  
+  const [addTicket] = useMutation(CREATE_TICKET, {
+    update(cache, { data: { addTicket } }) {
+      const { tickets } = cache.readQuery({
+        query: GET_TICKETS,
+      });
+
+      cache.writeQuery({
+        query: GET_ORDERS,
+        data: { tickets: tickets.concat([addTicket]) },
+      });
+
+    },
+  });
+
   const handleSubmit = async () => {
     setLoading(true);
-    
+
     if (isValid) {
       const newOrder = {
         //unique id int
@@ -221,19 +260,19 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType, user })
         })),
         amount: parseInt(calculatePrice()),
         deliveryTime: schedules
-        ?.filter((schedule) => schedule.type === 'primary'
-        )
-        .map((schedule) => {
-          return schedule.time_slot;
-        }
-        )[0],
+          ?.filter((schedule) => schedule.type === 'primary'
+          )
+          .map((schedule) => {
+            return schedule.time_slot;
+          }
+          )[0],
         deliveryAddress: address
-        ?.filter((address) => address.type === 'primary'
-        )
-        .map((address) => {
-          return address.info;
-        }
-        )[0],
+          ?.filter((address) => address.type === 'primary'
+          )
+          .map((address) => {
+            return address.info;
+          }
+          )[0],
         subtotal: parseInt(calculateSubTotalPrice()),
         discount: parseInt(calculateDiscount()),
         status: 1,
@@ -249,6 +288,56 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType, user })
         )
 
       };
+      // const newTicket = items.map(item => {
+      //   ({
+      //     id: uuidv4(),
+      //     ticketType: 'order',
+      //     ticketNumber: "1",
+      //     userId: user.me.id,
+      //     roundNumber: "test"
+      //   })
+
+      // },
+
+
+      // )
+
+
+      const newTicket = items.map(item => ({
+        id: uuidv4(),
+        userId: user.me.id,
+        ticketType: "1939",
+        ticketNumber: "1",
+        roundNumber: item.id.toString()
+      }))
+
+      try {
+        for (let i = 0; i < items.length; i++) {
+          const newTicket = {
+            id: uuidv4(),
+            userId: user.me.id,
+            ticketType: "1939",
+            ticketNumber: "1",
+            roundNumber: items[i].id.toString()
+          }
+
+          const response2 = await addTicket({
+            variables: {
+              ticketInput: newTicket,
+            },
+          });
+          console.log(response2);
+        }
+
+      } catch (error) {
+        console.log(JSON.stringify(error, null, 2));
+      }
+
+      
+
+
+
+
       console.log(isValid);
       setLoading(true)
       //get unix timestamp
@@ -259,8 +348,11 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType, user })
             orderInput: newOrder,
           },
         });
-        console.log(response);
+        
 
+
+
+        console.log(response);
 
 
       } catch (err) {
@@ -276,19 +368,15 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType, user })
       console.log(typeof newOrder.id);
       const slug = newOrder.id
       if (isValid) {
-        await Router.push(`/order/${slug}`)
+      await Router.push(`/order/${slug}`)
 
       }
 
       setLoading(false)
-      await addOrder({
-        variables: {
-          order: newOrder
-        }
-      });
+     
 
 
-      //clearCart();
+      clearCart();
 
       console.log('order added');
 

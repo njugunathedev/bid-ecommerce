@@ -33,18 +33,18 @@ const SidebarMenu = styled(NavLink)`
     font-family: 'Lato', sans-serif;
     font-size: ${themeGet('fontSizes.2', '15')}px;
     font-weight: ${themeGet('fontWeights.6', '700')};
-    color: ${themeGet('colors.darkBold', '#0D1136')};
+    color: ${themeGet('colors.darkBold', '#1C0C5B')};
     transition: color 0.35s ease;
     padding: 15px 60px;
 
     &.current-page {
-      color: ${themeGet('colors.primary', '#009E7F')};
-      border-left: 5px solid ${themeGet('colors.primary', '#009E7F')};
+      color: ${themeGet('colors.primary', '#160da4')};
+      border-left: 5px solid ${themeGet('colors.primary', '#160da4')};
       padding-left: 55px;
     }
 
     &:hover {
-      color: ${themeGet('colors.primary', '#009E7F')};
+      color: ${themeGet('colors.primary', '#160da4')};
     }
 
     &:last-child {
@@ -61,13 +61,13 @@ const LogoutButton = styled.button`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   transition: color 0.35s ease;
   padding: 15px 60px;
   outline: 0;
 
   &:hover {
-    color: ${themeGet('colors.primary', '#009E7F')};
+    color: ${themeGet('colors.primary', '#160da4')};
   }
 
   &:focus {

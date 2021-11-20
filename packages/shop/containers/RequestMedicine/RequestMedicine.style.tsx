@@ -43,7 +43,7 @@ export const FormTitle = styled.h3`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.4', '21')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.primary', '#009e7f')};
+  color: ${themeGet('colors.primary', '#160da4')};
   line-height: 1.2;
   margin: 0px;
 `;
@@ -52,7 +52,7 @@ export const NoteText = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   line-height: 1.5;
 `;
 
@@ -60,7 +60,7 @@ export const Heading = styled.h3`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   line-height: 1.2;
   margin-bottom: 20px;
 `;
@@ -169,7 +169,7 @@ export const ButtonGroup = styled.div`
     margin-left: 0;
     margin-right: auto;
     &:hover {
-      border-color: ${themeGet('colors.primary', '#009e7f')};
+      border-color: ${themeGet('colors.primary', '#160da4')};
     }
 
     @media (max-width: 700px) {
@@ -222,7 +222,7 @@ export const PaymentCardList = styled.div`
       opacity: 0;
       &:checked {
         & ~ .payment-card {
-          border-color: ${themeGet('colors.primary', '#009e7f')};
+          border-color: ${themeGet('colors.primary', '#160da4')};
         }
       }
     }
@@ -240,7 +240,7 @@ export const SavedCard = styled.div`
     font-family: 'Lato', sans-serif;
     font-size: ${themeGet('fontSizes.1', '13')}px;
     font-weight: ${themeGet('fontWeights.6', '700')};
-    color: ${themeGet('colors.primary', '#009e7f')};
+    color: ${themeGet('colors.primary', '#160da4')};
     margin-bottom: 10px;
     display: block;
   }
@@ -267,7 +267,7 @@ export const AddCard = styled.div`
       margin-bottom: 5px;
     }
     &:hover {
-      border-color: ${themeGet('colors.primary', '#009e7f')};
+      border-color: ${themeGet('colors.primary', '#160da4')};
     }
   }
   .safe-label {
@@ -301,7 +301,7 @@ export const OtherPayOption = styled.div`
       text-align: center;
       padding: 12px 20px;
       cursor: pointer;
-      color: ${themeGet('colors.darkBold', '#0D1136')};
+      color: ${themeGet('colors.darkBold', '#1C0C5B')};
       font-family: 'Lato', sans-serif;
       font-size: ${themeGet('fontSizes.1', '13')}px;
       font-weight: ${themeGet('fontWeights.3', '400')};
@@ -316,7 +316,7 @@ export const OtherPayOption = styled.div`
       opacity: 0;
       &:checked {
         & ~ span {
-          border-color: ${themeGet('colors.primary', '#009e7f')};
+          border-color: ${themeGet('colors.primary', '#160da4')};
           background-color: #ffffff;
         }
       }
@@ -361,7 +361,7 @@ export const AddcontactWrapper = styled.div`
       margin-right: 5px;
     }
     &:hover {
-      border-color: ${themeGet('colors.primary', '#009e7f')};
+      border-color: ${themeGet('colors.primary', '#160da4')};
     }
   }
 `;
@@ -391,7 +391,7 @@ export const InfoText = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   margin-bottom: 15px;
   margin-top: 15px;
 `;
@@ -410,7 +410,7 @@ export const OrderSummary = styled.div`
 `;
 
 export const OrderLabel = styled.span`
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
@@ -421,7 +421,7 @@ export const OrderAmount = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   line-height: 24px;
   font-weight: 700;
 `;
@@ -488,7 +488,7 @@ export const CouponCode = styled.p`
 
   span {
     font-weight: ${themeGet('fontWeights.6', '700')};
-    color: ${themeGet('colors.primary', '#009E7F')};
+    color: ${themeGet('colors.primary', '#160da4')};
     margin-left: 5px;
   }
 `;

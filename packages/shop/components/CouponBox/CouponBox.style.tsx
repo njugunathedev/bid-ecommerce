@@ -73,14 +73,14 @@ export const Display = styled.div`
 
 export const CouponCode = styled.span`
   font-size: ${themeGet("fontSizes.2", "14")}px;
-  color: ${themeGet("colors.primary", "#009E7F")};
+  color: ${themeGet("colors.primary", "#160da4")};
   font-weight: 700;
   text-transform: uppercase;
 `;
 
 export const DiscountPrice = styled.span`
   font-size: ${themeGet("fontSizes.2", "14")}px;
-  color: ${themeGet("colors.primary", "#009E7F")};
+  color: ${themeGet("colors.primary", "#160da4")};
   font-weight: 700;
   margin-left: auto;
 `;

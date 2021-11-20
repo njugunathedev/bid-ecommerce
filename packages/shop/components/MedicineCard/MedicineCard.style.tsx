@@ -55,7 +55,7 @@ export const Title = styled.h3`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  /* color: ${themeGet('colors.darkBold', '#0D1136')}; */
+  /* color: ${themeGet('colors.darkBold', '#1C0C5B')}; */
   color: ${themeGet('colors.darkRegular', '#77798c')};
   margin: 0 0 4px 0;
   width: 100%;
@@ -84,7 +84,7 @@ export const Price = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   margin-bottom: 10px;
 
   @media (max-width: 767px) {
@@ -93,7 +93,7 @@ export const Price = styled.span`
 `;
 
 export const CartButton = styled(Button)`
-  background-color: ${themeGet('colors.primary', '#009E7F')};
+  background-color: ${themeGet('colors.primary', '#160da4')};
   border: 0;
   color: #ffffff;
   border-radius: 18px;
@@ -123,7 +123,7 @@ export const CartButton = styled(Button)`
     }
   }
   &:hover {
-    background-color: ${themeGet('colors.primary', '#009E7F')};
+    background-color: ${themeGet('colors.primary', '#160da4')};
   }
   svg {
     fill: currentColor;

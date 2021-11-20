@@ -86,7 +86,7 @@ function HomePage({ deviceType }) {
                       href={`/${item.value}`}
                       style={{ display: 'flex', alignItems: 'center', float: 'left' }}
                     >
-                      <span style={{ fontFamily: `'Lato', sans-serif`, color: "#0D1136" }}>
+                      <span style={{ fontFamily: `'Lato', sans-serif`, color: "#1C0C5B" }}>
                         See More <ArrowDown />
                       </span>
                     </a>

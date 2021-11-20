@@ -22,7 +22,7 @@ const ButtonStyle = styled('button')<ButtonStyleProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: ${themeGet('colors.primary', '#009E7F')};
+  background-color: ${themeGet('colors.primary', '#160da4')};
   height: ${themeGet('heights.3', '48')}px;
   width: ${props => (props.fullwidth ? '100%' : 'auto')};
   color: ${props =>

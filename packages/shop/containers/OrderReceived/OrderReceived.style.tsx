@@ -55,8 +55,8 @@ export const OrderRecivedContainer = styled.div`
     }
 
     &:hover {
-      background-color: ${themeGet('colors.primary', '#009E7F')};
-      border-color: ${themeGet('colors.primary', '#009E7F')};
+      background-color: ${themeGet('colors.primary', '#160da4')};
+      border-color: ${themeGet('colors.primary', '#160da4')};
       color: #fff;
     }
   }
@@ -82,7 +82,7 @@ export const BlockTitle = styled.h2`
   font-family: 'Poppins', sans-serif;
   font-size: ${themeGet('fontSizes.4', '21')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   line-height: 1;
   margin-bottom: 32px;
   @media (max-width: 767px) {
@@ -94,7 +94,7 @@ export const BlockTitle = styled.h2`
 export const Text = styled.p<TextProps>`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   font-weight: ${props => (props.bold ? '700' : '400')};
   line-height: 1.2;
   display: block;

@@ -157,12 +157,12 @@ export const Products: React.FC<ProductsProps> = ({
             size='small'
             isLoading={loadingMore}
             intlButtonId='loadMoreBtn'
-            loader={<Loader color='#009E7F' />}
+            loader={<Loader color='#160da4' />}
             style={{
               minWidth: 135,
               backgroundColor: '#ffffff',
               border: '1px solid #f1f1f1',
-              color: '#009E7F',
+              color: '#160da4',
             }}
           />
         </ButtonWrapper>

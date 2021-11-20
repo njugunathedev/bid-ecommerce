@@ -119,10 +119,10 @@ const OfferSection = styled.div`
 const Heading = styled.h2`
   font-size: 24px;
   font-weight: 700;
-  color: #009e7f;
+  color: #160da4;
   padding: 0px 20px 20px;
   margin: 50px 10px 20px;
-  border-bottom: 2px solid #009e7f;
+  border-bottom: 2px solid #160da4;
   width: auto;
   display: inline-block;
 `;

@@ -6,8 +6,8 @@ export class TickerResolver {
 
 
     @Query(() => Ticket, { description: 'Get single order' })
-    async ticket(@Arg('_id', type => String) _id: string): Promise<Ticket | undefined> {
-        const ticket = await TicketModel.findOne({ _id });
+    async ticket(@Arg('id', type => String) id: string): Promise<Ticket | undefined> {
+        const ticket = await TicketModel.findOne({ id });
         if (ticket) {
             return ticket
         }
@@ -15,6 +15,20 @@ export class TickerResolver {
             return undefined
         }
     }
+    @Query(() => [Ticket], { description: 'Get all orders' })
+    async tickets(
+        @Arg('userId', type => String) userId: string,
+        @Arg('text', type => String, { nullable: true }) text: string,
+        @Arg('limit', type => Int, { defaultValue: 7 }) limit: number
+    ): Promise<Ticket[]> {
+        const filter: any = { userId };
+        if (text) {
+            filter.text = { $regex: text, $options: 'i' };
+        }
+        return await TicketModel.find(filter).limit(limit);
+
+    }
+
 
     @Mutation(() => Ticket, { description: 'Add an Ticket' })
     async addTicket(@Arg('ticketInput') ticketInput: TicketInput): Promise<Ticket> {

@@ -12,7 +12,7 @@ export const CustomizedTable = styled.table`
         font-family: ${themeGet('fontFamily.0', 'sans-serif')};
         font-size: ${themeGet('fontSizes.1', '13')}px;
         font-weight: ${themeGet('fontWeights.6', '700')};
-        color: ${themeGet('colors.darkBold', '#0D1136')};
+        color: ${themeGet('colors.darkBold', '#1C0C5B')};
       }
     }
 
@@ -26,7 +26,7 @@ export const CustomizedTable = styled.table`
         font-family: ${themeGet('fontFamily.0', 'sans-serif')};
         font-size: ${themeGet('fontSizes.2', '15')}px;
         font-weight: ${themeGet('fontWeights.3', '400')};
-        color: ${themeGet('colors.darkBold', '#0D1136')};
+        color: ${themeGet('colors.darkBold', '#1C0C5B')};
       }
 
       &:not(.rc-table-expanded-row) {

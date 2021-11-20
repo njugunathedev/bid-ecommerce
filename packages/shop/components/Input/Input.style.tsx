@@ -12,7 +12,7 @@ const InputWrapper = styled.div`
       font-family: 'Lato', sans-serif;
       font-size: ${themeGet('fontSizes.2', '15')}px;
       font-weight: ${themeGet('fontWeights.6', '700')};
-      color: ${themeGet('colors.darkBold', '#0D1136')};
+      color: ${themeGet('colors.darkBold', '#1C0C5B')};
       line-height: 19px;
     }
   }
@@ -51,7 +51,7 @@ const InputWrapper = styled.div`
       }
 
       &:focus {
-        border-color: ${themeGet('colors.primary', '#009e7f')};
+        border-color: ${themeGet('colors.primary', '#160da4')};
       }
 
       &::placeholder {
@@ -134,7 +134,7 @@ export const VerifiedLabel = styled.span`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: ${themeGet('colors.primary', '#009e7f')};
+  color: ${themeGet('colors.primary', '#160da4')};
   font-size: 12px;
   font-weight: 400;
   text-transform: capitalize;

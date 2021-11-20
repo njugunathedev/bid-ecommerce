@@ -53,7 +53,7 @@ const BannerHeading = styled('h1')`
   font-family: ${themeGet('fontFamily.1', 'sans-serif')};
   font-size: ${themeGet('fontSizes.6', '45')}px;
   font-weight: 700;
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   margin-bottom: 15px;
   text-align: center;
 

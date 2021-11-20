@@ -149,7 +149,7 @@ export const ProductTitle = styled.h1`
   font-family: 'Poppins', sans-serif;
   font-size: ${themeGet('fontSizes.4', '21')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   line-height: 1.5;
   display: flex;
 
@@ -174,7 +174,7 @@ export const ProductPrice = styled.div`
   font-family: 'Lato', sans-serif;
   font-size: 16px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.primary', '#009E7F')};
+  color: ${themeGet('colors.primary', '#160da4')};
 `;
 
 export const SalePrice = styled.span`
@@ -267,7 +267,7 @@ export const MetaItem = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   margin-right: 10px;
   margin-bottom: 10px;
   background-color: ${themeGet('colors.lightColor', '#f7f7f7')};
@@ -294,7 +294,7 @@ export const RelatedItems = styled.div`
     font-family: 'Poppins', sans-serif;
     font-size: ${themeGet('fontSizes.4', '21')}px;
     font-weight: ${themeGet('fontWeights.6', '700')};
-    color: ${themeGet('colors.darkBold', '#0D1136')};
+    color: ${themeGet('colors.darkBold', '#1C0C5B')};
     line-height: 1.2;
     margin-left: 15px;
     margin-bottom: 30px;

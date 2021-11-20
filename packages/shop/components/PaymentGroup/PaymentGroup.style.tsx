@@ -39,7 +39,7 @@ export const SavedCard = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.primary', '#009e7f')};
+  color: ${themeGet('colors.primary', '#160da4')};
   display: block;
 `;
 
@@ -95,7 +95,7 @@ export const AddCard = styled.div`
       margin-bottom: 5px;
     }
     &:hover {
-      border-color: ${themeGet('colors.primary', '#009e7f')};
+      border-color: ${themeGet('colors.primary', '#160da4')};
     }
   }
   .safe-label {
@@ -132,7 +132,7 @@ export const OtherPayOption = styled.div`
       text-align: center;
       padding: 12px 20px;
       cursor: pointer;
-      color: #0d1136;
+      color: #1C0C5B;
       font-size: 14px;
       line-height: 24px;
       font-weight: 700;
@@ -146,7 +146,7 @@ export const OtherPayOption = styled.div`
       opacity: 0;
       &:checked {
         & ~ span {
-          border-color: ${themeGet('colors.primary', '#009e7f')};
+          border-color: ${themeGet('colors.primary', '#160da4')};
           background-color: #ffffff;
         }
       }

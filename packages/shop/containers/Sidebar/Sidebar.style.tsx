@@ -48,7 +48,7 @@ export const RequestMedicine = styled.span`
   align-items: center;
   margin-bottom: 20px;
   padding-left: 50px;
-  background-color: ${themeGet('colors.primary', '#009E7F')};
+  background-color: ${themeGet('colors.primary', '#160da4')};
   font-size: 14px;
   font-weight: 700;
   color: #ffffff;
@@ -90,7 +90,7 @@ export const TreeWrapper = styled.div`
 export const PopoverHandler = styled.div`
   font-size: 14px;
   font-weight: 700;
-  color: #0d1136;
+  color: #1C0C5B;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -117,5 +117,5 @@ export const Loading = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 14px;
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
 `;

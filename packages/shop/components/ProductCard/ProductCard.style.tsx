@@ -75,7 +75,7 @@ export const ProductInfo = styled.div`
            font-family: 'Lato', sans-serif;
            font-size: ${themeGet('fontSizes.2', '15')}px;
            font-weight: ${themeGet('fontWeights.6', '700')};
-           color: ${themeGet('colors.darkBold', '#0D1136')};
+           color: ${themeGet('colors.darkBold', '#1C0C5B')};
            margin: 0 0 7px 0;
            width: 100%;
            overflow: hidden;
@@ -118,7 +118,7 @@ export const ProductInfo = styled.div`
                font-family: 'Lato', sans-serif;
                font-size: ${themeGet('fontSizes.2', '15')}px;
                font-weight: ${themeGet('fontWeights.6', '700')};
-               color: ${themeGet('colors.primary', '#009E7F')};
+               color: ${themeGet('colors.primary', '#160da4')};
 
                @media (max-width: 767px) {
                  font-size: 14px;
@@ -173,8 +173,8 @@ export const ProductInfo = styled.div`
              }
              &:hover {
                color: #fff;
-               background-color: #009e7f;
-               border-color: #009e7f;
+               background-color: #160da4;
+               border-color: #160da4;
              }
              svg {
                fill: currentColor;
@@ -261,7 +261,7 @@ export const ProductName = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   margin: 0 0 7px 0;
   width: 100%;
   overflow: hidden;
@@ -328,8 +328,8 @@ export const AddCartBox = styled.div`
     }
     &:hover {
       color: #fff;
-      background-color: #009e7f;
-      border-color: #009e7f;
+      background-color: #160da4;
+      border-color: #160da4;
     }
     svg {
       fill: currentColor;
@@ -349,7 +349,7 @@ export const Price = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')} px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.primary', '#009E7F')};
+  color: ${themeGet('colors.primary', '#160da4')};
 
   @media (max-width: 767px) {
     font-size: 14px;

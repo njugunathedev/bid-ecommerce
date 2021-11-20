@@ -4,7 +4,7 @@ import { themeGet } from '@styled-system/theme-get';
 const SwitchStyle = styled.div`
   /* Switch default style */
   display: inline-flex;
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
   font-size: ${themeGet('fontSizes.3', '16')}px;
   font-weight: ${themeGet('fontWeights.4', '500')};
 

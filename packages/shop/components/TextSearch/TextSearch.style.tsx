@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
     justify-content: space-between;
 
     > label {
-      color: ${themeGet('colors.darkBold', '#0D1136')};
+      color: ${themeGet('colors.darkBold', '#1C0C5B')};
       font-size: 16px;
       line-height: 19px;
       font-weight: 700;
@@ -33,7 +33,7 @@ export const Wrapper = styled.div`
       border-radius: 6px;
       font-family: ${themeGet('colors.fontFamily', 'Lato, sans-serif')};
       border: 1px solid ${themeGet('colors.borderColor', '#e6e6e6')};
-      color: ${themeGet('colors.darkBold', '#0D1136')};
+      color: ${themeGet('colors.darkBold', '#1C0C5B')};
       font-size: 16px;
       line-height: 19px;
       font-weight: 400;
@@ -47,7 +47,7 @@ export const Wrapper = styled.div`
       }
 
       &:focus {
-        border-color: ${themeGet('colors.primary', '#009e7f')};
+        border-color: ${themeGet('colors.primary', '#160da4')};
       }
 
       &::placeholder {

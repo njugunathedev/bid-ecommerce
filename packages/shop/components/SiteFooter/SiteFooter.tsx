@@ -15,7 +15,7 @@ const Footer = styled.span`
   padding: 0 20px;
 
   a {
-    color: ${themeGet('colors.primary', '#009e7f')};
+    color: ${themeGet('colors.primary', '#160da4')};
   }
 `;
 

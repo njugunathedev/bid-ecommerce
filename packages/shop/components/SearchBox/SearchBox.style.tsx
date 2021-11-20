@@ -9,7 +9,7 @@ const SearchWrapper = styled.div`
 export const CurrentType = styled.span`
   font-family: ${themeGet('fontFamily.0', 'sans-serif')};
   font-size: ${themeGet('fontSizes.1', '13')}px;
-  color: ${themeGet('colors.primary', '#009E7F')};
+  color: ${themeGet('colors.primary', '#160da4')};
   line-height: 38px;
   font-weight: 700;
   padding: 0 15px;
@@ -42,7 +42,7 @@ export const ItemWrapper = styled.li`
   font-family: ${themeGet('fontFamily.0', 'sans-serif')};
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
 
   &:hover {
     background-color: ${themeGet('colors.lightBg', '#f4f4f4')};
@@ -69,7 +69,7 @@ export const SubmenuHeading = styled.div`
     font-family: ${themeGet('fontFamily.0', 'sans-serif')};
     font-size: ${themeGet('fontSizes.2', '15')}px;
     font-weight: ${themeGet('fontWeights.3', '400')};
-    color: ${themeGet('colors.darkBold', '#0D1136')};
+    color: ${themeGet('colors.darkBold', '#1C0C5B')};
     box-shadow: none;
     cursor: pointer;
     padding: 0;
@@ -146,7 +146,7 @@ export const SearchInputWrapper = styled.div`
 `;
 
 export const SearchButton = styled.button`
-  background-color: ${themeGet('colors.primary', '#009E7F')};
+  background-color: ${themeGet('colors.primary', '#160da4')};
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-family: ${themeGet('fontFamily.0', 'sans-serif')};
   font-weight: 700;

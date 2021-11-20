@@ -26,7 +26,7 @@ export const DeliveryAddress = styled.div`
     font-family: 'Lato', sans-serif;
     font-size: ${themeGet('fontSizes.2', '15')}px;
     font-weight: ${themeGet('fontWeights.6', '700')};
-    color: ${themeGet('colors.darkBold', '#0D1136')};
+    color: ${themeGet('colors.darkBold', '#1C0C5B')};
     margin-bottom: 10px;
   }
 `;
@@ -68,12 +68,12 @@ export const PriceRow = styled.div`
 
   &.grandTotal {
     font-weight: 700;
-    color: ${themeGet('colors.darkBold', '#0D1136')};
+    color: ${themeGet('colors.darkBold', '#1C0C5B')};
   }
 `;
 
 export const Price = styled.div`
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
 `;
 
 export const HeadingSection = styled('div')`
@@ -88,7 +88,7 @@ export const Title = styled('h3')`
   font-family: 'Poppins', sans-serif;
   font-size: ${themeGet('fontSizes.4', '21')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.darkBold', '#0D1136')};
+  color: ${themeGet('colors.darkBold', '#1C0C5B')};
 `;
 
 export const ProgressSection = styled('div')`
@@ -119,7 +119,7 @@ export const OrderTable = styled('table')`
         font-family: 'Lato', sans-serif;
         font-size: ${themeGet('fontSizes.1', '13')}px;
         font-weight: ${themeGet('fontWeights.6', '700')};
-        color: ${themeGet('colors.darkBold', '#0D1136')};
+        color: ${themeGet('colors.darkBold', '#1C0C5B')};
         border: none;
 
         &:first-child {
@@ -139,7 +139,7 @@ export const OrderTable = styled('table')`
         font-family: 'Lato', sans-serif;
         font-size: ${themeGet('fontSizes.2', '13')}px;
         font-weight: ${themeGet('fontWeights.3', '400')};
-        color: ${themeGet('colors.darkBold', '#0D1136')};
+        color: ${themeGet('colors.darkBold', '#1C0C5B')};
         border-bottom: 0;
         border: none;
       }
