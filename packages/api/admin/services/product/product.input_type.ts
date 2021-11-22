@@ -94,7 +94,7 @@ export class AuthorInput {
   @Field(() => [SocialInput])
   socials: SocialInput[];
 }
-@InputType({ description: 'New recipe data' })
+@InputType({ description: 'New product data' })
 export default class AddProductInput implements Partial<Product> {
   
   @Field()

@@ -80,7 +80,7 @@ export const SearchBox = styled.input`
   /* line-height: 49px; */
   flex-grow: 1;
   font-size: ${themeGet('fontSizes.2', '15')}px;
-  color: ${themeGet('colors.darkRegular', '#77798C')};
+  color: ${themeGet('colors.darkRegular', '#132C33')};
   border: 0;
   padding: 0 20px;
   background-color: #ffffff;
@@ -93,27 +93,27 @@ export const SearchBox = styled.input`
 
   &::-webkit-input-placeholder {
     font-size: ${themeGet('fontSizes.2', '15')}px;
-    color: ${themeGet('colors.darkRegular', '#77798C')};
+    color: ${themeGet('colors.darkRegular', '#132C33')};
     white-space: nowrap;
     text-overflow: ellipsis;
   }
 
   &:-moz-placeholder {
     font-size: ${themeGet('fontSizes.2', '15')}px;
-    color: ${themeGet('colors.darkRegular', '#77798C')};
+    color: ${themeGet('colors.darkRegular', '#132C33')};
     white-space: nowrap;
     text-overflow: ellipsis;
   }
 
   &::-moz-placeholder {
     font-size: ${themeGet('fontSizes.2', '15')}px;
-    color: ${themeGet('colors.darkRegular', '#77798C')};
+    color: ${themeGet('colors.darkRegular', '#132C33')};
     white-space: nowrap;
     text-overflow: ellipsis;
   }
   &:-ms-input-placeholder {
     font-size: ${themeGet('fontSizes.2', '15')}px;
-    color: ${themeGet('colors.darkRegular', '#77798C')};
+    color: ${themeGet('colors.darkRegular', '#132C33')};
     white-space: nowrap;
     text-overflow: ellipsis;
   }
@@ -180,7 +180,7 @@ export const SearchBoxWrapper = styled.div`
   height: 100%;
   flex-grow: 1;
   font-size: ${themeGet('fontSizes.2', '15')}px;
-  color: ${themeGet('colors.darkRegular', '#77798C')};
+  color: ${themeGet('colors.darkRegular', '#132C33')};
   border: none;
   background-color: #ffffff;
   border-radius: 6px 0 0 6px;
@@ -216,22 +216,22 @@ export const SearchBoxWrapper = styled.div`
 
       &::-webkit-input-placeholder {
         font-size: ${themeGet('fontSizes.3', '16')}px;
-        color: ${themeGet('colorsdarkRegular', '#77798C')};
+        color: ${themeGet('colorsdarkRegular', '#132C33')};
       }
 
       &:-moz-placeholder {
         font-size: ${themeGet('fontSizes.3', '16')}px;
-        color: ${themeGet('colorsdarkRegular', '#77798C')};
+        color: ${themeGet('colorsdarkRegular', '#132C33')};
       }
 
       &::-moz-placeholder {
         font-size: ${themeGet('fontSizes.3', '16')}px;
-        color: ${themeGet('colorsdarkRegular', '#77798C')};
+        color: ${themeGet('colorsdarkRegular', '#132C33')};
       }
 
       &:-ms-input-placeholder {
         font-size: ${themeGet('fontSizes.3', '16')}px;
-        color: ${themeGet('colorsdarkRegular', '#77798C')};
+        color: ${themeGet('colorsdarkRegular', '#132C33')};
       }
     }
   }
@@ -255,21 +255,21 @@ export const SearchBoxWrapper = styled.div`
 
       &::-webkit-input-placeholder {
         font-size: ${themeGet('fontSizes.3', '16')}px;
-        color: ${themeGet('colorsdarkRegular', '#77798C')};
+        color: ${themeGet('colorsdarkRegular', '#132C33')};
       }
 
       &:-moz-placeholder {
         font-size: ${themeGet('fontSizes.3', '16')}px;
-        color: ${themeGet('colorsdarkRegular', '#77798C')};
+        color: ${themeGet('colorsdarkRegular', '#132C33')};
       }
 
       &::-moz-placeholder {
         font-size: ${themeGet('fontSizes.3', '16')}px;
-        color: ${themeGet('colorsdarkRegular', '#77798C')};
+        color: ${themeGet('colorsdarkRegular', '#132C33')};
       }
       &:-ms-input-placeholder {
         font-size: ${themeGet('fontSizes.3', '16')}px;
-        color: ${themeGet('colorsdarkRegular', '#77798C')};
+        color: ${themeGet('colorsdarkRegular', '#132C33')};
       }
     }
   }

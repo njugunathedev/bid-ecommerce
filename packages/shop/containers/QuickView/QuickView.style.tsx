@@ -167,7 +167,7 @@ export const ProductWeight = styled.div`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.darkRegular', '#77798c')};
+  color: ${themeGet('colors.darkRegular', '#132C33')};
 `;
 
 export const ProductDescription = styled.p`

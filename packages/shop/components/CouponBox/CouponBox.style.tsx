@@ -16,7 +16,7 @@ export const Input = styled(Inputs)`
         height: 100%;
         flex-grow: 1;
         font-size: ${themeGet("fontSizes.2", "14")}px;
-        color: ${themeGet("colorsdarkRegular", "#77798C")};
+        color: ${themeGet("colorsdarkRegular", "#132C33")};
         border: none;
         border-radius: 0;
         padding: 0 20px;

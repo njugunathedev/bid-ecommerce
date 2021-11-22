@@ -62,6 +62,17 @@ const ProductCard: React.FC<ProductCardProps> = ({
       cartAnimation(e);
     }
   };
+  const handleInstantBuy = (e) => {
+    e.stopPropagation();
+    let value = 10;
+    for (let i = 0; i < value; i++) {
+      addItem(data);
+    }
+    if (!isInCart(data.id)) {
+      cartAnimation(e);
+    }
+  };
+  
   const handleRemoveClick = (e) => {
     e.stopPropagation();
     removeItem(data);
@@ -123,7 +134,20 @@ const ProductCard: React.FC<ProductCardProps> = ({
               onIncrement={handleAddClick}
             />
           )}
+          <Button
+            title="Instant Buy"
+            intlButtonId="instant Buy"
+            iconPosition="left"
+            colors="secondary"
+            size="small"
+            variant="outlined"
+            className="cart-button"
+            icon={<CartIcon />}
+            onClick={handleInstantBuy}
+          />
+
         </div>
+       
       </ProductInfo>
     </ProductCardWrapper>
   );

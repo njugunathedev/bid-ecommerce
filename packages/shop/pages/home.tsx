@@ -81,12 +81,22 @@ function HomePage({ deviceType }) {
                 (
                   
                   <OfferSection>
-                    <h4>{item.name}</h4>
+                    <h4
+                      style={{
+                        fontSize: '20px',
+                        fontWeight: 'bold',
+                        marginBottom: '20px',
+                        marginTop: '0',
+                        color: '#998CEB',
+                      }}
+                    >
+                      {item.name}
+                    </h4>
                     <a 
                       href={`/${item.value}`}
                       style={{ display: 'flex', alignItems: 'center', float: 'left' }}
                     >
-                      <span style={{ fontFamily: `'Lato', sans-serif`, color: "#1C0C5B" }}>
+                      <span style={{ fontFamily: `'Lato', sans-serif`, color: "#1C0C5B", fontWeight: "bold" }}>
                         See More <ArrowDown />
                       </span>
                     </a>

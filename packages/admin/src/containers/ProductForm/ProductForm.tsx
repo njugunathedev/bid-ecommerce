@@ -52,6 +52,7 @@ const GET_CATEGORIES = gql`
     }
   }
 `;
+
 const GET_PRODUCTS = gql`
   query getProducts(
     $type: String
@@ -93,6 +94,7 @@ const CREATE_PRODUCT = gql`
       description
       salePrice
       discountInPercent
+      totalTickets
       unit
       quantity
       creation_date
@@ -167,6 +169,7 @@ const AddProduct: React.FC<Props> = props => {
       salePrice: Number(data.salePrice),
       discountInPercent: Number(data.discountInPercent),
       quantity: Number(data.quantity),
+      totalTickets: Number(data.totalTickets),
       slug: data.name,
       creation_date: new Date(),
     };
@@ -282,6 +285,14 @@ const AddProduct: React.FC<Props> = props => {
                     type="number"
                     inputRef={register({ required: true })}
                     name="quantity"
+                  />
+                </FormFields>
+                <FormFields>
+                  <FormLabel>Total tickets</FormLabel>
+                  <Input
+                    type="number"
+                    inputRef={register({ required: true })}
+                    name="totalTickets"
                   />
                 </FormFields>
 

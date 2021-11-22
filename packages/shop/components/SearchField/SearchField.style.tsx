@@ -17,7 +17,7 @@ export const Icon = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${themeGet('colorsdarkRegular', '#77798C')};
+  color: ${themeGet('colorsdarkRegular', '#132C33')};
   flex-shrink: 0;
 
   svg {

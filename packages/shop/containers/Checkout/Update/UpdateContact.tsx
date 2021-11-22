@@ -130,7 +130,7 @@ const StyledInput = styled.input`
   }
 
   &::placeholder {
-    color: ${themeGet('colorsdarkRegular', '#77798C')};
+    color: ${themeGet('colorsdarkRegular', '#132C33')};
   }
 `;
 

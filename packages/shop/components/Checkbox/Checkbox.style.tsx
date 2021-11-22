@@ -5,7 +5,7 @@ const CheckBoxStyle = styled.div`
   display: inline-flex;
   /* Switch label default style */
   .pickbazar__field-label {
-    color: ${themeGet('colorsdarkRegular', '#77798C')};
+    color: ${themeGet('colorsdarkRegular', '#132C33')};
     font-size: ${themeGet('fontSizes.2', '14')}px;
     font-weight: 400;
   }
@@ -47,7 +47,7 @@ const CheckBoxStyle = styled.div`
       pointer-events: none;
 
       &:checked + div {
-        border-color: ${themeGet('colorsdarkRegular', '#77798C')};
+        border-color: ${themeGet('colorsdarkRegular', '#132C33')};
         background-color: #ffffff;
         &::after {
           opacity: 1;
@@ -63,7 +63,7 @@ const CheckBoxStyle = styled.div`
       width: 14px;
       height: 14px;
       border-radius: 6px;
-      border: 1px solid ${themeGet('colorsdarkRegular', '#77798C')};
+      border: 1px solid ${themeGet('colorsdarkRegular', '#132C33')};
       position: relative;
       transition: all 0.3s ease;
       &::after {
@@ -71,8 +71,8 @@ const CheckBoxStyle = styled.div`
         width: 2px;
         height: 6px;
         transform: rotate(45deg) scale(0.8);
-        border-bottom: 2px solid ${themeGet('colorsdarkRegular', '#77798C')};
-        border-right: 2px solid ${themeGet('colorsdarkRegular', '#77798C')};
+        border-bottom: 2px solid ${themeGet('colorsdarkRegular', '#132C33')};
+        border-right: 2px solid ${themeGet('colorsdarkRegular', '#132C33')};
         position: absolute;
         top: 1px;
         opacity: 0;

@@ -67,7 +67,7 @@ export const CardNumber = styled.span`
 export const CardNumTitle = styled.span`
   font-size: 10px;
   font-weight: 400;
-  color: #77798c;
+  color: #132C33;
   display: block;
   margin-bottom: 11px;
 `;

@@ -3,7 +3,7 @@ const colors = {
   white: '#ffffff', // 2
   darkBold: '#1C0C5B', // 3
   darkMedium: '#424561', // 3
-  darkRegular: '#77798C', // 3
+  darkRegular: '#132C33', // 3
   darkLight: '#C2C3CC', // 3
   lightColor: '#F7F7F7', // 3
   lightMediumColor: '#F3F3F3', // 3

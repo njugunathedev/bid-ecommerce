@@ -252,7 +252,7 @@ export const CouponCode = styled.p`
   font-family: 'Lato', sans-serif;
   font-size: 14px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.darkRegular', '#77798C')};
+  color: ${themeGet('colors.darkRegular', '#132C33')};
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -338,7 +338,7 @@ export const TermConditionText = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: 13px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.darkRegular', '#77798C')};
+  color: ${themeGet('colors.darkRegular', '#132C33')};
   line-height: 1.5;
   margin-top: 30px;
   display: block;
@@ -424,7 +424,7 @@ export const Multiplier = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: 14px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.darkRegular', '#77798C')};
+  color: ${themeGet('colors.darkRegular', '#132C33')};
   margin: 0 12px;
 `;
 
@@ -432,7 +432,7 @@ export const ItemInfo = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: 14px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.darkRegular', '#77798C')};
+  color: ${themeGet('colors.darkRegular', '#132C33')};
   margin-right: 15px;
 `;
 
@@ -440,7 +440,7 @@ export const Price = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: 14px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.darkRegular', '#77798C')};
+  color: ${themeGet('colors.darkRegular', '#132C33')};
   margin-left: auto;
 `;
 
@@ -455,7 +455,7 @@ export const Text = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: 14px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.darkRegular', '#77798C')};
+  color: ${themeGet('colors.darkRegular', '#132C33')};
 `;
 
 export const Bold = styled.span`
@@ -474,7 +474,7 @@ export const NoProductMsg = styled.h3`
   font-family: 'Lato', sans-serif;
   font-size: 14px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.darkRegular', '#77798C')};
+  color: ${themeGet('colors.darkRegular', '#132C33')};
   line-height: 1.2;
   position: relative;
   width: 100%;

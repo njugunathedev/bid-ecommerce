@@ -18,7 +18,7 @@ type ButtonProps = {
   iconPosition?: 'left' | 'right';
   iconStyle?: any;
   size?: 'small' | 'medium';
-  colors?: 'primary' | 'secondary';
+  colors?: 'primary' | 'secondary' | "success" | "danger" | "warning" | "info" | "light" | "dark";
   variant?:
     | 'textButton'
     | 'outlined'

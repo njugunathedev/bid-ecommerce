@@ -4,7 +4,7 @@ import { Category } from '../../../shop/services/category/category.type';
 export class AddCategoryInput implements Partial<Category> {
   
   @Field(type => ID)
-  id: number;
+  id: string;
 
   
   @Field()

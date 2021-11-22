@@ -55,7 +55,7 @@ const InputWrapper = styled.div`
       }
 
       &::placeholder {
-        color: ${themeGet('colorsdarkRegular', '#77798C')};
+        color: ${themeGet('colorsdarkRegular', '#132C33')};
       }
     }
 
@@ -102,7 +102,7 @@ const InputWrapper = styled.div`
         width: 45px;
         height: 100%;
         font-size: 15px;
-        color: ${themeGet('colorsdarkRegular', '#77798C')};
+        color: ${themeGet('colorsdarkRegular', '#132C33')};
         display: flex;
         align-items: center;
         justify-content: center;

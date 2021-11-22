@@ -139,7 +139,7 @@ const ItemWeight = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.darkRegular', '#77798C')};
+  color: ${themeGet('colors.darkRegular', '#132C33')};
 `;
 
 const TotalPrice = styled.span`
@@ -266,7 +266,7 @@ const NoProductMsg = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '14')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colors.darkRegular', '#77798C')};
+  color: ${themeGet('colors.darkRegular', '#132C33')};
   display: block;
   width: 100%;
   padding: 40px 0;
@@ -284,7 +284,7 @@ const CouponCode = styled.p`
   font-family: 'Lato', sans-serif;
   font-size: 15px;
   font-weight: 500;
-  color: ${themeGet('colors.darkRegular', '#77798C')};
+  color: ${themeGet('colors.darkRegular', '#132C33')};
 
   width: 100%;
   display: flex;

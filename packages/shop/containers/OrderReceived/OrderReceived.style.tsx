@@ -39,7 +39,7 @@ export const OrderRecivedContainer = styled.div`
     font-family: 'Lato', sans-serif;
     font-size: ${themeGet('fontSizes.2', '15')}px;
     font-weight: ${themeGet('fontWeights.3', '400')};
-    color: ${themeGet('colors.darkRegular', '#77798c')};
+    color: ${themeGet('colors.darkRegular', '#132C33')};
     padding: 5px 15px;
     height: 36px;
     border: 1px solid #e6e6e6;

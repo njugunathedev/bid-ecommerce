@@ -31,7 +31,7 @@ import { FormattedMessage } from 'react-intl';
 import { useLocale } from 'contexts/language/language.provider';
 import { useCart } from 'contexts/cart/use-cart';
 import { Counter } from 'components/Counter/Counter';
-
+import  GroupAvatar from 'components/GroupAvatar/GroupAvatar'
 type ProductDetailsProps = {
   product: Product | any;
   deviceType: {
@@ -65,6 +65,8 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
     }, 500);
   }, []);
 
+
+
   return (
     <>
       <ProductDetailsWrapper className='product-card' dir='ltr'>
@@ -79,7 +81,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
                 style={{
                   backgroundColor: '#ffffff',
                   border: '1px solid #f1f1f1',
-                  color: '#77798c',
+                  color: '#132C33',
                 }}
                 icon={<LongArrowLeft />}
                 onClick={Router.back}
@@ -138,25 +140,34 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
                 />
               )}
             </ProductCartBtn>
+
+
+            <div>
+              <GroupAvatar />
+            </div>
+
+
+
+
           </ProductCartWrapper>
+
 
           <ProductMeta>
             <MetaSingle>
               {product.categories
                 ? product.categories.map((item: any) => (
-                    <Link
-                      href={`/${product.type.toLowerCase()}?category=${
-                        item.slug
+                  <Link
+                    href={`/${product.type.toLowerCase()}?category=${item.slug
                       }`}
-                      key={`link-${item.id}`}
-                    >
-                      {
-                        <a>
-                          <MetaItem>{item.title}</MetaItem>
-                        </a>
-                      }
-                    </Link>
-                  ))
+                    key={`link-${item.id}`}
+                  >
+                    {
+                      <a>
+                        <MetaItem>{item.title}</MetaItem>
+                      </a>
+                    }
+                  </Link>
+                ))
                 : ''}
             </MetaSingle>
           </ProductMeta>
@@ -173,7 +184,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
                 style={{
                   backgroundColor: '#ffffff',
                   border: '1px solid #f1f1f1',
-                  color: '#77798c',
+                  color: '#132C33',
                 }}
                 icon={<LongArrowLeft />}
                 onClick={Router.back}

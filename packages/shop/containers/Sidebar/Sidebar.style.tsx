@@ -105,7 +105,7 @@ export const PopoverHandler = styled.div`
       }
     }
     &:last-child {
-      color: ${themeGet('colors.darkRegular', '#77798C')};
+      color: ${themeGet('colors.darkRegular', '#132C33')};
     }
   }
 `;

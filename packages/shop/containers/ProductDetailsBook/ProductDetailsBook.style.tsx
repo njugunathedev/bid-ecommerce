@@ -52,7 +52,7 @@ export const BackButton = styled.div`
     font-family: 'Lato', sans-serif;
     font-size: ${themeGet('fontSizes.1', '13')}px;
     font-weight: ${themeGet('fontWeights.6', '700')};
-    color: ${themeGet('colors.darkRegular', '#77798C')};
+    color: ${themeGet('colors.darkRegular', '#132C33')};
     height: 30px;
     .btn-icon {
       margin-right: 5px;

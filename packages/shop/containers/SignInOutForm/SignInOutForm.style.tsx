@@ -47,7 +47,7 @@ export const SubHeading = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.darkRegular', '#77798c')};
+  color: ${themeGet('colors.darkRegular', '#132C33')};
   display: block;
 `;
 
@@ -71,7 +71,7 @@ export const HelperText = styled.p`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.darkRegular', '#77798c')};
+  color: ${themeGet('colors.darkRegular', '#132C33')};
   margin: 0;
   text-align: center;
   width: 100%;
@@ -109,7 +109,7 @@ export const Input = styled.input`
   }
 
   &::placeholder {
-    color: ${themeGet('colors.darkRegular', '#77798c')};
+    color: ${themeGet('colors.darkRegular', '#132C33')};
     font-size: 14px;
   }
 

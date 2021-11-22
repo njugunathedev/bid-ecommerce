@@ -1,4 +1,4 @@
-import { ObjectType, Field, Int } from 'type-graphql';
+import { ObjectType, Field, ID } from 'type-graphql';
 import * as mongoose from 'mongoose';
 import { prop, getModelForClass, modelOptions, Severity} from '@typegoose/typegoose';
 
@@ -6,8 +6,8 @@ import { prop, getModelForClass, modelOptions, Severity} from '@typegoose/typego
 @ObjectType()
 export class Category {
   @prop()
-  @Field(type => Int)
-  id: number;
+  @Field(type => ID)
+  id: string;
 
   @prop()
   @Field()

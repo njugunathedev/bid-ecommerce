@@ -74,7 +74,7 @@ const StatusNote = styled('span')`
   font-family: ${themeGet('fontFamily.0', 'sans-serif')};
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colorsdarkRegular', '#77798C')};
+  color: ${themeGet('colorsdarkRegular', '#132C33')};
   margin-top: 8px;
 `;
 

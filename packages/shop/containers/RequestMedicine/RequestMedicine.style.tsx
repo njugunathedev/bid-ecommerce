@@ -274,7 +274,7 @@ export const AddCard = styled.div`
     font-family: 'Lato', sans-serif;
     font-size: ${themeGet('fontSizes.1', '13')}px;
     font-weight: ${themeGet('fontWeights.6', '700')};
-    color: ${themeGet('colorsdarkRegular', '#77798C')};
+    color: ${themeGet('colorsdarkRegular', '#132C33')};
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -480,7 +480,7 @@ export const CouponCode = styled.p`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.6', '700')};
-  color: ${themeGet('colorsdarkRegular', '#77798C')};
+  color: ${themeGet('colorsdarkRegular', '#132C33')};
 
   width: 100%;
   display: flex;

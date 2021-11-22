@@ -16,7 +16,7 @@ export class CategoryResolver {
 
   @Query(() => Category)
   async category(
-    @Arg('id', type => Int) id: number
+    @Arg('id', type => String) id: string
   ): Promise<Category | undefined> {
     return await this.items.find(item => item.id === id);
   }

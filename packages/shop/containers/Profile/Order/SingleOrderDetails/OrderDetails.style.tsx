@@ -35,7 +35,7 @@ export const Address = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.darkRegular', '#77798c')};
+  color: ${themeGet('colors.darkRegular', '#132C33')};
   line-height: 1.5;
 `;
 
@@ -55,7 +55,7 @@ export const PriceRow = styled.div`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.2', '15')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.darkRegular', '#77798c')};
+  color: ${themeGet('colors.darkRegular', '#132C33')};
   margin-bottom: 15px;
   width: 100%;
   display: flex;

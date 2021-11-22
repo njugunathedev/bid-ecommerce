@@ -6,7 +6,7 @@ const Footer = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colorsdarkRegular', '#77798C')};
+  color: ${themeGet('colorsdarkRegular', '#132C33')};
   text-align: center;
   width: 100%;
   display: flex;

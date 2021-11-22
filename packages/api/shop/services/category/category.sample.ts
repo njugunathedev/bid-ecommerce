@@ -4,7 +4,7 @@ import { plainToClass } from 'class-transformer';
 const loadCategories = (): Category[] => {
   return plainToClass(Category, [
     {
-      id: 1,
+      id: "1",
       title: 'Laptop Accessories',
       slug: 'laptop-accessories',
       products: [],
@@ -12,14 +12,14 @@ const loadCategories = (): Category[] => {
       icon: '',
       children: [
         {
-          id: 2,
+          id: "2",
           title: 'Mouse',
           slug: 'mouse',
           products: [],
           type: 'computing',
         },
         {
-          id: 3,
+          id: "3",
           title: 'keyboard',
           slug: 'keyboard',
           products: [],
@@ -29,7 +29,7 @@ const loadCategories = (): Category[] => {
     },
 
     {
-      id: 9,
+      id: "9",
       title: 'Printing Accessories',
       slug: 'printing',
       products: [],
@@ -37,14 +37,14 @@ const loadCategories = (): Category[] => {
       icon: '',
       children: [
         {
-          id: 10,
+          id: "10",
           title: 'Toner',
           slug: 'toner',
           products: [],
           type: 'computing',
         },
         {
-          id: 11,
+          id: "11",
           title: 'Printers',
           slug: 'printers',
           products: [],
@@ -68,7 +68,7 @@ const loadCategories = (): Category[] => {
     },
 
     {
-      id: 14,
+      id: "14",
       title: 'PS',
       slug: 'PS',
       products: [],
@@ -78,7 +78,7 @@ const loadCategories = (): Category[] => {
     },
 
     {
-      id: 15,
+      id: "15",
       title: 'XBox',
       slug: 'XBox',
       products: [],
@@ -88,7 +88,7 @@ const loadCategories = (): Category[] => {
     },
 
     {
-      id: 16,
+      id: "16",
       title: 'Shoulder bags',
       slug: 'shoulder-bags',
       products: [],
@@ -97,7 +97,7 @@ const loadCategories = (): Category[] => {
       children: [],
     },
     {
-      id: 17,
+      id: "17",
       title: 'Wallet',
       slug: 'wallet',
       products: [],
@@ -106,7 +106,7 @@ const loadCategories = (): Category[] => {
       children: [],
     },
     {
-      id: 18,
+      id: "18",
       title: 'Laptop bags',
       slug: 'laptop-bags',
       products: [],
@@ -116,7 +116,7 @@ const loadCategories = (): Category[] => {
     },
 
     {
-      id: 19,
+      id: "19",
       title: 'Wireless Speakers',
       slug: 'wireless-speakers',
       products: [],
@@ -124,21 +124,21 @@ const loadCategories = (): Category[] => {
       icon: '',
       children: [
         {
-          id: 20,
+          id: "20",
           title: 'Harman Kardon',
           slug: 'Harman Kardon',
           products: [],
           type: 'bluetooth-speakers',
         },
         {
-          id: 21,
+          id: "21",
           title: 'JBL',
           slug: 'JBL',
           products: [],
           type: 'bluetooth-speakers',
         },
         {
-          id: 22,
+          id: "22",
           title: 'Single Color',
           slug: 'single-color',
           products: [],
@@ -147,7 +147,7 @@ const loadCategories = (): Category[] => {
       ],
     },
     {
-      id: 23,
+      id: "23",
       title: 'Outer Wear',
       slug: 'outer-wear',
       products: [],
@@ -155,28 +155,28 @@ const loadCategories = (): Category[] => {
       icon: 'OuterWear',
       children: [
         {
-          id: 24,
+          id: "24",
           title: 'Hoodie',
           slug: 'hoodie',
           products: [],
           type: 'clothing',
         },
         {
-          id: 25,
+          id: "25",
           title: 'Jacket',
           slug: 'jacket',
           products: [],
           type: 'clothing',
         },
         {
-          id: 26,
+          id: "26",
           title: 'Blazer',
           slug: 'blazer',
           products: [],
           type: 'clothing',
         },
         {
-          id: 27,
+          id: "27",
           title: 'Waist Coat',
           slug: 'waist-coat',
           products: [],
@@ -185,7 +185,7 @@ const loadCategories = (): Category[] => {
       ],
     },
     {
-      id: 28,
+      id: "28",
       title: 'Pants',
       slug: 'pants',
       products: [],
@@ -193,14 +193,14 @@ const loadCategories = (): Category[] => {
       icon: 'Pants',
       children: [
         {
-          id: 29,
+          id: "29",
           title: 'Jeans',
           slug: 'jeans',
           products: [],
           type: 'clothing',
         },
         {
-          id: 30,
+          id: "30",
           title: 'Chinos',
           slug: 'chinos',
           products: [],
@@ -341,7 +341,7 @@ const loadCategories = (): Category[] => {
     },
 
     {
-      id: 47,
+      id: "47",
       title: 'Accessories',
       slug: 'accessories',
       products: [],
@@ -350,7 +350,7 @@ const loadCategories = (): Category[] => {
       children: [],
     },
     {
-      id: 48,
+      id: "48",
       title: 'Cameras',
       slug: 'cameras',
       products: [],
@@ -358,56 +358,56 @@ const loadCategories = (): Category[] => {
       icon: 'Cameras',
       children: [
         {
-          id: 49,
+          id: "49",
           title: 'Web cam',
-          slug: 'biscuits',
+          slug: 'web cam',
           products: [],
           type: 'cameras',
         },
         {
-          id: 50,
+          id: "50",
           title: 'DSLR cameras',
           slug: 'DSLR',
           products: [],
           type: 'cameras',
         },
         {
-          id: 51,
+          id: "51",
           title: 'Compact cameras',
           slug: 'crisps',
           products: [],
           type: 'cameras',
         },
         {
-          id: 52,
+          id: "52",
           title: 'Film Cameras ',
           slug: 'noodles',
           products: [],
           type: 'cameras',
         },
         {
-          id: 53,
+          id: "53",
           title: 'Drones',
           slug: 'nuts',
           products: [],
           type: 'cameras',
         },
         {
-          id: 54,
+          id: "54",
           title: 'Instant Cameras',
           slug: 'pasta',
           products: [],
           type: 'cameras',
         },
         {
-          id: 55,
+          id: "55",
           title: 'Rugged Cameras',
           slug: 'sauce',
           products: [],
           type: 'cameras',
         },
         {
-          id: 56,
+          id: "56",
           title: 'Action Cameras',
           slug: 'soup',
           products: [],
@@ -417,7 +417,7 @@ const loadCategories = (): Category[] => {
     },
 
     {
-      id: 57,
+      id: "57",
       title: 'Modems',
       slug: 'petcare',
       products: [],
@@ -425,7 +425,7 @@ const loadCategories = (): Category[] => {
       icon: '',
       children: [
         {
-          id: 58,
+          id: "58",
           title: 'Cat Food',
           slug: 'catfood',
           products: [],

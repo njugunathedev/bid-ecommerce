@@ -72,7 +72,7 @@ const BannerSubHeading = styled('span')`
   font-family: ${themeGet('fontFamily.0', 'sans-serif')};
   font-size: ${themeGet('fontSizes.3', '19')}px;
   font-weight: 400;
-  color: ${themeGet('colors.darkRegular', '#77798C')};
+  color: ${themeGet('colors.darkRegular', '#132C33')};
   margin-bottom: 60px;
   text-align: center;
 

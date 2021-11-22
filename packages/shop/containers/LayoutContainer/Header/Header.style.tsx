@@ -411,7 +411,7 @@ export const DrawerClose = styled.div`
   position: absolute;
   left: 35px;
   top: 14px;
-  color: ${themeGet('colors.darkRegular', '#77798C')};
+  color: ${themeGet('colors.darkRegular', '#132C33')};
   cursor: pointer;
   padding: 10px;
   z-index: 1;

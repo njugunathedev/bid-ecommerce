@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import uuidv4 from 'uuid/v4';
 import gql from 'graphql-tag';
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useDrawerDispatch } from '../../context/DrawerContext';
 import { Scrollbars } from 'react-custom-scrollbars';
 import Uploader from '../../components/Uploader/Uploader';
@@ -38,19 +38,14 @@ const CREATE_CATEGORY = gql`
       title
       type
       icon
-      creation_date
+      created_date
       slug
       number_of_product
     }
   }
 `;
 
-const options = [
-  { value: 'computing', name: 'Computing', id: '1' },
-  { value: 'computers', name: 'Laptops and Computers', id: '2' },
-  { value: 'gaming', name: 'Gaming Consoles', id: '3' },
-  { value: 'smartphones', name: 'Smart Phones', id: '4' },
-];
+
 type Props = any;
 
 const AddCategory: React.FC<Props> = props => {
@@ -58,6 +53,17 @@ const AddCategory: React.FC<Props> = props => {
   const closeDrawer = useCallback(() => dispatch({ type: 'CLOSE_DRAWER' }), [
     dispatch,
   ]);
+  const { data, loading, error } = useQuery(GET_CATEGORIES, {
+    variables: {
+      type: ''
+    }
+  });
+  console.log(data, 'data');
+  const options = data ? data.categories.map(category => ({
+    value: category.slug,
+    id: category.id,
+    name: category.title,
+    })) : [];
   const { register, handleSubmit, setValue } = useForm();
   const [category, setCategory] = useState([]);
   React.useEffect(() => {
@@ -80,18 +86,24 @@ const AddCategory: React.FC<Props> = props => {
   const onSubmit = ({ name, slug, parent, image }) => {
     const newCategory = {
       id: uuidv4(),
-      name: name,
+      title: name,
       type: parent[0].value,
       slug: slug,
-      icon: image,
-      creation_date: new Date(),
+      icon: "string",
+      created_date: new Date(),
     };
-    createCategory({
-      variables: { category: newCategory },
-    });
-    closeDrawer();
-    console.log(newCategory, 'newCategory');
+    try {
+      createCategory({
+        variables: { category: newCategory },
+      });
+      closeDrawer();
+      console.log(newCategory, 'newCategory');
+    } catch (error) {
+      console.log(JSON.stringify(error, null, 2));
+    }
+    
   };
+ 
   const handleChange = ({ value }) => {
     setValue('parent', value);
     setCategory(value);

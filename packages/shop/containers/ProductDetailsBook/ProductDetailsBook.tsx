@@ -94,7 +94,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
                 style={{
                   backgroundColor: '#ffffff',
                   border: '1px solid #f1f1f1',
-                  color: '#77798c',
+                  color: '#132C33',
                 }}
                 icon={<LongArrowLeft />}
                 onClick={Router.back}
@@ -188,7 +188,7 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
                 style={{
                   backgroundColor: '#ffffff',
                   border: '1px solid #f1f1f1',
-                  color: '#77798c',
+                  color: '#132C33',
                 }}
                 icon={<LongArrowLeft />}
                 onClick={Router.back}

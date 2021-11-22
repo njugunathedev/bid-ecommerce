@@ -92,7 +92,7 @@ export const ProductInfo = styled.div`
            font-family: 'Lato', sans-serif;
            font-size: ${themeGet('fontSizes.1', '13')}px;
            font-weight: ${themeGet('fontWeights.3', '400')};
-           color: ${themeGet('colors.darkRegular', '#77798c')};
+           color: ${themeGet('colors.darkRegular', '#132C33')};
 
            @media (max-width: 767px) {
              font-size: 12px;
@@ -284,7 +284,7 @@ export const AuthorInfo = styled.span`
   font-family: 'Lato', sans-serif;
   font-size: ${themeGet('fontSizes.1', '13')}px;
   font-weight: ${themeGet('fontWeights.3', '400')};
-  color: ${themeGet('colors.darkRegular', '#77798c')};
+  color: ${themeGet('colors.darkRegular', '#132C33')};
 
   @media (max-width: 767px) {
     font-size: ${themeGet('fontSizes.1', '13')}px;
