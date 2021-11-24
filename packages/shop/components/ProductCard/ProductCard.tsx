@@ -12,7 +12,7 @@ import {
 import { useCart } from 'contexts/cart/use-cart';
 import { Counter } from 'components/Counter/Counter';
 import { cartAnimation } from 'helper/cart-animation';
-
+import BidProgressBar from 'components/ProgressBar/BidProgressBar';
 type ProductCardProps = {
   title: string;
   image: any;
@@ -147,6 +147,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
           />
 
         </div>
+        <div>
+          <BidProgressBar />
+          <span className="bids-left">
+            Bids Left: 10
+          </span>
+        </div>
+        
        
       </ProductInfo>
     </ProductCardWrapper>

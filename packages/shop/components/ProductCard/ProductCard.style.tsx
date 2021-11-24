@@ -98,7 +98,19 @@ export const ProductInfo = styled.div`
              font-size: 12px;
            }
          }
-
+         .bids-left {
+            font-family: 'Lato', sans-serif;
+            font-size: ${themeGet('fontSizes.1', '13')}px;
+            font-weight: ${themeGet('fontWeights.3', '400')};
+            color: ${themeGet('colors.darkRegular', '#132C33')};
+            margin-top: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            
+         }
          .product-meta {
            margin-top: 30px;
            display: flex;

@@ -15,7 +15,7 @@ const GroupAvatar: React.FC = () => {
     return (
         <AvatarGroup max={4}>
             <Avatar {...stringAvatar('John Doe')} />
-            <Avatar {...stringAvatar('John Doe')} />
+            <Avatar alt="John Doe" src="" />
             <Avatar {...stringAvatar('John Doe')} />
             <Avatar {...stringAvatar('John Doe')} />
             <Avatar {...stringAvatar('John Doe')} />
