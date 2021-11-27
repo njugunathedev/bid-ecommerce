@@ -155,7 +155,7 @@ export default function Customers() {
                 <StyledHeadCell>Joining Date</StyledHeadCell>
 
                 {data ? (
-                  data.customers.length ? (
+                  data.customers ? (
                     data.customers
                       .map(item => Object.values(item))
                       .map((row, index) => (

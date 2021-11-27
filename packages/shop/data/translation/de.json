@@ -7,6 +7,8 @@
   "navBookMenu": "Buch",
   "navMedicineMenu": "Medizin",
 
+  "homeTitle": " ",
+  "homeSubtitle": " ",
   "groceriesTitle": "Lebensmittel in {minute} Minuten geliefert",
   "groceriesSubTitle": "Holen Sie sich den ganzen Tag über gesunde Lebensmittel und Cameras vor Ihre Haustür",
   "makeupTitle": "Eingebrannte und importierte Make-ups",

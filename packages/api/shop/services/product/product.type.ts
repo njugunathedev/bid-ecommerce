@@ -175,6 +175,7 @@ export class Product {
 
   
 }
+export const ProductModel = getModelForClass(Product, { schemaOptions: { timestamps: true } });
 
 // TODO: Need to change this in next update
 
@@ -192,4 +193,3 @@ export class ProductResponse extends PaginatedResponse(Product) {
 
 
 
-export const ProductModel = getModelForClass(Product, { schemaOptions: { timestamps: true } });

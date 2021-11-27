@@ -3,6 +3,7 @@ import { createProductSamples } from './product.sample';
 import { Product, ProductResponse, ProductModel } from './product.type';
 import { filterItems, getRelatedItems } from '../../helpers/filter';
 import { TicketInput } from '../tickets/ticket.input_type';
+
 @Resolver()
 export class ProductResolver {
   private readonly items: Product[] = createProductSamples();

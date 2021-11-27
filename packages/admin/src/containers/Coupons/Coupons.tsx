@@ -230,7 +230,7 @@ export default function Coupons() {
                 <StyledHeadCell>Status</StyledHeadCell>
 
                 {data ? (
-                  data.coupons.length ? (
+                  data.coupons ? (
                     data.coupons
                       .map(item => Object.values(item))
                       .map((row, index) => {

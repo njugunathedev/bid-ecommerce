@@ -864,8 +864,8 @@ const loadCategories = (): Category[] => {
     },
     {
       id: 118,
-      title: 'Science Fiction',
-      slug: 'science_fiction',
+      title: 'LG',
+      slug: 'lg',
       products: [],
       type: 'smartphones',
       icon: '',
@@ -873,8 +873,8 @@ const loadCategories = (): Category[] => {
     },
     {
       id: 119,
-      title: 'Thriller',
-      slug: 'thriller',
+      title: 'HTC',
+      slug: 'htc',
       products: [],
       type: 'smartphones',
       icon: '',

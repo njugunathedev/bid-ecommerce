@@ -14,11 +14,13 @@ import {
   Handbag,
   DressIcon,
   FurnitureIcon,
+  HomeIcon,
   BookIcon,
   MedicineIcon,
 } from 'components/AllSvgIcon';
 import NavLink from 'components/NavLink/NavLink';
 import {
+  HOME_PAGE,
   GROCERY_PAGE,
   CLOTHING,
   MAKEUP_PAGE,
@@ -32,6 +34,12 @@ import { FormattedMessage } from 'react-intl';
 
 import Logo from 'components/Logo/Logo';
 const MENU_ITEMS = [
+  {
+    link: HOME_PAGE,
+    icon: <HomeIcon />,
+    label: 'Home',
+    intlId: 'navHomeMenu',
+  },
   {
     link: GROCERY_PAGE,
     icon: <FruitsVegetable />,

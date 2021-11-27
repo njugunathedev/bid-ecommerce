@@ -68,7 +68,7 @@ const GET_PRODUCTS = gql`
     ) {
       items {
         id
-        name
+        title
         image
         type
         price
@@ -85,7 +85,7 @@ const CREATE_PRODUCT = gql`
   mutation createProduct($product: AddProductInput!) {
     createProduct(product: $product) {
       id
-      name
+      title
       image
       slug
       type
@@ -174,9 +174,15 @@ const AddProduct: React.FC<Props> = props => {
       creation_date: new Date(),
     };
     console.log(newProduct, 'newProduct data');
-    createProduct({
-      variables: { product: newProduct },
-    });
+    try {
+      createProduct({
+        variables: { product: newProduct },
+      });
+      
+    } catch (error) {
+      console.log(JSON.stringify(error, null, 2));
+    }
+    
     closeDrawer();
   };
 

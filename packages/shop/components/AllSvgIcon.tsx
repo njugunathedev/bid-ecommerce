@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaLaptop, FaKeyboard, FaHeadphones, FaMobileAlt } from 'react-icons/fa';
+import { FaLaptop, FaKeyboard, FaHeadphones, FaMobileAlt, FaHome } from 'react-icons/fa';
 import { IconContext } from 'react-icons';
 import { CgGames } from 'react-icons/cg';
 import { BsSpeaker } from 'react-icons/bs';
@@ -6065,6 +6065,18 @@ export const BookIcon = ({
     </IconContext.Provider>
   );
 };
+export const HomeIcon = ({
+  width = '30px',
+  height = '25px',
+  color = 'currentColor'
+}) => {
+  return (
+   <IconContext.Provider value={{ color: color }}>
+     <FaHome />
+    </IconContext.Provider>
+  );
+};
+
 
 export const FurnitureIcon = ({
   width = '30px',

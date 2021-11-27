@@ -16,4 +16,4 @@ export class Products {
   @Field()
   hasMore: boolean;
 }
-export const ProductsModel = getModelForClass(Products, { schemaOptions: { timestamps: true } });
+//export const ProductsModel = getModelForClass(Products, { schemaOptions: { timestamps: true } });

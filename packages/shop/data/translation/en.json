@@ -1,4 +1,5 @@
 {
+  "navHomeMenu": "Home",
   "navGroceryMenu": "Computing",
   "navMakeupMenu": "Laptops",
   "navBagsMenu": "Gaming consoles",
@@ -6,6 +7,9 @@
   "navFurnitureMenu": "Cameras",
   "navBookMenu": "Smartphones",
   "navMedicineMenu": "Home Theaters",
+
+  "homeTitle": " ",
+  "homeSubtitle": "..",
 
   "groceriesTitle": "Bid and stand a chance of winning computer accessories",
   "groceriesSubTitle": "Place a bid on the computer product of your choice",

@@ -233,16 +233,16 @@ type ProductResponse {
 
 # The basic product types
 enum ProductType {
-  BOOK
-  BAGS
-  GROCERY
+  SMARTPHONES
+  GAMING
+  COMPUTING
   HOME
   MEDICINE
   FOOD
   CLOTH
-  CLOTHING
-  FURNITURE
-  MAKEUP
+  BLUETOOTH_SPEAKERS
+  CAMERAS
+  COMPUTERS
 }
 
 type Query {

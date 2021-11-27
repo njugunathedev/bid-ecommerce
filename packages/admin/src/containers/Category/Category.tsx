@@ -266,7 +266,7 @@ export default function Category() {
                 <StyledHeadCell>Type</StyledHeadCell>
 
                 {data ? (
-                  data.categories.length ? (
+                  data.categories ? (
                     data.categories
                       .map(item => Object.values(item))
                       .map((row, index) => (

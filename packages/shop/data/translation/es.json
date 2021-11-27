@@ -7,6 +7,9 @@
   "navBookMenu": "Libro",
   "navMedicineMenu": "Medicamento",
 
+  "homeTitle": " ",
+  "homeSubtitle": " ",
+
   "groceriesTitle": "Abarrotes entregados en {minute} minutos",
   "groceriesSubTitle": "Obtenga sus alimentos y refrigerios saludables entregados en su puerta todo el día todos los días",
   "makeupTitle": "Maquillajes de marca e importados",

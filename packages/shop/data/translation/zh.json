@@ -7,6 +7,9 @@
   "navBookMenu": "书",
   "navMedicineMenu": "药物",
 
+  "homeTitle": " ",
+  "homeSubtitle": " ",
+  
   "groceriesTitle": "{minute}分钟内送达的杂货",
   "groceriesSubTitle": "每天一整天都在您家门口提供健康食品和小吃",
   "makeupTitle": "品牌和进口化妆品",

@@ -254,7 +254,7 @@ export default function Orders() {
                 <StyledHeadCell>Status</StyledHeadCell>
 
                 {data ? (
-                  data.orders.length ? (
+                  data.orders ? (
                     data.orders
                       .map(item => Object.values(item))
                       .map((row, index) => (

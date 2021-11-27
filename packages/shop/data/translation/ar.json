@@ -7,6 +7,8 @@
   "navBookMenu": "كتاب",
   "navMedicineMenu": "الدواء",
 
+  "homeTitle": " ",
+  "homeSubtitle": " ",
   "groceriesTitle": "تسليم البقالة في {minute} دقيقة",
   "groceriesSubTitle": "احصل على الأطعمة الصحية والوجبات الخفيفة التي تقدمها على عتبة دارك طوال اليوم",
   "makeupTitle": "مكياج ذو العلامات التجارية والمستوردة",

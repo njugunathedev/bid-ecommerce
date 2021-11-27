@@ -7,6 +7,9 @@
   "navBookMenu": "ספר",
   "navMedicineMenu": "תרופה",
 
+  "homeTitle": " ",
+  "homeSubtitle": " ",
+
   "groceriesTitle": "מצרכים הובאו תוך {minute} דקות",
   "groceriesSubTitle": "קבל את האוכל והחטיפים הבריאים שלך המובאים בפתח שלך כל היום בכל יום",
   "makeupTitle": "איפור ממותג ומיובא",

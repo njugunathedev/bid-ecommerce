@@ -11,6 +11,7 @@ export function createProductSamples() {
       price: 10,
       salePrice: 0,
       discountInPercent: 0,
+      totalTickets: 100,
       description: 'A ultra slim wireless keyboard and a wireless mouse set is an essential if you want a cable-free & clutter-free connection. Light weight and the design makes it both nice and practical. A perfect choice for you!',
       type: 'computing',
       image: 'https://media.istockphoto.com/photos/backlit-keyboard-with-rainbow-colors-orange-pink-blue-green-picture-id1127735227?b=1&k=20&m=1127735227&s=170667a&w=0&h=WN4GhwuHcuyAZld0UBG8m90vGu0N24XJ0MjRg7zhGvk=',

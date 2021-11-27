@@ -79,14 +79,14 @@ const Banner: React.FC<BannerProps> = ({
         <BannerHeading>
           <FormattedMessage
             id={intlTitleId}
-            defaultMessage='Set Your Title Through Language File'
+            defaultMessage=' '
             values={{ minute: 90 }}
           />
         </BannerHeading>
         <BannerSubHeading>
           <FormattedMessage
             id={intlDescriptionId}
-            defaultMessage='Set Your Description Through Language File'
+            defaultMessage=' '
           />
         </BannerSubHeading>
 

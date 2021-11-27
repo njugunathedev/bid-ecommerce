@@ -1,7 +1,7 @@
 import { Resolver, Query, Arg, Args, Mutation } from 'type-graphql';
 import loadProducts from '../../data/product.data';
 
-import { Products, ProductsModel } from './products.type';
+import { Products } from './products.type';
 import GetProductsArgs from './product.args_type';
 import AddProductInput from './product.input_type';
 import search from '../../helpers/search';
@@ -12,12 +12,12 @@ import { sortByHighestNumber, sortByLowestNumber } from '../../helpers/sorts';
 export default class ProductResolver {
   //private readonly productsCollection: Product[] = loadProducts();
 
-  @Query(returns => Products, { description: 'Get all the products' })
+  @Query(() => Products, { description: 'Get all the products' })
   async products(
     @Args()
     { limit, offset, sortByPrice, type, searchText, category }: GetProductsArgs
   ): Promise<Products> {
-    var products = await ProductModel.find({});
+    let products = await ProductModel.find({});
     if (category) {
       products = await ProductModel.find({ slug: category });
     }
@@ -58,7 +58,7 @@ export default class ProductResolver {
    
   }
 
-  @Query(() => Product)
+  @Query(() => Product, { description: 'Get a single product' })
   async product(@Arg('slug') slug: string): Promise<Product | undefined> {
     const product = await ProductModel.findOne({ slug });
     if(product){
@@ -67,14 +67,13 @@ export default class ProductResolver {
     return undefined;
   }
 
-  @Mutation(() => Product, { description: 'Create Category' })
+  @Mutation(() => Product, { description: 'Create Product' })
   async createProduct(
-    @Arg('product') product: AddProductInput
-  ): Promise<Product> {
-    console.log(product, 'product');
+    @Arg('product') productInput: AddProductInput): Promise<Product> {
+    console.log(productInput, 'product');
 
-    const newProduct = new ProductModel({ ...AddProductInput });
-    const result = await newProduct.save();
-    return result;
+    const newProduct = new ProductModel({ ...productInput });
+    const product = await newProduct.save();
+    return product;
   }
 }

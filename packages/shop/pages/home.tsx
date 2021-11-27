@@ -21,7 +21,7 @@ import {
 } from 'styled/pages.style';
 // Static Data Import Here
 import OFFERS from 'data/offers';
-import BannerImg from 'image/home.jpg';
+import BannerImg from 'image/homeBanner.png';
 import storeType from 'constants/storeType';
 
 const PAGE_TYPE = 'home';
@@ -33,6 +33,7 @@ function HomePage({ deviceType }) {
   const { query } = useRouter();
   const targetRef = React.useRef(null);
   const options = [
+    
     { value: 'computing', name: 'Computing and Accessories', id: '1' },
     { value: 'computers', name: 'Laptops & Computers', id: '2' },
     { value: 'gaming', name: 'Gaming Consoles', id: '3' },
@@ -59,8 +60,8 @@ function HomePage({ deviceType }) {
       <SEO title='Home - Lucky Arcade' description='Home' />
       <Modal>
         <Banner
-          intlTitleId='groceriesTitle'
-          intlDescriptionId='groceriesSubTitle'
+          intlTitleId='homeTitle'
+          intlDescriptionId='homeSubTitle'
           imageUrl={BannerImg}
         />
 
