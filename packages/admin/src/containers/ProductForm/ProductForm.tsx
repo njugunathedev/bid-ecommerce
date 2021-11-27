@@ -2,7 +2,7 @@ import React, { useState, useCallback, Children } from 'react';
 import { useForm } from 'react-hook-form';
 import uuidv4 from 'uuid/v4';
 import gql from 'graphql-tag';
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { useDrawerDispatch } from '../../context/DrawerContext';
 import Uploader from '../../components/Uploader/Uploader';
@@ -22,24 +22,16 @@ import {
   ButtonGroup,
 } from '../DrawerItems/DrawerItems.style';
 
-const options = [
-  { value: 'Laptops', name: 'Laptops', id: '1' },
-  { value: 'Computer Accessories', name: 'computer Accessories', id: '2' },
-  { value: 'Printers and Accessories', name: 'Printers and Accessories', id: '3' },
-  { value: 'Memory Devices', name: 'Computer memory devices', id: '4' },
-  { value: 'Computer cables', name: 'Computer cables', id: '5' },
-  { value: 'Computer Screens', name: 'Computer screens', id: '6' },
-  { value: 'Laptop bags', name: 'Laptop bags', id: '7' },
-  { value: 'CPUs', name: 'CPU', id: '8' },
-  { value: 'computer components', name: 'Computer components', id: '9' },
-  { value: '', name: 'Pants', id: '10' },
-];
+
+
 
 const typeOptions = [
-  { value: 'computing', name: 'Computing', id: '1' },
-  { value: 'computers', name: 'Laptops and Computers', id: '2' },
-  { value: 'gaming', name: 'Gaming Consoles', id: '3' },
-  { value: 'smartphones', name: 'Smart Phones', id: '4' },
+  { value: 'COMPUTING', name: 'Computing', id: '1' },
+  { value: 'COMPUTERS', name: 'Laptops and Computers', id: '2' },
+  { value: 'GAMING', name: 'Gaming Consoles', id: '3' },
+  { value: 'SMARTPHONES', name: 'Smart Phones', id: '4' },
+  { value: 'BLUETOOTH_SPEAKERS', name: 'Blutooth speakers and ear phones', id: '5' },
+  { value: 'CAMERAS', name: 'Cameras', id: '6' },
 ];
 const GET_CATEGORIES = gql`
   query getCategories($type: String, $searchBy: String) {
@@ -49,6 +41,7 @@ const GET_CATEGORIES = gql`
       title
       slug
       type
+      created_date
     }
   }
 `;
@@ -108,6 +101,14 @@ const AddProduct: React.FC<Props> = props => {
   const closeDrawer = useCallback(() => dispatch({ type: 'CLOSE_DRAWER' }), [
     dispatch,
   ]);
+  const { data, loading, error } = useQuery(GET_CATEGORIES, {
+    variables: {
+      type: ''
+    },
+  });
+
+
+
   const { register, handleSubmit, setValue } = useForm();
   const [type, setType] = useState([]);
   const [tag, setTag] = useState([]);
@@ -125,6 +126,8 @@ const AddProduct: React.FC<Props> = props => {
     setValue('description', value);
     setDescription(value);
   };
+
+
 
   const [createProduct] = useMutation(CREATE_PRODUCT, {
     update(cache, { data: { createProduct } }) {
@@ -157,6 +160,27 @@ const AddProduct: React.FC<Props> = props => {
   const handleUploader = files => {
     setValue('image', files[0].path);
   };
+  if (loading) {
+    return <div>Loading...</div>
+  }
+
+  
+  if (error) {
+    console.log(error);
+  }
+  const options = data.categories.map(category => ({
+    id: category.id,
+    value: category.id,
+    title: category.title,
+    name: category.title,
+    type: category.type,
+    slug: category.slug,
+    icon: category.icon,
+    created_date: category.created_date,
+
+    
+  }));
+
   const onSubmit = data => {
     const newProduct = {
       id: uuidv4(),
@@ -166,6 +190,14 @@ const AddProduct: React.FC<Props> = props => {
       image: data.image && data.image.length !== 0 ? data.image : '',
       price: Number(data.price),
       unit: data.unit,
+      categories: data.categories.map(category => ({
+        id: category.id,
+        title: category.title,
+        type: category.type,
+        slug: category.slug,
+        icon: category.icon,
+        created_date: category.created_date,
+      })),
       salePrice: Number(data.salePrice),
       discountInPercent: Number(data.discountInPercent),
       quantity: Number(data.quantity),
@@ -173,16 +205,17 @@ const AddProduct: React.FC<Props> = props => {
       slug: data.name,
       creation_date: new Date(),
     };
+    console.log(data);
     console.log(newProduct, 'newProduct data');
     try {
       createProduct({
         variables: { product: newProduct },
       });
-      
+
     } catch (error) {
       console.log(JSON.stringify(error, null, 2));
     }
-    
+
     closeDrawer();
   };
 
@@ -366,7 +399,7 @@ const AddProduct: React.FC<Props> = props => {
                     options={options}
                     labelKey="name"
                     valueKey="value"
-                    placeholder="Product Tag"
+                    placeholder="Product category"
                     value={tag}
                     onChange={handleMultiChange}
                     overrides={{
