@@ -98,7 +98,7 @@ export class AuthorInput {
 export default class AddProductInput implements Partial<Product> {
   
   @Field()
-  id: number;
+  id: string;
 
   
   @Field()
@@ -109,8 +109,8 @@ export default class AddProductInput implements Partial<Product> {
   title: string;
 
   
-  @Field(() => ProductType)
-  type: ProductType;
+  @Field(() => String)
+  type: string;
 
   
   @Field(() => [AddCategoryInput])
@@ -129,7 +129,7 @@ export default class AddProductInput implements Partial<Product> {
   @Field(type => [GalleryInput], { nullable: true })
   gallery: GalleryInput[];
 
-  @Field()
+  @Field(()=> String)
   description: string;
 
   

@@ -37,7 +37,9 @@ export default class ProductResolver {
     }
 
     // return await products.slice(0, limit);
-    products = await search(products, ['name'], searchText);
+    if(searchText){
+      products = await ProductModel.find({ title: { $regex: searchText, $options: 'i' } });
+    }
     const hasMore = products.length > offset + limit;
     if (products) {
       
@@ -60,9 +62,9 @@ export default class ProductResolver {
 
   @Query(() => Product, { description: 'Get a single product' })
   async product(@Arg('slug') slug: string): Promise<Product | undefined> {
-    const product = await ProductModel.findOne({ slug });
+    const product = await ProductModel.find({ slug });
     if(product){
-      return product;
+      return product[0];
     }
     return undefined;
   }

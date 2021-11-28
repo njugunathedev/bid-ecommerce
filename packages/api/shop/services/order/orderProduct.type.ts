@@ -6,7 +6,7 @@ import { ObjectType, Field, ID, Int } from 'type-graphql';
 export default class OrderedProduct {
   @prop()
   @Field(type => ID)
-  id: number;
+  id: string;
 
   @prop()
   @Field()

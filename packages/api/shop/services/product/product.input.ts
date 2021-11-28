@@ -5,7 +5,7 @@ import { ProductType } from './product.enum';
 @InputType()
 class ProductSearchInput {
   @Field({ nullable: true })
-  id?: number;
+  id?: string;
 
   @Field( type => ProductType, { nullable: true })
   type: ProductType;

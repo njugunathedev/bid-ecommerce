@@ -148,7 +148,10 @@ export const Products: React.FC<ProductsProps> = ({
     );
   }
 
-  if (error) return <div>{error.message}</div>;
+  if (error){
+    console.log(JSON.stringify(error, null, 2));
+    return <div>{error.message}</div>;
+  } 
   if (!data || !data.products || data.products.items.length === 0) {
     return <NoResultFound />;
   }

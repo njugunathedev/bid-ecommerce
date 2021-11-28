@@ -62,7 +62,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <Image url={image} className="product-image" />
         {discountInPercent && discountInPercent !== 0 ? (
           <>
-            <SaleTag>Sale</SaleTag>
+            <SaleTag>Bid</SaleTag>
             <DiscountPercent>{discountInPercent}% Off</DiscountPercent>
           </>
         ) : null}
@@ -72,7 +72,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <ProductWeight>{weight}</ProductWeight>
         <ProductMeta>
           <ProductPriceWrapper>
+            
             <ProductPrice>
+              
               {currency}
               {salePrice && salePrice !== 0 ? salePrice : price}
             </ProductPrice>

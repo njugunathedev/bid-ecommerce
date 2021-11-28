@@ -97,7 +97,7 @@ const GET_PRODUCTS = gql`
 
 const typeSelectOptions = [
   //TODO Change to enum
-  { value: 'BOOK', label: 'Computing and Accessories' },
+  { value: 'computing', label: 'Computing and Accessories' },
   { value: 'computers', label: 'Laptops and Computers' },
   { value: 'gaming', label: 'Gaming Consoles' },
   { value: 'smartphones', label: 'Smart Phones' },
@@ -108,7 +108,7 @@ const priceSelectOptions = [
 ];
 
 export default function Products() {
-  const { data, error, refetch, fetchMore } = useQuery(GET_PRODUCTS);
+  const { data, loading, error, refetch, fetchMore } = useQuery(GET_PRODUCTS);
   const [loadingMore, toggleLoading] = useState(false);
   const [type, setType] = useState([]);
   const [priceOrder, setPriceOrder] = useState([]);
@@ -116,7 +116,16 @@ export default function Products() {
 
   if (error) {
     console.log(JSON.stringify(error, null, 2));
-    return <div>Error! {error.message}</div>;
+    
+  }
+  if(loading){
+    console.log('loading')
+    return (
+      <div> 
+        Loading 
+      </div>
+    )
+
   }
   function loadMore() {
     toggleLoading(true);
@@ -228,7 +237,7 @@ export default function Products() {
                   >
                     <Fade bottom duration={800} delay={index * 10}>
                       <ProductCard
-                        title={item.name}
+                        title={item.title}
                         weight={item.unit}
                         image={item.image}
                         currency={CURRENCY}

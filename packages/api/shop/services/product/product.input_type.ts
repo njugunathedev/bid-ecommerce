@@ -6,7 +6,7 @@ import { Category } from '../category/category.type';
 @InputType({ description: 'Product Input' })
 export default class ProductInput {
   @Field(type => ID)
-  id: number;
+  id: string;
 
   @Field()
   title: string;

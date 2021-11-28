@@ -26,12 +26,12 @@ import {
 
 
 const typeOptions = [
-  { value: 'COMPUTING', name: 'Computing', id: '1' },
-  { value: 'COMPUTERS', name: 'Laptops and Computers', id: '2' },
-  { value: 'GAMING', name: 'Gaming Consoles', id: '3' },
-  { value: 'SMARTPHONES', name: 'Smart Phones', id: '4' },
-  { value: 'BLUETOOTH_SPEAKERS', name: 'Blutooth speakers and ear phones', id: '5' },
-  { value: 'CAMERAS', name: 'Cameras', id: '6' },
+  { value: 'computing', name: 'Computing', id: '1' },
+  { value: 'computers', name: 'Laptops and Computers', id: '2' },
+  { value: 'gaming', name: 'Gaming Consoles', id: '3' },
+  { value: 'smartphones', name: 'Smart Phones', id: '4' },
+  { value: 'bluetooth_speakers', name: 'Blutooth speakers and ear phones', id: '5' },
+  { value: 'cameras', name: 'Cameras', id: '6' },
 ];
 const GET_CATEGORIES = gql`
   query getCategories($type: String, $searchBy: String) {
@@ -202,7 +202,8 @@ const AddProduct: React.FC<Props> = props => {
       discountInPercent: Number(data.discountInPercent),
       quantity: Number(data.quantity),
       totalTickets: Number(data.totalTickets),
-      slug: data.name,
+
+      slug: data.name.toLowerCase().replace(/\s/g, '-'),
       creation_date: new Date(),
     };
     console.log(data);

@@ -58,12 +58,7 @@ const AddCategory: React.FC<Props> = props => {
       type: ''
     }
   });
-  console.log(data, 'data');
-  const options = data ? data.categories.map(category => ({
-    value: category.slug,
-    id: category.id,
-    name: category.title,
-    })) : [];
+  
   const { register, handleSubmit, setValue } = useForm();
   const [category, setCategory] = useState([]);
   React.useEffect(() => {
@@ -103,6 +98,15 @@ const AddCategory: React.FC<Props> = props => {
     }
     
   };
+  if (loading) {
+    return <div>Loading...</div>
+  }
+  console.log(data, 'data');
+  const options = data ? data.categories.map(category => ({
+    value: category.slug,
+    id: category.id,
+    name: category.title,
+    })) : [];
  
   const handleChange = ({ value }) => {
     setValue('parent', value);

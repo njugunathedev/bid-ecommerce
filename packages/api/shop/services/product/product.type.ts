@@ -103,8 +103,12 @@ export const AuthorModel = getModelForClass(Author);
 @ObjectType()
 export class Product {
   @prop()
-  @Field()
-  id: number;
+  @Field(() => ID)
+  id: string;
+
+  @prop()
+  @Field(type => String)
+  description: string;
 
   @prop()
   @Field()
@@ -115,8 +119,8 @@ export class Product {
   title: string;
 
   @prop()
-  @Field(() => ProductType)
-  type: ProductType;
+  @Field(() => String)
+  type: string;
 
   @prop()
   @Field(() => [Category])
@@ -134,8 +138,7 @@ export class Product {
   @Field(() => [Gallery], { nullable: true })
   gallery: Gallery[];
 
-  @Field()
-  description: string;
+  
 
   @prop()
   @Field()
