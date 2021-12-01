@@ -7,8 +7,8 @@ class ProductSearchInput {
   @Field({ nullable: true })
   id?: string;
 
-  @Field( type => ProductType, { nullable: true })
-  type: ProductType;
+  @Field( type => String, { nullable: true })
+  type: string;
 
   @Field({ nullable: true })
   category?: string;

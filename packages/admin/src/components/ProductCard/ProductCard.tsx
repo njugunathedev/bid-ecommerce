@@ -20,6 +20,7 @@ type ProductCardProps = {
   title: string;
   image: any;
   weight?: string;
+  tickets?: any;
   currency?: string;
   description?: string;
   price: number;
@@ -31,6 +32,7 @@ type ProductCardProps = {
 
 const ProductCard: React.FC<ProductCardProps> = ({
   title,
+  tickets,
   image,
   weight,
   price,

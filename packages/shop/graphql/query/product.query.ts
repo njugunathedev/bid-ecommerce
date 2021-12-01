@@ -55,6 +55,14 @@ export const GET_PRODUCT = gql`
       gallery {
         url
       }
+      tickets{
+        id
+        ticketType
+        ticketNumber
+        roundNumber
+        userId
+
+      }
       image
       categories {
         id
@@ -72,6 +80,11 @@ export const GET_PRODUCT_DETAILS = gql`
       title
       type
       unit
+      ticket{
+        id
+        userId
+      }
+      totalTickets
       price
       salePrice
       description

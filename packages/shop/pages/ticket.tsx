@@ -14,10 +14,10 @@ type Props = {
     desktop: boolean;
   };
 };
-const OrderPage: NextPage<Props> = ({ deviceType }) => {
+const TicketPage: NextPage<Props> = ({ deviceType }) => {
   return (
     <>
-      <SEO title='Order - Lucky Arcade' description='Order Details' />
+      <SEO title='Tickets - Lucky Arcade' description='My Tickets' />
       <Modal>
         <PageWrapper>
           {deviceType.desktop && (
@@ -33,4 +33,4 @@ const OrderPage: NextPage<Props> = ({ deviceType }) => {
   );
 };
 
-export default withApollo(OrderPage);
+export default withApollo(TicketPage);

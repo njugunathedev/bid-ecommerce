@@ -77,6 +77,14 @@ const GET_PRODUCTS = gql`
         slug
         unit
         price
+        totalTickets
+        ticket {
+          id
+          roundNumber
+          ticketNumber
+          ticketType
+          userId
+        }
         salePrice
         description
         discountInPercent
@@ -250,6 +258,8 @@ export default function CustomCarousel({
               >
                 <ProductCard
                   title={item.title}
+                  tickets={item.ticket}
+                  totalTickets={0}
                   description={item.description}
                   image={item.image}
                   weight={item.unit}

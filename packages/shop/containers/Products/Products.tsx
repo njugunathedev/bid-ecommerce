@@ -47,6 +47,14 @@ const GET_PRODUCTS = gql`
         description
         discountInPercent
         type
+        totalTickets
+        ticket {
+          id
+          roundNumber
+          ticketNumber
+          ticketType
+          userId
+        }
         image
         gallery {
           url
@@ -189,9 +197,12 @@ export const Products: React.FC<ProductsProps> = ({
                 delay={index * 10}
                 style={{ height: '100%' }}
               >
+                
                 <ProductCard
                   title={item.title}
                   description={item.description}
+                  tickets={item.ticket}
+                  totalTickets = {item.totalTickets}
                   image={item.image}
                   weight={item.unit}
                   currency={CURRENCY}

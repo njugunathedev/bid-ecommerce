@@ -141,9 +141,9 @@ const ProductDetails: React.FunctionComponent<ProductDetailsProps> = ({
               )}
             </ProductCartBtn>
 
-
+                
             <div>
-              <GroupAvatar />
+              <GroupAvatar data={data.ticket} />
             </div>
 
 

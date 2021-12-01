@@ -1,34 +1,34 @@
 import gql from 'graphql-tag';
 
 export const ADD_ORDER = gql`
-  mutation ($orderInput: AddOrderInput!) {
-    addOrder(orderInput: $orderInput) {
+mutation ($orderInput: AddOrderInput!) {
+  addOrder(orderInput: $orderInput) {
+    id
+    userId
+    products{
       id
-      userId
-      products{
-        id
-        title
-        image
-        quantity
-        category
-        weight
-        price
-        total
-      }
-      amount
-      deliveryTime
-      deliveryAddress
-      subtotal
-      discount
-      status
-      deliveryFee
-      date
-      
+      title
+      image
+      quantity
+      category
+      weight
+      price
+      total
     }
+    amount
+    deliveryTime
+    deliveryAddress
+    subtotal
+    discount
+    status
+    deliveryFee
+    date
+    
   }
+}
 `;
 export const GET_ORDERS = gql`
-  query getOrders($user: Int, $limit: Int, $text: String) {
+  query getOrders($user: String!, $limit: Int, $text: String) {
     orders(user: $user, limit: $limit, text: $text) {
       id
       userId

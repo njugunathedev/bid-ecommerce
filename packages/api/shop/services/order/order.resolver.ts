@@ -17,42 +17,44 @@ export class OrderResolver {
     @Arg('limit', type => Int, { defaultValue: 7 }) limit: number
   ): Promise<Order[]> {
     // return await take(this.items.filter(item => item.userId === user), limit);
-    const orders = await OrderModel.find({ userId: user });
+    const filter: any = { userId: user };
     if (text) {
-      return filterOrder(orders, limit);
+      filter.text = { $regex: text, $options: 'i' };
     }
-    return orders;
+    return await OrderModel.find(filter).limit(limit); 
+
+
   }
 
   @Query(() => Order, { description: 'Get single order' })
   async order(@Arg('id', type => String) id: string): Promise<Order | undefined> {
     const order = await OrderModel.findOne({ id });
-    if(order){
+    if (order) {
       return order
     }
-    else{
+    else {
       return undefined
     }
   }
 
   @Mutation(() => Order, { description: 'Add an Order' })
-  async addOrder(@Arg('orderInput') orderInput: AddOrderInput): Promise<Order>{
+  async addOrder(@Arg('orderInput') orderInput: AddOrderInput): Promise<Order> {
     try {
       const newOrder = new OrderModel({ ...orderInput });
       const order = await newOrder.save();
       //this.items.push(orderInput);
       //add to db
       return order;
-      
-      
+
+
     } catch (error) {
       console.log(error);
       process.exit(1);
-      
+
     }
-    
-    
-      
-     
+
+
+
+
   }
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import gql from 'graphql-tag';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { useQuery } from '@apollo/react-hooks';
+import { GET_ORDERS } from 'graphql/mutation/order';
 import {
   OrderBox,
   OrderListWrapper,
@@ -25,30 +26,7 @@ import { FormattedMessage } from 'react-intl';
 
 const progressData = ['Order Received', 'Order On The Way', 'Order Delivered'];
 
-const GET_ORDERS = gql`
-  query getAllOrders($text: String, $user: Int!, $limit: Int) {
-    orders(text: $text, limit: $limit, user: $user) {
-      id
-      status
-      deliveryAddress
-      amount
-      date
-      subtotal
-      deliveryFee
-      discount
-      deliveryTime
-      products {
-        title
-        price
-        total
-        image
-        weight
-        quantity
-        id
-      }
-    }
-  }
-`;
+
 
 const orderTableColumns = [
   {
@@ -113,7 +91,7 @@ const OrdersContent: React.FC<OrderTableProps> = ({
   const { data, error, loading } = useQuery(GET_ORDERS, {
     variables: {
       limit: 7,
-      user: 1,
+      user: "1",
     },
   });
 
@@ -128,7 +106,7 @@ const OrdersContent: React.FC<OrderTableProps> = ({
     return <div>loading...</div>;
   }
 
-  if (error) return <div>{error.message}</div>;
+  if (error) return <div>{console.log(JSON.stringify(error, null, 2))}{error.message}</div>;
 
   const handleClick = order => {
     setOrder(order);

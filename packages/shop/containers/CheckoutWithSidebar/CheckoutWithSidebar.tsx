@@ -67,6 +67,7 @@ import { APPLY_COUPON } from 'graphql/mutation/coupon';
 import { useLocale } from 'contexts/language/language.provider';
 import { date } from 'yup';
 import { DeliveryAddress } from 'containers/Checkout/Checkout.style';
+import { GET_PRODUCT } from 'graphql/query/product.query';
 
 //gql
 const CREATE_TICKET = gql`
@@ -81,6 +82,7 @@ mutation ($ticketInput: TicketInput!) {
 }
 `;
 
+
 const GET_TICKETS = gql`
 query getTickets($userId: String, $limit: Int, $text: String) {
     tickets(userId: $userId, limit: $limit, text: $text){
@@ -92,6 +94,8 @@ query getTickets($userId: String, $limit: Int, $text: String) {
     }
   }
 `;
+
+
 
 
 const ADD_ORDER = gql`
@@ -122,6 +126,22 @@ const ADD_ORDER = gql`
   }
 `;
 
+const UPDATE_PRODUCT = gql`
+  mutation ($ticket: TicketInput!, $productId: String!) {
+    updateProductTickets(ticket: $ticket, id: $productId) {
+      id
+      title
+      description
+      image
+      quantity
+      unit
+      type
+      price
+    }
+  }
+`;
+
+
 const GET_ORDERS = gql`
   query getOrders($user: String, $limit: Int, $text: String) {
     orders(user: $user, limit: $limit, text: $text) {
@@ -132,10 +152,9 @@ const GET_ORDERS = gql`
         title
         image
         quantity
-        category
-        weight
+        unit
         price
-        total
+        
       }
       amount
       deliveryTime
@@ -239,6 +258,8 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType, user })
 
     },
   });
+  const [updateProduct] = useMutation(UPDATE_PRODUCT);
+
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -317,7 +338,7 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType, user })
             id: uuidv4(),
             userId: user.me.id,
             ticketType: "1939",
-            ticketNumber: "1",
+            ticketNumber: uuidv4(),
             roundNumber: items[i].id.toString()
           }
 
@@ -326,6 +347,13 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType, user })
               ticketInput: newTicket,
             },
           });
+          const response3 = await updateProduct({
+            variables: {
+              productId: items[i].id.toString(),
+              ticket: newTicket,
+            },
+          });
+          console.log(response3);
           console.log(response2);
         }
 

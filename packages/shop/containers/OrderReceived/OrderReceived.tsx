@@ -76,6 +76,10 @@ const OrderRecived: React.FunctionComponent<OrderRecivedProps> = ({ orderId }) =
   if(loading){
     console.log(loading)
   }
+  if(error){
+    console.log(error)
+    return <div>Error fetching data</div>
+  }
   if(data){
     console.log('data', typeof data)
     console.log(data)
@@ -120,7 +124,9 @@ const OrderRecived: React.FunctionComponent<OrderRecivedProps> = ({ orderId }) =
                   defaultMessage="Order Number"
                 />
               </Text>
-              <Text>{data.order.id}</Text>
+              <Text>
+                {data ? data.order.id : ''}
+              </Text>
             </InfoBlock>
 
             <InfoBlock>
@@ -129,7 +135,7 @@ const OrderRecived: React.FunctionComponent<OrderRecivedProps> = ({ orderId }) =
               </Text>
               <Text>
                 {
-                  data.order.date
+                  data ? data.order.date : ''
                 }
               </Text>
             </InfoBlock>

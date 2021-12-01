@@ -17,9 +17,11 @@ type ProductCardProps = {
   title: string;
   image: any;
   weight: string;
+  totalTickets: number;
   currency: string;
   description: string;
   price: number;
+  tickets: any;
   salePrice?: number;
   discountInPercent?: number;
   data: any;
@@ -38,6 +40,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   title,
   image,
   weight,
+  tickets,
+  totalTickets,
   price,
   salePrice,
   discountInPercent,
@@ -148,9 +152,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
         </div>
         <div>
-          <BidProgressBar />
+          <BidProgressBar totalBids={tickets.length} />
           <span className="bids-left">
-            Bids Left: 10
+            Bids Left: {
+              data.totalTickets - data.ticket.length
+            }
+            
           </span>
         </div>
         

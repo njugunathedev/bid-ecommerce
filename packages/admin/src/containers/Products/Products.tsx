@@ -67,7 +67,7 @@ export const LoaderItem = styled('div', () => ({
 
 const GET_PRODUCTS = gql`
   query getProducts(
-    $type: ProductType
+    $type: String
     $sortByPrice: String
     $searchText: String
     $offset: Int
@@ -240,6 +240,7 @@ export default function Products() {
                         title={item.title}
                         weight={item.unit}
                         image={item.image}
+                        tickets={item.tickets}
                         currency={CURRENCY}
                         price={item.price}
                         salePrice={item.salePrice}

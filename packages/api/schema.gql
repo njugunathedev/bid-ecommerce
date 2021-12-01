@@ -142,7 +142,7 @@ type Mutation {
   deletePaymentCard(cardId: String!): User!
 
   # Update Product
-  updateProduct(ticket: TicketInput!, id: String!): Product!
+  updateProductTickets(ticket: TicketInput!, id: String!): Product!
 
   # Charge a Payment
   charge(paymentInput: PaymentInput!): Payment!

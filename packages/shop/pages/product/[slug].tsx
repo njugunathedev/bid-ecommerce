@@ -34,7 +34,10 @@ const ProductPage: NextPage<Props> = ({ deviceType }) => {
     return <div>loading...</div>;
   }
 
-  if (error) return <div>Error: {error.message}</div>;
+  if (error){
+    console.log(JSON.stringify(error, null, 2));
+    return <div>Error: {error.message}</div>;
+  }
 
   let content;
   switch (data.product.type) {

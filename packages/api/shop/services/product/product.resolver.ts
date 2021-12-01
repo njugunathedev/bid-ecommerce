@@ -94,11 +94,11 @@ export class ProductResolver {
   // }
 
   @Mutation(() => Product, { description: 'Update Product' })
-  async updateProduct(
+  async updateProductTickets(
     @Arg('id', (id) => String) id: string,
     @Arg('ticket') ticket: TicketInput
   ): Promise<Product> {
-    const product = await ProductModel.findById(id);
+    const product = await ProductModel.findOne({ id });
     if (!product) {
       throw new Error('Product not found');
     }
@@ -115,6 +115,7 @@ export class ProductResolver {
 
 
   }
+
 
 
 }

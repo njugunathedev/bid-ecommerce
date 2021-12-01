@@ -5,6 +5,12 @@ import Box from '@mui/material/Box';
 
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 
+
+type BidProgressBarProps = {
+  totalBids: any;
+
+}
+
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 10,
   borderRadius: 5,
@@ -19,12 +25,12 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 
 
 
-export default function BorderProgressBar (){
+export default function BorderProgressBar ({ totalBids }: BidProgressBarProps) {
   return (
     <Box sx={{ flexGrow: 1 }}>
     
       <br />
-      <BorderLinearProgress variant="determinate" value={70} />
+      <BorderLinearProgress variant="determinate" value={totalBids} />
     </Box>
   );
 }
