@@ -1,7 +1,7 @@
 import React from 'react';
 import { NextPage } from 'next';
 import { SEO } from 'components/seo';
-import Order from 'containers/Profile/Order/Order';
+import Ticket from 'containers/Profile/Order/Ticket';
 import { PageWrapper, SidebarSection } from 'containers/Profile/Profile.style';
 import Sidebar from 'containers/Profile/Sidebar/Sidebar';
 import { withApollo } from 'helper/apollo';
@@ -26,7 +26,7 @@ const TicketPage: NextPage<Props> = ({ deviceType }) => {
             </SidebarSection>
           )}
 
-          <Order deviceType={deviceType} />
+          <Ticket deviceType={deviceType} />
         </PageWrapper>
       </Modal>
     </>

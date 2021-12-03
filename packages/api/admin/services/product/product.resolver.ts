@@ -69,6 +69,30 @@ export default class ProductResolver {
     return undefined;
   }
 
+  @Mutation(() => Product, { description: 'Close Product Ticket' })
+  async closeProductTickets(
+    @Arg('productId', (productId) => String) productId: string,
+    @Arg('ticketId', (ticketId) => String)  ticketId: string
+  ): Promise<Product> {
+    const product = await ProductModel.findOne({ id: productId });
+    if (!product) {
+      throw new Error('Product not found');
+    }
+    if(product.ticket){
+      let ticket = product.ticket.find((item) => item.id === ticketId);
+      if(ticket){
+        ticket.ticketStatus = 'closed';
+        await product.save();
+        return product;
+      }
+    }
+    
+    const result = await product.save();
+    return result;
+
+
+  }
+
   @Mutation(() => Product, { description: 'Create Product' })
   async createProduct(
     @Arg('product') productInput: AddProductInput): Promise<Product> {

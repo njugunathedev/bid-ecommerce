@@ -11,6 +11,7 @@ import CustomerResolver from './admin/services/customer/customer.resolver';
 import CouponResolver from './admin/services/coupon/coupon.resolver';
 import OrderResolver from './admin/services/order/order.resolver';
 import StuffResolver from './admin/services/stuff/stuff.resolver';
+import TicketsResolver from './admin/services/ticket/tickets.resolver';
 const app: express.Application = express();
 const path = '/admin/graphql';
 const PORT = process.env.PORT || 4000;
@@ -24,6 +25,7 @@ const main = async () => {
       OrderResolver,
       CouponResolver,
       StuffResolver,
+      TicketsResolver
     ],
     validate: false,
     globalMiddlewares: [TypegooseMiddleware],

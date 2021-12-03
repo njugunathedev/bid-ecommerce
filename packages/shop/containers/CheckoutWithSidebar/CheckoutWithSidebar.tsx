@@ -90,6 +90,8 @@ query getTickets($userId: String, $limit: Int, $text: String) {
       userId
       ticketType
       ticketNumber
+      ticketStatus
+      price
       roundNumber
     }
   }
@@ -245,19 +247,7 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType, user })
 
     },
   });
-  const [addTicket] = useMutation(CREATE_TICKET, {
-    update(cache, { data: { addTicket } }) {
-      const { tickets } = cache.readQuery({
-        query: GET_TICKETS,
-      });
-
-      cache.writeQuery({
-        query: GET_ORDERS,
-        data: { tickets: tickets.concat([addTicket]) },
-      });
-
-    },
-  });
+  const [addTicket] = useMutation(CREATE_TICKET);
   const [updateProduct] = useMutation(UPDATE_PRODUCT);
 
 
@@ -273,7 +263,7 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType, user })
           id: item.id,
           title: item.title,
           image: item.image,
-          weight: item.unit,
+          weight: item.unit.toString(),
           category: item.categories[0].slug,
           price: item.price,
           quantity: item.quantity,
@@ -324,14 +314,14 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType, user })
       // )
 
 
-      const newTicket = items.map(item => ({
-        id: uuidv4(),
-        userId: user.me.id,
-        ticketType: "1939",
-        ticketNumber: "1",
-        roundNumber: item.id.toString()
-      }))
-
+      // const newTicket = items.map(item => ({
+      //   id: uuidv4(),
+      //   userId: user.me.id,
+      //   ticketType: "1939",
+      //   ticketNumber: "1",
+      //   roundNumber: item.id.toString()
+      // }))
+      console.log(items);
       try {
         for (let i = 0; i < items.length; i++) {
           const newTicket = {
@@ -339,6 +329,8 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType, user })
             userId: user.me.id,
             ticketType: "1939",
             ticketNumber: uuidv4(),
+            ticketStatus: "1",
+            price: items[i].price,
             roundNumber: items[i].id.toString()
           }
 
@@ -347,6 +339,7 @@ const CheckoutWithSidebar: React.FC<MyFormProps> = ({ token, deviceType, user })
               ticketInput: newTicket,
             },
           });
+          
           const response3 = await updateProduct({
             variables: {
               productId: items[i].id.toString(),

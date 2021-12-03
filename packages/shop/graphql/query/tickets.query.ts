@@ -8,6 +8,8 @@ query getTickets($userId: String, $limit: Int, $text: String) {
       userId
       ticketType
       ticketNumber
+      ticketStatus
+      price
       roundNumber
     }
   }

@@ -90,7 +90,7 @@ const OrdersContent: React.FC<OrderTableProps> = ({
   const orderListHeight = size.height - 79;
   const { data, error, loading } = useQuery(GET_ORDERS, {
     variables: {
-      limit: 7,
+      limit: 15,
       user: "1",
     },
   });

@@ -278,6 +278,8 @@ type Ticket {
   roundNumber: String!
   ticketNumber: String!
   ticketType: String!
+  ticketStatus: String
+  price: Int
   userId: String!
 }
 
@@ -286,6 +288,8 @@ input TicketInput {
   roundNumber: String!
   ticketNumber: String!
   ticketType: String!
+  ticketStatus: String
+  price: Int
   userId: String!
 }
 

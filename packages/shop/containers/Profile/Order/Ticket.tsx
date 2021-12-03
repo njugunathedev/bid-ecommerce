@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import gql from 'graphql-tag';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { useQuery } from '@apollo/react-hooks';
-import { GET_ORDERS } from 'graphql/mutation/order';
+import { GET_TICKETS } from 'graphql/query/tickets.query';
 import {
   OrderBox,
   OrderListWrapper,
@@ -28,7 +28,7 @@ const progressData = ['Order Received', 'Order On The Way', 'Order Delivered'];
 
 
 
-const tickettTableColumns = [
+const ticketTableColumns = [
   {
     title: <FormattedMessage id='cartItems' defaultMessage='Items' />,
     dataIndex: '',
@@ -80,7 +80,7 @@ type TicketTableProps = {
   };
 };
 
-const OrdersContent: React.FC<TicketTableProps> = ({
+const TicketsContent: React.FC<TicketTableProps> = ({
   deviceType: { mobile, tablet, desktop },
 }) => {
   const [order, setOrder] = useState(null);
@@ -88,10 +88,10 @@ const OrdersContent: React.FC<TicketTableProps> = ({
 
   const [targetRef, size] = useComponentSize();
   const orderListHeight = size.height - 79;
-  const { data, error, loading } = useQuery(GET_ORDERS, {
+  const { data, error, loading } = useQuery(GET_TICKETS, {
     variables: {
       limit: 7,
-      user: "1",
+      userId: "1",
     },
   });
 
@@ -179,7 +179,7 @@ const OrdersContent: React.FC<TicketTableProps> = ({
                 deliveryFee={order.deliveryFee}
                 grandTotal={order.amount}
                 tableData={order.products}
-                columns={orderTableColumns}
+                columns={ticketTableColumns}
               />
             )}
           </OrderDetailsWrapper>
@@ -192,7 +192,7 @@ const OrdersContent: React.FC<TicketTableProps> = ({
             orders={data.orders}
             className={order && order.id === active ? 'active' : ''}
             progressData={progressData}
-            columns={orderTableColumns}
+            columns={ticketTableColumns}
             onClick={() => {
               handleClick(order);
             }}
@@ -203,4 +203,4 @@ const OrdersContent: React.FC<TicketTableProps> = ({
   );
 };
 
-export default OrdersContent;
+export default TicketsContent;

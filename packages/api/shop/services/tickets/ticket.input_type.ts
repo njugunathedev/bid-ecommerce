@@ -13,6 +13,12 @@ export class TicketInput {
 
     @Field()
     ticketType: string;
+
+    @Field({ nullable: true })
+    ticketStatus: string;
+
+    @Field(() => Int, { nullable: true })
+    price: number;
     
     @Field()
     userId: string;

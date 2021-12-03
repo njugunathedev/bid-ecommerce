@@ -23,6 +23,15 @@ export class Ticket {
     ticketType: string;
 
     @prop()
+    @Field({ nullable: true })
+    ticketStatus: string;
+
+    @prop()
+    @Field(() => Int, { nullable: true })
+    price: number;
+    
+
+    @prop()
     @Field()
     userId: string;
 

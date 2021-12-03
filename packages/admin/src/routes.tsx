@@ -6,6 +6,7 @@ import {
   CATEGORY,
   DASHBOARD,
   ORDERS,
+  TICKETS,
   SETTINGS,
   CUSTOMERS,
   COUPONS,
@@ -19,6 +20,7 @@ const AdminLayout = lazy(() => import("./containers/Layout/Layout"));
 const Dashboard = lazy(() => import("./containers/Dashboard/Dashboard"));
 const Category = lazy(() => import("./containers/Category/Category"));
 const Orders = lazy(() => import("./containers/Orders/Orders"));
+const Tickets = lazy(() => import("./containers/Tickets/Tickets"));
 const Settings = lazy(() => import("./containers/Settings/Settings"));
 const SiteSettingForm = lazy(() =>
   import("./containers/SiteSettingForm/SiteSettingForm")
@@ -90,6 +92,13 @@ const Routes = () => {
             <AdminLayout>
               <Suspense fallback={<InLineLoader />}>
                 <Orders />
+              </Suspense>
+            </AdminLayout>
+          </PrivateRoute>
+          <PrivateRoute path={TICKETS}>
+            <AdminLayout>
+              <Suspense fallback={<InLineLoader />}>
+                <Tickets />
               </Suspense>
             </AdminLayout>
           </PrivateRoute>
