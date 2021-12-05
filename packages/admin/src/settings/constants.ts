@@ -8,6 +8,7 @@ export const LOGOUT = '/logout';
 export const ORDERS = '/orders';
 export const TICKETS = '/tickets';
 export const CUSTOMERS = '/customers';
+export const BIDDING = '/bidding';
 export const COUPONS = '/coupons';
 export const SETTINGS = '/settings';
 export const STUFF_MEMBERS = '/staff-members';

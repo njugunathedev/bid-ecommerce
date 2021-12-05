@@ -18,8 +18,8 @@ import {
   NoOrderFound,
 } from './Order.style';
 
-import OrderDetails from './SingleOrderDetails/OrderDetails';
-import OrderCard from './OrderCard/OrderCard';
+import TicketDetails from './SingleOrderDetails/TicketDetail';
+import TicketCard from './OrderCard/TicketCard';
 import OrderCardMobile from './OrderCard/orderCardMobile';
 import useComponentSize from 'helper/useComponentSize';
 import { FormattedMessage } from 'react-intl';
@@ -83,7 +83,7 @@ type TicketTableProps = {
 const TicketsContent: React.FC<TicketTableProps> = ({
   deviceType: { mobile, tablet, desktop },
 }) => {
-  const [order, setOrder] = useState(null);
+  const [ticket, setTicket] = useState(null);
   const [active, setActive] = useState('');
 
   const [targetRef, size] = useComponentSize();
@@ -96,11 +96,11 @@ const TicketsContent: React.FC<TicketTableProps> = ({
   });
 
   useEffect(() => {
-    if (data && data.orders && data.orders.length !== 0) {
-      setOrder(data.orders[0]);
-      setActive(data.orders[0].id);
+    if (data && data.tickets && data.tickets.length !== 0) {
+      setTicket(data.tickets[0]);
+      setActive(data.tickets[0].id);
     }
-  }, [data && data.orders]);
+  }, [data && data.tickets]);
 
   if (loading) {
     return <div>loading...</div>;
@@ -108,22 +108,22 @@ const TicketsContent: React.FC<TicketTableProps> = ({
 
   if (error) return <div>{console.log(JSON.stringify(error, null, 2))}{error.message}</div>;
 
-  const handleClick = order => {
-    setOrder(order);
-    setActive(order.id);
+  const handleClick = ticket => {
+    setTicket(ticket);
+    setActive(ticket.id);
   };
-
-  console.log(data.orders, 'data.orders', order, 'order');
+  console.log(data)
+  console.log(data.tickets, 'data.tickets', ticket, 'ticket');
 
   return (
     <OrderBox>
       {desktop && (
         <>
-          <OrderListWrapper style={{ height: size.height }}>
+          <div style={{ height: size.height }}>
             <Title style={{ padding: '0 20px' }}>
               <FormattedMessage
-                id='intlOrderPageTitle'
-                defaultMessage='My Order'
+                id='intlTicketPageTitle'
+                defaultMessage='My Ticket'
               />
             </Title>
 
@@ -135,18 +135,20 @@ const TicketsContent: React.FC<TicketTableProps> = ({
               autoHeightMax={isNaN(orderListHeight) ? 500 : orderListHeight}
             >
               <OrderList>
-                {data.orders.length !== 0 ? (
-                  data.orders.map((order: any) => (
-                    <OrderCard
-                      key={order.id}
-                      orderId={order.id}
-                      className={order && order.id === active ? 'active' : ''}
-                      status={progressData[order.status - 1]}
-                      date={order.date}
-                      deliveryTime={order.deliveryTime}
-                      amount={order.amount}
+                {data.tickets.length !== 0 ? (
+                  data.tickets.map((ticket: any) => (
+                    <TicketCard
+                      key={ticket.id}
+                      ticketId={ticket.id}
+                      className={ticket && ticket.id === active ? 'active' : ''}
+                      status={ticket.ticketStatus}
+                      ticketNumber = {ticket.ticketNumber}
+                      roundNumber = {ticket.roundNumber}
+
+                      
+                      amount={ticket.price}
                       onClick={() => {
-                        handleClick(order);
+                        handleClick(ticket);
                       }}
                     />
                   ))
@@ -160,41 +162,21 @@ const TicketsContent: React.FC<TicketTableProps> = ({
                 )}
               </OrderList>
             </Scrollbars>
-          </OrderListWrapper>
+          </div>
 
-          <OrderDetailsWrapper ref={targetRef}>
-            <Title style={{ padding: '0 20px' }}>
-              <FormattedMessage
-                id='orderDetailsText'
-                defaultMessage='Order Details'
-              />
-            </Title>
-            {order && order.id && (
-              <OrderDetails
-                progressStatus={order.status}
-                progressData={progressData}
-                address={order.deliveryAddress}
-                subtotal={order.subtotal}
-                discount={order.discount}
-                deliveryFee={order.deliveryFee}
-                grandTotal={order.amount}
-                tableData={order.products}
-                columns={ticketTableColumns}
-              />
-            )}
-          </OrderDetailsWrapper>
+          
         </>
       )}
 
       {(mobile || tablet) && (
         <OrderList>
           <OrderCardMobile
-            orders={data.orders}
-            className={order && order.id === active ? 'active' : ''}
+            orders={data.tickets}
+            className={ticket && ticket.id === active ? 'active' : ''}
             progressData={progressData}
             columns={ticketTableColumns}
             onClick={() => {
-              handleClick(order);
+              handleClick(ticket);
             }}
           />
         </OrderList>

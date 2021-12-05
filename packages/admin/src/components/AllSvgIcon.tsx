@@ -1,5 +1,6 @@
 import React from 'react';
 import { FcPrint } from 'react-icons/fc';
+import { FaTicketAlt } from 'react-icons/fa';
 export const Accessories = ({
   color = 'currentColor',
   width = '18px',
@@ -2657,6 +2658,14 @@ export const RefundIcon = ({
     </svg>
   );
 };
+//Tickets icon
+export const TicketsIcon = () => {
+  return (
+
+    <FaTicketAlt />
+
+  )
+}
 
 // Coupons
 export const CouponIcon = ({

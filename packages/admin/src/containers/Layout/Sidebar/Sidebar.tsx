@@ -15,6 +15,7 @@ import {
   CUSTOMERS,
   COUPONS,
   SETTINGS,
+  TICKETS,
 } from '../../../settings/constants';
 import { AuthContext } from '../../../context/auth';
 import {
@@ -26,6 +27,7 @@ import {
   CouponIcon,
   SettingIcon,
   LogoutIcon,
+  TicketsIcon
 } from '../../../components/AllSvgIcon';
 
 const sidebarMenus = [
@@ -64,6 +66,12 @@ const sidebarMenus = [
     path: COUPONS,
     exact: false,
     icon: <CouponIcon />,
+  },
+  {
+    name: 'Tickets',
+    path: TICKETS,
+    exact: false,
+    icon: <TicketsIcon />,
   },
   {
     name: 'Settings',

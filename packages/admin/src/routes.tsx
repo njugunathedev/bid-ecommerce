@@ -11,7 +11,8 @@ import {
   CUSTOMERS,
   COUPONS,
   STUFF_MEMBERS,
-  SITE_SETTINGS
+  SITE_SETTINGS,
+  BIDDING
 } from "./settings/constants";
 import AuthProvider, { AuthContext } from "./context/auth";
 import { InLineLoader } from "./components/InlineLoader/InlineLoader";
@@ -20,6 +21,7 @@ const AdminLayout = lazy(() => import("./containers/Layout/Layout"));
 const Dashboard = lazy(() => import("./containers/Dashboard/Dashboard"));
 const Category = lazy(() => import("./containers/Category/Category"));
 const Orders = lazy(() => import("./containers/Orders/Orders"));
+const Bidding = lazy(() => import("./containers/Tickets/ProductTickets"));
 const Tickets = lazy(() => import("./containers/Tickets/Tickets"));
 const Settings = lazy(() => import("./containers/Settings/Settings"));
 const SiteSettingForm = lazy(() =>
@@ -92,6 +94,13 @@ const Routes = () => {
             <AdminLayout>
               <Suspense fallback={<InLineLoader />}>
                 <Orders />
+              </Suspense>
+            </AdminLayout>
+          </PrivateRoute>
+          <PrivateRoute path={BIDDING}>
+            <AdminLayout>
+              <Suspense fallback={<InLineLoader />}>
+                <Bidding />
               </Suspense>
             </AdminLayout>
           </PrivateRoute>

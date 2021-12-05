@@ -180,7 +180,7 @@ const AddProduct: React.FC<Props> = props => {
 
     
   }));
-
+  //ToDo save images to local folder
   const onSubmit = data => {
     const newProduct = {
       id: uuidv4(),

@@ -21,6 +21,7 @@ const GET_PRODUCTS = gql`
       image
       name
       type
+      totalTickets
       # views
       # sales
       price

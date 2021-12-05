@@ -59,6 +59,14 @@ export default class ProductResolver {
     }
    
   }
+  @Query(() => Product, { description: 'Get a single product' })
+  async getProduct(@Arg('id') id: string): Promise<Product | undefined> {
+    const product = await ProductModel.findOne({ id });
+    if(product){
+      return product;
+    }
+    return undefined;
+  }
 
   @Query(() => Product, { description: 'Get a single product' })
   async product(@Arg('slug') slug: string): Promise<Product | undefined> {
@@ -71,15 +79,14 @@ export default class ProductResolver {
 
   @Mutation(() => Product, { description: 'Close Product Ticket' })
   async closeProductTickets(
-    @Arg('productId', (productId) => String) productId: string,
-    @Arg('ticketId', (ticketId) => String)  ticketId: string
+    @Arg('productId', (productId) => String) productId: string
   ): Promise<Product> {
-    const product = await ProductModel.findOne({ id: productId });
+    let product = await ProductModel.findOne({ id: productId });
     if (!product) {
       throw new Error('Product not found');
     }
     if(product.ticket){
-      let ticket = product.ticket.find((item) => item.id === ticketId);
+      let ticket = product.ticket.find((item) => item.id === 'ad37fedc-5077-463f-9afd-9705a8490f5a');
       if(ticket){
         ticket.ticketStatus = 'closed';
         await product.save();

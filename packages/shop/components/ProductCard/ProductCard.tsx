@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'components/Image/Image';
 import Button from '../Button/Button';
-import { CartIcon } from '../AllSvgIcon';
+import { BidIcon } from '../AllSvgIcon';
 import {
   ProductCardWrapper,
   ProductImageWrapper,
@@ -127,8 +127,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
               colors="primary"
               size="small"
               variant="outlined"
+              disabled = {data.ticket.length === data.totalTickets ? true : false }
               className="cart-button"
-              icon={<CartIcon />}
+              icon={<BidIcon />}
               onClick={handleAddClick}
             />
           ) : (
@@ -146,7 +147,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
             size="small"
             variant="outlined"
             className="cart-button"
-            icon={<CartIcon />}
+            disabled = { data.ticket.length !== 0 ? true : false }
+            icon={<BidIcon />}
             onClick={handleInstantBuy}
           />
 

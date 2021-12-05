@@ -15,22 +15,24 @@ function stringAvatar(name) {
     };
 }
 const GroupAvatar: React.FunctionComponent<dataProps> = ({ data }) => {
-    
+
     return (
         <AvatarGroup max={4}>
+
             {
-                data.map((item, index) => {
-                    
-                    console.log(item.userId);
-                
-                })
+                data.map((item, index) => (
+                    <Avatar {...stringAvatar('John Doe')} />
+                ))
             }
+            
+            {/* <Avatar {...stringAvatar('John Doe')} />
+            <Avatar key={index} alt="John Doe" src={item.userId} />
             <Avatar {...stringAvatar('John Doe')} />
-            <Avatar alt="John Doe" src="" />
             <Avatar {...stringAvatar('John Doe')} />
             <Avatar {...stringAvatar('John Doe')} />
-            <Avatar {...stringAvatar('John Doe')} />
-            <Avatar {...stringAvatar('John Doe')} />
+            <Avatar {...stringAvatar('John Doe')} /> */}
+
+
 
         </AvatarGroup>
     );

@@ -37,6 +37,19 @@ export default class TicketsResolver extends TickerResolver {
 
 
     }
+    @Mutation(() => Ticket, { description: 'Close tickets' })
+    async closeTicket(
+        @Arg('id', type => String) id: string
+    ): Promise<Ticket | undefined> {
+        const ticket = await TicketModel.findOne({ id });
+        if (!ticket) {
+            throw new Error('Ticket not found');
+            return undefined;
+        }
+        ticket.ticketStatus = 'closed';
+        await ticket.save();
+        return ticket;
+    }
 
 
    
