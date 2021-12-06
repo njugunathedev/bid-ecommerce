@@ -3,19 +3,54 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
-# New Order Data
-input AddOrderInput {
+# New Category Data
+input AddCategoryInput {
   id: ID!
-  userId: String!
-  products: [ProductInput!]
-  status: Int!
-  deliveryTime: String!
-  amount: Int!
-  subtotal: Int!
-  discount: Int!
-  deliveryFee: Int!
-  deliveryAddress: String!
-  date: String!
+  title: String!
+  children: [AddCategoryInput!]
+  type: String!
+  icon: String!
+  number_of_product: Float = 0
+  slug: String!
+  created_date: DateTime!
+}
+
+# New coupon data
+input AddCouponInput {
+  id: ID!
+  title: String!
+  number_of_coupon: Int!
+  discount_in_percent: Int!
+  category: String!
+  products: [AddProductInput!]
+  code: String!
+  minimum_amount: Int = 0
+  status: String = "active"
+  expiration_date: DateTime
+  description: String
+  creation_date: DateTime!
+}
+
+# New product data
+input AddProductInput {
+  id: String!
+  slug: String!
+  title: String!
+  type: String!
+  categories: [AddCategoryInput!]!
+  unit: String!
+  image: String!
+  gallery: [GalleryInput!]
+  description: String!
+  price: Float!
+  salePrice: Float!
+  discountInPercent: Float!
+  author: AuthorInput
+  meta: MetaInput
+  totalTickets: Float
+  ticket: [TicketInput!]
+  creation_date: DateTime!
+  quantity: Float!
 }
 
 type Address {
@@ -25,12 +60,16 @@ type Address {
   info: String!
 }
 
-# Address Input
-input AddressInput {
-  id: String!
-  type: String!
-  name: String!
-  info: String!
+# New stuff data
+input AddStuffInput {
+  id: ID!
+  first_name: String!
+  last_name: String!
+  contact_number: String!
+  email: String!
+  role: String!
+  name: String
+  creation_date: DateTime!
 }
 
 type Author {
@@ -43,16 +82,17 @@ type Author {
   socials: [Social!]!
 }
 
-type Card {
-  id: String!
-  type: String!
+input AuthorInput {
+  id: ID!
   name: String!
-  cardType: String!
-  lastFourDigit: Float!
+  avatar: String!
+  bio: String!
+  email: String!
+  website: String!
+  socials: [SocialInput!]!
 }
 
-# Card Input
-input CardInput {
+type Card {
   id: String!
   type: String!
   name: String!
@@ -77,18 +117,36 @@ type Contact {
   number: String!
 }
 
-# Contact Input
-input ContactInput {
-  id: String!
-  type: String!
-  number: String!
+type Coupon {
+  id: ID!
+  title: String!
+  number_of_coupon: Int!
+  number_of_used_coupon: Int
+  discount_in_percent: Int!
+  category: String!
+  products: [Product!]
+  code: String!
+  minimum_amount: Int
+  status: String
+  expiration_date: DateTime
+  description: String
+  creation_date: DateTime!
 }
 
-type Coupon {
-  id: Float!
-  code: String!
-  image: String
-  discountInPercent: Float!
+type Customer {
+  id: ID!
+  password: String
+  name: String!
+  email: String!
+  image: String!
+  address: [Address!]!
+  contact: [Contact!]!
+  card: [Card!]!
+  created_date: DateTime
+  has_blocked: Boolean
+  total_order: Int
+  total_order_amount: Int
+  rank: String
 }
 
 # The javascript `Date` as string. Type represents date and time as the ISO Date string.
@@ -116,43 +174,37 @@ type Meta {
   samplePDF: String!
 }
 
+input MetaInput {
+  id: ID!
+  publisher: String!
+  isbn: String!
+  edition: String!
+  country: String!
+  languages: [String!]!
+  numberOfReader: String!
+  numberOfPage: String!
+  samplePDF: String!
+}
+
 type Mutation {
-  # Update User
-  updateMe(meInput: String!): User!
-
-  # Update User
-  registerUser(userInput: UserInput!): User!
-
-  # Add or Edit Address
-  updateAddress(addressInput: String!): User!
-
-  # Add or Edit Contact
-  updateContact(contactInput: String!): User!
-
-  # Delete Address
-  deleteAddress(addressId: String!): User!
-
-  # Delete Contact
-  deleteContact(contactId: String!): User!
-
-  # Add Payment Card
-  addPaymentCard(cardInput: String!): User!
-
-  # Delete Payment Card
-  deletePaymentCard(cardId: String!): User!
-
-  # Update Product
-  updateProductTickets(ticket: TicketInput!, id: String!): Product!
-
-  # Charge a Payment
-  charge(paymentInput: PaymentInput!): Payment!
-
-  # Add an Order
-  addOrder(orderInput: AddOrderInput!): Order!
-  applyCoupon(code: String!): Coupon!
-
   # Add an Ticket
   addTicket(ticketInput: TicketInput!): Ticket!
+
+  # Close Product Ticket
+  closeProductTickets(productId: String!): Product!
+
+  # Create Product
+  createProduct(product: AddProductInput!): Product!
+
+  # Create Category
+  createCategory(category: AddCategoryInput!): Category!
+  createCoupon(coupon: AddCouponInput!): Coupon!
+
+  # Create Stuff
+  createStuff(stuff: AddStuffInput!): Stuff!
+
+  # Close tickets
+  closeTicket(id: String!): Ticket!
 }
 
 type Order {
@@ -180,18 +232,6 @@ type OrderedProduct {
   total: Int!
 }
 
-type Payment {
-  amount: String!
-  token: String!
-  status: String!
-}
-
-input PaymentInput {
-  amount: String!
-  token: String!
-  status: String!
-}
-
 type Product {
   id: ID!
   description: String!
@@ -213,18 +253,6 @@ type Product {
   quantity: Float!
 }
 
-# Product Input
-input ProductInput {
-  id: ID!
-  title: String!
-  weight: String = "0 lbs"
-  image: String!
-  price: Int!
-  category: String!
-  quantity: Int!
-  total: Int!
-}
-
 type ProductResponse {
   items: [Product!]!
   total: Int!
@@ -238,39 +266,63 @@ type Products {
 }
 
 type Query {
-  me(email: String!): User!
-
-  # Get all the products
-  products(limit: Int = 12, offset: Int = 0, sortByPrice: String, type: String, searchText: String, category: String, slug: String, text: String): Products!
-  product(slug: String!): Product!
-
-  # Get the Related products
-  relatedProducts(slug: String!, type: String!): [Product!]!
-
-  # Get all the Orders
-  orders(limit: Int = 7, text: String, user: String!): [Order!]!
-
-  # Get single order
-  order(id: String!): Order!
-
-  # Get all the Coupons
-  coupons: [Coupon!]!
-
-  # Get all the categories
-  categories(type: String!): [Category!]!
-  category(id: String!): Category!
-
   # Get single order
   ticket(id: String!): Ticket!
 
   # Get all orders
   tickets(limit: Int = 7, text: String, userId: String!): [Ticket!]!
+
+  # Get all the products
+  products(limit: Int = 12, offset: Int = 0, sortByPrice: String, type: String, searchText: String, category: String, slug: String, text: String): Products!
+
+  # Get a single product
+  getProduct(id: String!): Product!
+
+  # Get a single product
+  product(slug: String!): Product!
+
+  # Get all the categories
+  categories(searchBy: String = "", type: String): [Category!]!
+  category(id: ID!): Category!
+  customers(limit: Int = 7, sortBy: String = null, searchBy: String): [Customer!]!
+  customer(id: ID!): Customer!
+
+  # Get All Coupons
+  coupons(searchBy: String, status: String): [Coupon!]!
+
+  # Get all the Orders
+  orders(searchText: String = "", limit: Int = 50, status: String): [Order!]!
+
+  # Get single order
+  order(id: ID!): Order!
+  stuffs(searchBy: String, role: String): [Stuff!]!
+  stuff(id: ID!): Stuff!
+
+  # Get all orders
+  getTickets(status: String, limit: Int = 7, text: String): [Ticket!]!
 }
 
 type Social {
   id: ID!
   media: String!
   profileLink: String!
+}
+
+input SocialInput {
+  id: ID!
+  media: String!
+  profileLink: String!
+}
+
+type Stuff {
+  id: ID!
+  first_name: String!
+  last_name: String!
+  contact_number: String!
+  email: String!
+  role: String!
+  name: String
+  creation_date: DateTime!
 }
 
 type Ticket {
@@ -302,18 +354,5 @@ type User {
   address: [Address!]!
   contact: [Contact!]!
   card: [Card!]!
-  created_date: DateTime
-}
-
-# User input type
-input UserInput {
-  id: ID!
-  name: String!
-  password: String
-  email: String!
-  image: String
-  address: [AddressInput!]
-  contact: [ContactInput!]
-  card: [CardInput!]
   created_date: DateTime
 }
