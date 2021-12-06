@@ -12,6 +12,7 @@ export const ALTERNATIVE_CHECKOUT_PAGE = '/checkout-alternative';
 export const REQUEST_MEDICINE_PAGE = '/request-medicine';
 export const PROFILE_PAGE = '/profile';
 export const YOUR_ORDER = '/order';
+export const YOUR_TICKET = '/ticket';
 export const ORDER_RECEIVED = '/order-received';
 export const OFFER_PAGE = '/offer';
 export const HELP_PAGE = '/help';

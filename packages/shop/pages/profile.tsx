@@ -29,10 +29,13 @@ const ProfilePage: NextPage<Props> = ({ deviceType }) => {
   if (!data || loading) {
     return <div>loading...</div>;
   }
-  if (error) return <div>{error.message}</div>;
+  if (error){
+    console.log(JSON.stringify(error, null, 2));
+    return <div>{error.message}</div>;
+  }
   return (
     <>
-      <SEO title='Profile - PickBazar' description='Profile Details' />
+      <SEO title='Profile - Lucky Arcade' description='Profile Details' />
       <ProfileProvider initData={data.me}>
         <Modal>
           <PageWrapper>
@@ -48,7 +51,7 @@ const ProfilePage: NextPage<Props> = ({ deviceType }) => {
                 id='siteFooter'
                 defaultMessage='Lucky-arcade is a product of'
               />
-              &nbsp; <Link href='#'></Link>
+              {/* &nbsp; <Link href='#'></Link> */}
             </SiteFooter>
           </PageWrapper>
         </Modal>

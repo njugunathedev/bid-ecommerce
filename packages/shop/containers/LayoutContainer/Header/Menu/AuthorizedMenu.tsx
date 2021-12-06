@@ -7,6 +7,7 @@ import {
   ALTERNATIVE_CHECKOUT_PAGE,
   PROFILE_PAGE,
   ORDER_RECEIVED,
+  YOUR_TICKET,
   YOUR_ORDER,
 } from 'constants/navigation';
 
@@ -26,15 +27,20 @@ const AUTHORIZED_MENU_ITEMS = [
     label: 'Checkout Alternative',
     intlId: 'alternativeCheckout',
   },
+  // {
+  //   link: YOUR_ORDER,
+  //   label: 'Order',
+  //   intlId: 'sidebarYourOrder',
+  // },
+  // {
+  //   link: ORDER_RECEIVED,
+  //   label: 'Order invoice',
+  //   intlId: 'navlinkOrderReceived',
+  // },
   {
-    link: YOUR_ORDER,
-    label: 'Order',
-    intlId: 'sidebarYourOrder',
-  },
-  {
-    link: ORDER_RECEIVED,
-    label: 'Order invoice',
-    intlId: 'navlinkOrderReceived',
+    link: YOUR_TICKET,
+    label: 'Ticket',
+    intlId: 'navlinkTicket',
   },
 ];
 
