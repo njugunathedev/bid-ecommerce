@@ -12,16 +12,7 @@ type dataProps = {
 };
 
 const GroupAvatar: React.FunctionComponent<dataProps> = ({ data }) => {
-    const router = useRouter();
-    const handleModalClose = () => {
-        const href = `${router.pathname}`;
-        const as = '/';
-        router.push(href, as, { shallow: true });
-        closeModal();
-    };
-    // const handleQuickViewModal = React.useCallback(
-
-    // );
+   
     function stringAvatar(name) {
         return {
             sx: {
@@ -53,4 +44,5 @@ const GroupAvatar: React.FunctionComponent<dataProps> = ({ data }) => {
         </AvatarGroup>
     );
 }
+export default GroupAvatar;
 
